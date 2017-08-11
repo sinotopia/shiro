@@ -27,8 +27,7 @@ import org.apache.shiro.ShiroException;
  *
  * @since 0.9
  */
-public class InvalidPermissionStringException extends ShiroException
-{
+public class InvalidPermissionStringException extends ShiroException {
 
     private String permissionString;
 
@@ -52,6 +51,5 @@ public class InvalidPermissionStringException extends ShiroException
     public String getPermissionString() {
         return this.permissionString;
     }
-
 
 }

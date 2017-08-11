@@ -48,16 +48,40 @@ import java.util.Map;
  * @author Les Hazlewood
  * @since 1.2
  */
-public interface PrincipalMap extends PrincipalCollection, Map<String,Object> {
+public interface PrincipalMap extends PrincipalCollection, Map<String, Object> {
 
-    Map<String,Object> getRealmPrincipals(String realmName);
+    /**
+     * @param realmName
+     * @return
+     */
+    Map<String, Object> getRealmPrincipals(String realmName);
 
-    Map<String,Object> setRealmPrincipals(String realmName, Map<String,Object> principals);
+    /**
+     * @param realmName
+     * @param principals
+     * @return
+     */
+    Map<String, Object> setRealmPrincipals(String realmName, Map<String, Object> principals);
 
+    /**
+     * @param realmName
+     * @param principalName
+     * @param principal
+     * @return
+     */
     Object setRealmPrincipal(String realmName, String principalName, Object principal);
 
+    /**
+     * @param realmName
+     * @param realmPrincipal
+     * @return
+     */
     Object getRealmPrincipal(String realmName, String realmPrincipal);
 
+    /**
+     * @param realmName
+     * @param principalName
+     * @return
+     */
     Object removeRealmPrincipal(String realmName, String principalName);
-
 }

@@ -22,3 +22,20 @@
  * interface and its supporting implementations.
  */
 package org.apache.shiro.authc.credential;
+
+/**
+ * PasswordService
+ *      HashingPasswordService
+ *          DefaultPasswordService
+ * CredentialsMatcher
+ *      AllowAllCredentialsMatcher
+ *      PasswordMatcher
+ *      SimpleCredentialsMatcher
+ *          HashedCredentialsMatcher
+ *              Md2CredentialsMatcher
+ *              Md5CredentialsMatcher
+ *              Sha1CredentialsMatcher
+ *              Sha256CredentialsMatcher
+ *              Sha384CredentialsMatcher
+ *              Sha512CredentialsMatcher
+ */

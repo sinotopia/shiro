@@ -305,7 +305,7 @@ public abstract class AuthorizingRealm extends AuthenticatingRealm
      * @param principals the corresponding Subject's identifying principals with which to look up the Subject's
      *                   {@code AuthorizationInfo}.
      * @return the authorization information for the account associated with the specified {@code principals},
-     *         or {@code null} if no account could be found.
+     * or {@code null} if no account could be found.
      */
     protected AuthorizationInfo getAuthorizationInfo(PrincipalCollection principals) {
 

@@ -37,7 +37,7 @@ public abstract class CodecSupport {
     /**
      * Converts the specified character array to a byte array using the Shiro's preferred encoding (UTF-8).
      * <p/>
-     * This is a convenience method equivalent to calling the {@link #toBytes(String,String)} method with a
+     * This is a convenience method equivalent to calling the {@link #toBytes(String, String)} method with a
      * a wrapping String and {@link CodecSupport#PREFERRED_ENCODING PREFERRED_ENCODING}, i.e.
      * <p/>
      * <code>toBytes( new String(chars), {@link CodecSupport#PREFERRED_ENCODING PREFERRED_ENCODING} );</code>
@@ -52,7 +52,7 @@ public abstract class CodecSupport {
     /**
      * Converts the specified character array into a byte array using the specified character encoding.
      * <p/>
-     * This is a convenience method equivalent to calling the {@link #toBytes(String,String)} method with a
+     * This is a convenience method equivalent to calling the {@link #toBytes(String, String)} method with a
      * a wrapping String and the specified encoding, i.e.
      * <p/>
      * <code>toBytes( new String(chars), encoding );</code>
@@ -171,7 +171,7 @@ public abstract class CodecSupport {
      *
      * @param o the object to test to see if it can be easily converted to a byte array
      * @return {@code true} if the specified object can be easily converted to bytes by instances of this class,
-     *         {@code false} otherwise.
+     * {@code false} otherwise.
      * @since 1.0
      */
     protected boolean isByteSource(Object o) {

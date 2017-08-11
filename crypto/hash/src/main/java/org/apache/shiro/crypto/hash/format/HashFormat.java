@@ -30,7 +30,6 @@ import org.apache.shiro.crypto.hash.Hash;
  * The formats that <em>are</em> reversible however will be represented as {@link ParsableHashFormat} instances.
  *
  * @see ParsableHashFormat
- *
  * @since 1.2
  */
 public interface HashFormat {

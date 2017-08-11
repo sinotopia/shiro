@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * Default implementation of the {@link PasswordService} interface that relies on an internal
  * {@link HashService}, {@link HashFormat}, and {@link HashFormatFactory} to function:
  * <h2>Hashing Passwords</h2>
- *
+ * <p>
  * <h2>Comparing Passwords</h2>
  * All hashing operations are performed by the internal {@link #getHashService() hashService}.  After the hash
  * is computed, it is formatted into a String value via the internal {@link #getHashFormat() hashFormat}.
@@ -143,7 +143,7 @@ public class DefaultPasswordService implements HashingPasswordService {
 
         if (discoveredFormat != null && discoveredFormat instanceof ParsableHashFormat) {
 
-            ParsableHashFormat parsableHashFormat = (ParsableHashFormat)discoveredFormat;
+            ParsableHashFormat parsableHashFormat = (ParsableHashFormat) discoveredFormat;
             Hash savedHash = parsableHashFormat.parse(saved);
 
             return passwordsMatch(submittedPlaintext, savedHash);

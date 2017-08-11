@@ -21,7 +21,7 @@ package org.apache.shiro.authc;
 /**
  * A special kind of <tt>DisabledAccountException</tt>, this exception is thrown when attempting
  * to authenticate and the corresponding account has been disabled explicitly due to being locked.
- *
+ * <p>
  * <p>For example, an account can be locked if an administrator explicitly locks an account or
  * perhaps an account can be locked automatically by the system if too many unsuccessful
  * authentication attempts take place during a specific period of time (perhaps indicating a

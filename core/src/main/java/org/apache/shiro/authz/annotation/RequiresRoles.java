@@ -24,7 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Requires the currently executing {@link org.apache.shiro.subject.Subject Subject} to have all of the 
+ * Requires the currently executing {@link org.apache.shiro.subject.Subject Subject} to have all of the
  * specified roles. If they do not have the role(s), the method will not be executed and
  * an {@link org.apache.shiro.authz.AuthorizationException AuthorizationException} is thrown.
  * <p/>
@@ -35,12 +35,12 @@ import java.lang.annotation.Target;
  * <p/>
  * means <tt>someMethod()</tt> could only be executed by subjects who have been assigned the
  * 'aRoleName' role.
- *
+ * <p>
  * <p><b>*Usage Note*:</b> Be careful using this annotation if your application has a <em>dynamic</em>
  * security model where roles can be added and deleted at runtime.  If your application allowed the
  * annotated role to be deleted during runtime, the method would not be able to
  * be executed by anyone (at least until a new role with the same name was created again).
- *
+ * <p>
  * <p>If you require such dynamic functionality, only the
  * {@link RequiresPermissions RequiresPermissions} annotation makes sense - Permission
  * types will not change during runtime for an application since permissions directly correspond to how
@@ -59,10 +59,11 @@ public @interface RequiresRoles {
      * invocation to be allowed.
      */
     String[] value();
-    
+
     /**
      * The logical operation for the permission check in case multiple roles are specified. AND is the default
+     *
      * @since 1.1.0
      */
-    Logical logical() default Logical.AND; 
+    Logical logical() default Logical.AND;
 }

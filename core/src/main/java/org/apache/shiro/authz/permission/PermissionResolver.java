@@ -54,8 +54,7 @@ public interface PermissionResolver {
      *
      * @param permissionString the String representation of a permission.
      * @return A Permission object that can be used internally to determine a subject's permissions.
-     * @throws InvalidPermissionStringException
-     *          if the permission string is not valid for this resolver.
+     * @throws InvalidPermissionStringException if the permission string is not valid for this resolver.
      */
     Permission resolvePermission(String permissionString);
 

@@ -39,6 +39,11 @@ public class PasswordMatcher implements CredentialsMatcher {
         this.passwordService = new DefaultPasswordService();
     }
 
+    /**
+     * @param token the {@code AuthenticationToken} submitted during the authentication attempt
+     * @param info  the {@code AuthenticationInfo} stored in the system.
+     * @return
+     */
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
 
         PasswordService service = ensurePasswordService();
@@ -48,12 +53,12 @@ public class PasswordMatcher implements CredentialsMatcher {
         assertStoredCredentialsType(storedCredentials);
 
         if (storedCredentials instanceof Hash) {
-            Hash hashedPassword = (Hash)storedCredentials;
+            Hash hashedPassword = (Hash) storedCredentials;
             HashingPasswordService hashingService = assertHashingPasswordService(service);
             return hashingService.passwordsMatch(submittedPassword, hashedPassword);
         }
         //otherwise they are a String (asserted in the 'assertStoredCredentialsType' method call above):
-        String formatted = (String)storedCredentials;
+        String formatted = (String) storedCredentials;
         return passwordService.passwordsMatch(submittedPassword, formatted);
     }
 
@@ -95,7 +100,7 @@ public class PasswordMatcher implements CredentialsMatcher {
         Object stored = storedAccountInfo != null ? storedAccountInfo.getCredentials() : null;
         //fix for https://issues.apache.org/jira/browse/SHIRO-363
         if (stored instanceof char[]) {
-            stored = new String((char[])stored);
+            stored = new String((char[]) stored);
         }
         return stored;
     }

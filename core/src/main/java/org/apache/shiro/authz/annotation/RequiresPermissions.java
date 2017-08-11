@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
  * {@link org.apache.shiro.subject.Subject Subject} determines that the
  * executor does not imply the specified permission, the method will not be executed.
  * </p>
- *
+ * <p>
  * <p>For example, this declaration:
  * <p/>
  * <code>&#64;RequiresPermissions( {"file:read", "write:aFile.txt"} )<br/>
@@ -52,12 +52,13 @@ public @interface RequiresPermissions {
      * to determine if the user is allowed to invoke the code protected by this annotation.
      */
     String[] value();
-    
+
     /**
      * The logical operation for the permission checks in case multiple roles are specified. AND is the default
+     *
      * @since 1.1.0
      */
-    Logical logical() default Logical.AND; 
+    Logical logical() default Logical.AND;
 
 }
 

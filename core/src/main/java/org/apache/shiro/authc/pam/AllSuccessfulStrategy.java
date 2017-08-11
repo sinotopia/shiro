@@ -40,7 +40,9 @@ import org.apache.shiro.realm.Realm;
  */
 public class AllSuccessfulStrategy extends AbstractAuthenticationStrategy {
 
-    /** Private class log instance. */
+    /**
+     * Private class log instance.
+     */
     private static final Logger log = LoggerFactory.getLogger(AllSuccessfulStrategy.class);
 
     /**

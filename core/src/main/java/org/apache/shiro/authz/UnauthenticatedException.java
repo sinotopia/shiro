@@ -21,7 +21,7 @@ package org.apache.shiro.authz;
 /**
  * Exception thrown when attempting to execute an authorization action when a successful
  * authentication hasn't yet occurred.
- *
+ * <p>
  * <p>Authorizations can only be performed after a successful
  * authentication because authorization data (roles, permissions, etc) must always be associated
  * with a known identity.  Such a known identity can only be obtained upon a successful log-in.

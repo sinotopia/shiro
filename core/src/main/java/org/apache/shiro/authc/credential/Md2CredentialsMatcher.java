@@ -35,7 +35,7 @@ import org.apache.shiro.crypto.hash.Md2Hash;
  *
  * @since 0.9
  * @deprecated since 1.1 - use the HashedCredentialsMatcher directly and set its
- *             {@link HashedCredentialsMatcher#setHashAlgorithmName(String) hashAlgorithmName} property.
+ * {@link HashedCredentialsMatcher#setHashAlgorithmName(String) hashAlgorithmName} property.
  */
 @Deprecated
 public class Md2CredentialsMatcher extends HashedCredentialsMatcher {

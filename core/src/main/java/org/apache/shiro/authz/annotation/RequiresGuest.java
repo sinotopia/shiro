@@ -34,7 +34,6 @@ import java.lang.annotation.Target;
  *
  * @see RequiresAuthentication
  * @see RequiresUser
- *
  * @since 0.9.0
  */
 @Target({ElementType.TYPE, ElementType.METHOD})

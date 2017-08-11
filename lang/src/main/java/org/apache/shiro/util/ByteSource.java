@@ -41,7 +41,7 @@ public interface ByteSource {
      * underlying wrapped byte array.
      *
      * @return the <a href="http://en.wikipedia.org/wiki/Hexadecimal">Hex</a>-formatted String representation of the
-     *         underlying wrapped byte array.
+     * underlying wrapped byte array.
      */
     String toHex();
 
@@ -50,7 +50,7 @@ public interface ByteSource {
      * underlying wrapped byte array.
      *
      * @return the <a href="http://en.wikipedia.org/wiki/Base64">Base 64</a>-formatted String representation of the
-     *         underlying wrapped byte array.
+     * underlying wrapped byte array.
      */
     String toBase64();
 
@@ -59,7 +59,7 @@ public interface ByteSource {
      * otherwise.
      *
      * @return {@code true} if the underlying wrapped byte array is null or empty (zero length), {@code false}
-     *         otherwise.
+     * otherwise.
      * @since 1.2
      */
     boolean isEmpty();
@@ -143,7 +143,7 @@ public interface ByteSource {
          * @param source the object to test to see if it can be easily converted to ByteSource instances using default
          *               heuristics.
          * @return {@code true} if the specified object can be easily represented as a {@code ByteSource} using
-         *         the {@link ByteSource.Util}'s default heuristics, {@code false} otherwise.
+         * the {@link ByteSource.Util}'s default heuristics, {@code false} otherwise.
          */
         public static boolean isCompatible(Object source) {
             return SimpleByteSource.isCompatible(source);

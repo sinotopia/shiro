@@ -47,7 +47,7 @@ public interface HashRequest {
      * strategy for a request, even if the request did not specify one.
      *
      * @return a salt to be used by the {@link HashService} during hash computation, or {@code null} if no salt is
-     *         provided as part of the request.
+     * provided as part of the request.
      */
     ByteSource getSalt();
 
@@ -72,7 +72,7 @@ public interface HashRequest {
      * sufficient to meet a desired level of security.
      *
      * @return the name of the hash algorithm the {@code HashService} should use when computing the {@link Hash}, or
-     *         {@code null} if the default algorithm configuration of the {@code HashService} should be used.
+     * {@code null} if the default algorithm configuration of the {@code HashService} should be used.
      */
     String getAlgorithmName();
 

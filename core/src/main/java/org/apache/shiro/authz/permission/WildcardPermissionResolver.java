@@ -35,7 +35,7 @@ public class WildcardPermissionResolver implements PermissionResolver {
      *
      * @param permissionString the permission string to convert to a {@link Permission Permission} instance.
      * @return a new {@link WildcardPermission WildcardPermission} instance constructed based on the specified
-     *         <tt>permissionString</tt>
+     * <tt>permissionString</tt>
      */
     public Permission resolvePermission(String permissionString) {
         return new WildcardPermission(permissionString);

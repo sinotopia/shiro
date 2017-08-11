@@ -28,7 +28,7 @@ import java.util.Collection;
  * text-based configuration to create and configure realms, and instead wish to retrieve a realm configured in a
  * proprietary manner.  An implementation of this interface can access that proprietary mechanism to retrieve the
  * already-created <tt>Realm</tt>s.
- *
+ * <p>
  * <p>The <code>Realm</code> instances returned will used to construct the application's
  * {@link org.apache.shiro.mgt.SecurityManager SecurityManager} instance.
  *
@@ -39,14 +39,14 @@ public interface RealmFactory {
     /**
      * Returns a collection of {@link Realm Realm} instances that will be used to construct
      * the application's SecurityManager instance.
-     *
+     * <p>
      * <p>The order of the collection is important.  The {@link org.apache.shiro.mgt.SecurityManager SecurityManager}
      * implementation will consult the Realms during authentication (log-in) and authorization (access control)
      * operations in the collection's <b>iteration order</b>.  That is, the resulting collection's
      * {@link java.util.Iterator Iterator} determines the order in which Realms are used.
      *
      * @return the <code>Collection</code> of Realms that the application's <code>SecurityManager</code> will use
-     *         for security data access.
+     * for security data access.
      */
     Collection<Realm> getRealms();
 

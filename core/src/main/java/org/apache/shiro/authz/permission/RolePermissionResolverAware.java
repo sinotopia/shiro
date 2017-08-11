@@ -21,7 +21,7 @@ package org.apache.shiro.authz.permission;
 /**
  * Interface implemented by a component that wishes to use any application-configured <tt>RolePermissionResolver</tt> that
  * might already exist instead of potentially creating one itself.
- *
+ * <p>
  * <p>This is mostly implemented by {@link org.apache.shiro.authz.Authorizer Authorizer} and
  * {@link org.apache.shiro.realm.Realm Realm} implementations since they
  * are the ones performing permission checks and need to know how to resolve Strings into
