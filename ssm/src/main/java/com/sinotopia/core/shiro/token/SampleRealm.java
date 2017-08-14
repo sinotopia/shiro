@@ -31,7 +31,7 @@ import com.sinotopia.service.user.IdentityUserService;
 public class SampleRealm extends AuthorizingRealm {
 
     @Autowired
-    private IdentityUserService userService;
+    private IdentityUserService identityUserService;
 
     @Autowired
     private IdentityPermissionService permissionService;

@@ -37,14 +37,14 @@ package org.apache.shiro.event;
  * <h2>Receiving Events</h2>
  * A component can receive events of interest by doing the following.
  * <ol>
- *     <li>For each type of event you wish to consume, create a public method that accepts a single event argument.
- *     The method argument type indicates the type of event to receive.</li>
- *     <li>Annotate each of these public methods with the {@link org.apache.shiro.event.Subscribe Subscribe} annotation.</li>
- *     <li>Register the component with the event bus:
- *     <pre>
+ * <li>For each type of event you wish to consume, create a public method that accepts a single event argument.
+ * The method argument type indicates the type of event to receive.</li>
+ * <li>Annotate each of these public methods with the {@link org.apache.shiro.event.Subscribe Subscribe} annotation.</li>
+ * <li>Register the component with the event bus:
+ * <pre>
  *         eventBus.register(myComponent);
  *     </pre>
- *     </li>
+ * </li>
  * </ol>
  * After registering the component, when when an event of a respective type is published, the component's
  * {@code Subscribe}-annotated method(s) will be invoked as expected.

@@ -21,7 +21,7 @@ package org.apache.shiro.cache;
 /**
  * Interface implemented by components that utilize a CacheManager and wish that CacheManager to be supplied if
  * one is available.
- *
+ * <p>
  * <p>This is used so internal security components that use a CacheManager can be injected with it instead of having
  * to create one on their own.
  *

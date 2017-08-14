@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sinotopia.service.user.IdentityUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,9 @@ import com.sinotopia.core.shiro.session.CustomSessionManager;
 import com.sinotopia.core.shiro.token.manager.TokenManager;
 import com.sinotopia.dto.permission.URoleBo;
 import com.sinotopia.dto.permission.UserRoleAllocationBo;
-import com.sinotopia.service.user.IdentityUserService;
 
 @Service
-public class IdentityUserService extends BaseMybatisDao<IdentityUserMapper> implements IdentityUserService {
+public class IdentityUserServiceImpl extends BaseMybatisDao<IdentityUserMapper> implements IdentityUserService {
     /***
      * 用户手动操作Session
      * */
@@ -199,8 +199,5 @@ public class IdentityUserService extends BaseMybatisDao<IdentityUserMapper> impl
             resultMap.put("message", "操作失败，请重试！");
         }
         return resultMap;
-
     }
-
-
 }

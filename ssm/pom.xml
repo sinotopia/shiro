@@ -6,14 +6,11 @@
     <artifactId>shiro.demo</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>www.sinotopia.com</name>
     <url>http://maven.apache.org</url>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -97,12 +94,6 @@
             <version>1.2_04</version>
             <scope>provided</scope>
         </dependency>
-        <!-- SSM  -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.1.0</version>
-        </dependency>
         <!-- Spring 在 3.2.13版本后，要单独引用 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -133,6 +124,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>4.2.5.RELEASE</version>
+        </dependency>
+        <!-- SSM  -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -179,7 +176,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.1.26</version>
         </dependency>
-
         <!-- 其他常用包 begin -->
         <dependency>
             <groupId>commons-attributes</groupId>
@@ -253,7 +249,6 @@
             <classifier>jdk15</classifier>
         </dependency>
         <!-- 其他常用包 end'-->
-
         <!-- freemarker begin -->
         <dependency>
             <groupId>org.freemarker</groupId>
