@@ -27,11 +27,11 @@ import org.apache.shiro.authz.AuthorizationException;
 /**
  * An <tt>AnnotationsAuthorizingMethodInterceptor</tt> is a MethodInterceptor that asserts a given method is authorized
  * to execute based on one or more configured <tt>AuthorizingAnnotationMethodInterceptor</tt>s.
- *
+ * <p>
  * <p>This allows multiple annotations on a method to be processed before the method
  * executes, and if any of the <tt>AuthorizingAnnotationMethodInterceptor</tt>s indicate that the method should not be
  * executed, an <tt>AuthorizationException</tt> will be thrown, otherwise the method will be invoked as expected.
- *
+ * <p>
  * <p>It is essentially a convenience mechanism to allow multiple annotations to be processed in a single method
  * interceptor.
  *
@@ -45,7 +45,7 @@ public abstract class AnnotationsAuthorizingMethodInterceptor extends Authorizin
     protected Collection<AuthorizingAnnotationMethodInterceptor> methodInterceptors;
 
     /**
-     * Default no-argument constructor that defaults the 
+     * Default no-argument constructor that defaults the
      * {@link #methodInterceptors methodInterceptors} attribute to contain two interceptors by default - the
      * {@link RoleAnnotationMethodInterceptor RoleAnnotationMethodInterceptor} and the
      * {@link PermissionAnnotationMethodInterceptor PermissionAnnotationMethodInterceptor} to
@@ -68,6 +68,7 @@ public abstract class AnnotationsAuthorizingMethodInterceptor extends Authorizin
      * {@link RoleAnnotationMethodInterceptor RoleAnnotationMethodInterceptor} and a
      * {@link PermissionAnnotationMethodInterceptor PermissionAnnotationMethodInterceptor} to
      * support role and permission annotations automatically.
+     *
      * @return the method interceptors to execute for the annotated method.
      */
     public Collection<AuthorizingAnnotationMethodInterceptor> getMethodInterceptors() {
@@ -76,6 +77,7 @@ public abstract class AnnotationsAuthorizingMethodInterceptor extends Authorizin
 
     /**
      * Sets the method interceptors to execute for the annotated method.
+     *
      * @param methodInterceptors the method interceptors to execute for the annotated method.
      * @see #getMethodInterceptors()
      */

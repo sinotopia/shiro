@@ -9,7 +9,6 @@
     <sql id="Base_Column_List">
     id, url, name
   </sql>
-
     <sql id="limit_sql">
         <if test="page_sql != null and page_sql != ''">
             ${page_sql}

@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.sinotopia.service.role.RoleService;
+import com.sinotopia.service.role.IdentityRoleService;
 
 
 /**
@@ -18,7 +18,7 @@ import com.sinotopia.service.role.RoleService;
 public class ToTimer{
 	
 	@Resource
-	RoleService roleService;
+    IdentityRoleService roleService;
 	@Scheduled(cron = "0/20 * * * * ? ")
 	public void run() {
 		/**

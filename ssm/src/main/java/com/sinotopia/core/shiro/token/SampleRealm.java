@@ -3,6 +3,7 @@ package com.sinotopia.core.shiro.token;
 import java.util.Date;
 import java.util.Set;
 
+import com.sinotopia.service.permission.IdentityPermissionService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
@@ -20,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sinotopia.common.model.IdentityUser;
 import com.sinotopia.core.shiro.token.manager.TokenManager;
 import com.sinotopia.service.permission.impl.PermissionService;
-import com.sinotopia.service.role.RoleService;
+import com.sinotopia.service.role.IdentityRoleService;
 import com.sinotopia.service.user.IdentityUserService;
 
 
@@ -30,13 +31,13 @@ import com.sinotopia.service.user.IdentityUserService;
 public class SampleRealm extends AuthorizingRealm {
 
     @Autowired
-    IdentityUserService userService;
+    private IdentityUserService userService;
 
     @Autowired
-    PermissionService permissionService;
+    private IdentityPermissionService permissionService;
 
     @Autowired
-    RoleService roleService;
+    private IdentityRoleService roleService;
 
     public SampleRealm() {
         super();

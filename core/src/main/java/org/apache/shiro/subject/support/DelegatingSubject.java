@@ -72,8 +72,7 @@ public class DelegatingSubject implements Subject {
 
     private static final Logger log = LoggerFactory.getLogger(DelegatingSubject.class);
 
-    private static final String RUN_AS_PRINCIPALS_SESSION_KEY =
-            DelegatingSubject.class.getName() + ".RUN_AS_PRINCIPALS_SESSION_KEY";
+    private static final String RUN_AS_PRINCIPALS_SESSION_KEY = DelegatingSubject.class.getName() + ".RUN_AS_PRINCIPALS_SESSION_KEY";
 
     protected PrincipalCollection principals;
     protected boolean authenticated;

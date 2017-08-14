@@ -24,14 +24,14 @@ import com.sinotopia.common.utils.vcode.Captcha;
 import com.sinotopia.common.utils.vcode.GifCaptcha;
 import com.sinotopia.common.utils.vcode.SpecCaptcha;
 import com.sinotopia.core.shiro.token.manager.TokenManager;
-import com.sinotopia.service.role.RoleService;
+import com.sinotopia.service.role.IdentityRoleService;
 
 @Controller
 @Scope(value="prototype")
 @RequestMapping("open")
 public class CommonController extends BaseController {
 	@Resource
-	RoleService roleService;
+    IdentityRoleService roleService;
 	@RequestMapping("refreshDB")
 	@ResponseBody
 	public Map<String,Object> refreshDB(){

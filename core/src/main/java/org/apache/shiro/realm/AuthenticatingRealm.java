@@ -130,7 +130,6 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      */
     private CredentialsMatcher credentialsMatcher;
 
-
     private Cache<Object, AuthenticationInfo> authenticationCache;
 
     private boolean authenticationCachingEnabled;
@@ -191,7 +190,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      * value is a {@link org.apache.shiro.authc.credential.SimpleCredentialsMatcher SimpleCredentialsMatcher} instance.
      *
      * @return the <code>CredentialsMatcher</code> used during an authentication attempt to verify submitted
-     *         credentials with those stored in the system.
+     * credentials with those stored in the system.
      */
     public CredentialsMatcher getCredentialsMatcher() {
         return credentialsMatcher;
@@ -264,7 +263,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      * set.
      *
      * @return a {@link Cache} instance to use for authentication caching, or {@code null} if no cache has been
-     *         set.
+     * set.
      * @see #setAuthenticationCache(org.apache.shiro.cache.Cache)
      * @see #isAuthenticationCachingEnabled()
      * @since 1.2
@@ -284,7 +283,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      * of this page in the class-level JavaDoc.
      *
      * @return the name of a {@link Cache} to lookup from any available {@link #getCacheManager() cacheManager} if
-     *         a cache is not explicitly configured via {@link #setAuthenticationCache(org.apache.shiro.cache.Cache)}.
+     * a cache is not explicitly configured via {@link #setAuthenticationCache(org.apache.shiro.cache.Cache)}.
      * @see #isAuthenticationCachingEnabled()
      * @since 1.2
      */
@@ -475,7 +474,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      *
      * @param token the token submitted during the authentication attempt.
      * @return any cached AuthenticationInfo corresponding to the specified token or {@code null} if there currently
-     *         isn't any cached data.
+     * isn't any cached data.
      * @since 1.2
      */
     private AuthenticationInfo getCachedAuthenticationInfo(AuthenticationToken token) {
@@ -532,7 +531,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      * @param info  the {@code AuthenticationInfo} acquired from data source lookup via
      *              {@link #doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)}
      * @return {@code true} if authentication caching should be utilized based on the specified
-     *         {@link AuthenticationToken} and/or {@link AuthenticationInfo}, {@code false} otherwise.
+     * {@link AuthenticationToken} and/or {@link AuthenticationInfo}, {@code false} otherwise.
      * @since 1.2
      */
     protected boolean isAuthenticationCachingEnabled(AuthenticationToken token, AuthenticationInfo info) {
@@ -560,7 +559,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      *
      * @param token the submitted account principal and credentials.
      * @return the AuthenticationInfo corresponding to the given {@code token}, or {@code null} if no
-     *         AuthenticationInfo could be found.
+     * AuthenticationInfo could be found.
      * @throws AuthenticationException if authentication failed.
      */
     public final AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -706,7 +705,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      *
      * @param token the authentication token containing the user's principal and credentials.
      * @return an {@link AuthenticationInfo} object containing account data resulting from the
-     *         authentication ONLY if the lookup is successful (i.e. account exists and is valid, etc.)
+     * authentication ONLY if the lookup is successful (i.e. account exists and is valid, etc.)
      * @throws AuthenticationException if there is an error acquiring data or performing
      *                                 realm-specific authentication logic for the specified <tt>token</tt>
      */

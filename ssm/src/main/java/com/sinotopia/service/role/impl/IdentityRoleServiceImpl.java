@@ -1,10 +1,11 @@
-package com.sinotopia.service.role;
+package com.sinotopia.service.role.impl;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.sinotopia.service.role.IdentityRoleService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import com.sinotopia.dto.permission.RolePermissionAllocationBo;
 
 @Service
 @SuppressWarnings("unchecked")
-public class RoleServiceImpl extends BaseMybatisDao<IdentityRoleMapper> implements RoleService {
+public class IdentityRoleServiceImpl extends BaseMybatisDao<IdentityRoleMapper> implements IdentityRoleService {
 
     @Autowired
     private IdentityRoleMapper roleMapper;
@@ -62,7 +63,6 @@ public class RoleServiceImpl extends BaseMybatisDao<IdentityRoleMapper> implemen
         return roleMapper.updateByPrimaryKeySelective(record);
     }
 
-
     @Override
     public Pagination<IdentityRole> findPage(Map<String, Object> resultMap,
                                              Integer pageNo, Integer pageSize) {
@@ -87,7 +87,6 @@ public class RoleServiceImpl extends BaseMybatisDao<IdentityRoleMapper> implemen
             } else {
                 idArray = new String[]{ids};
             }
-
             c:
             for (String idx : idArray) {
                 Long id = new Long(idx);

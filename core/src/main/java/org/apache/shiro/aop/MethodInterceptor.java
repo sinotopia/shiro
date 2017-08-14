@@ -20,7 +20,7 @@ package org.apache.shiro.aop;
 
 /**
  * A <tt>MethodInterceptor</tt> intercepts a <tt>MethodInvocation</tt> to perform before or after logic (aka 'advice').
- *
+ * <p>
  * <p>Shiro's implementations of this interface mostly have to deal with ensuring a current Subject has the
  * ability to execute the method before allowing it to continue.
  *

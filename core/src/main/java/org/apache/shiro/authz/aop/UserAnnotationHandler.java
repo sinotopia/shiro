@@ -39,7 +39,7 @@ public class UserAnnotationHandler extends AuthorizingAnnotationHandler {
 
     /**
      * Default no-argument constructor that ensures this handler looks for
-     *
+     * <p>
      * {@link org.apache.shiro.authz.annotation.RequiresUser RequiresUser} annotations.
      */
     public UserAnnotationHandler() {
@@ -53,8 +53,7 @@ public class UserAnnotationHandler extends AuthorizingAnnotationHandler {
      * <code>AuthorizingException</code> indicating access is not allowed.
      *
      * @param a the RequiresUser annotation to check
-     * @throws org.apache.shiro.authz.AuthorizationException
-     *         if the calling <code>Subject</code> is not authenticated or remembered via rememberMe services.
+     * @throws org.apache.shiro.authz.AuthorizationException if the calling <code>Subject</code> is not authenticated or remembered via rememberMe services.
      */
     public void assertAuthorized(Annotation a) throws AuthorizationException {
         if (a instanceof RequiresUser && getSubject().getPrincipal() == null) {

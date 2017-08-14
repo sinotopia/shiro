@@ -8,7 +8,7 @@ import com.sinotopia.common.model.IdentityRole;
 import com.sinotopia.core.mybatis.page.Pagination;
 import com.sinotopia.dto.permission.RolePermissionAllocationBo;
 
-public interface RoleService {
+public interface IdentityRoleService {
 
     int deleteByPrimaryKey(Long id);
 

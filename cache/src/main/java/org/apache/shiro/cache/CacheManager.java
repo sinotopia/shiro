@@ -20,7 +20,7 @@ package org.apache.shiro.cache;
 
 /**
  * A CacheManager provides and maintains the lifecycles of {@link Cache Cache} instances.
- *
+ * <p>
  * <p>Shiro doesn't implement a full Cache mechanism itself, since that is outside the core competency of a
  * Security framework.  Instead, this interface provides an abstraction (wrapper) API on top of an underlying
  * cache framework's main Manager component (e.g. JCache, Ehcache, JCS, OSCache, JBossCache, TerraCotta, Coherence,

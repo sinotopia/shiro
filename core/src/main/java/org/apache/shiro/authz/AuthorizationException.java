@@ -26,8 +26,7 @@ import org.apache.shiro.ShiroException;
  *
  * @since 0.1
  */
-public class AuthorizationException extends ShiroException
-{
+public class AuthorizationException extends ShiroException {
 
     /**
      * Creates a new AuthorizationException.

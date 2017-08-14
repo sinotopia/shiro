@@ -16,7 +16,7 @@ import com.sinotopia.common.controller.BaseController;
 import com.sinotopia.common.model.IdentityRole;
 import com.sinotopia.common.utils.LoggerUtils;
 import com.sinotopia.core.mybatis.page.Pagination;
-import com.sinotopia.service.role.RoleService;
+import com.sinotopia.service.role.IdentityRoleService;
 import com.sinotopia.manager.user.UserManager;
 /**
  * 
@@ -43,7 +43,7 @@ import com.sinotopia.manager.user.UserManager;
 @RequestMapping("role")
 public class RoleController extends BaseController {
 	@Autowired
-	RoleService roleService;
+    IdentityRoleService roleService;
 	/**
 	 * 角色列表
 	 * @return

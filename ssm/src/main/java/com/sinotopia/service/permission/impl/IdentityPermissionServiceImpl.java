@@ -23,19 +23,19 @@ import com.sinotopia.core.shiro.token.manager.TokenManager;
 import com.sinotopia.dto.permission.UPermissionBo;
 
 @Service
-public class IdentityPermissionService extends BaseMybatisDao<IdentityPermissionMapper> implements IdentityPermissionService {
+public class IdentityPermissionServiceImpl extends BaseMybatisDao<IdentityPermissionMapper> implements IdentityPermissionService {
 
     @Autowired
-    IdentityPermissionMapper permissionMapper;
+    private IdentityPermissionMapper permissionMapper;
 
     @Autowired
-    IdentityUserMapper userMapper;
+    private IdentityUserMapper userMapper;
 
     @Autowired
-    IdentityRolePermissionMapper rolePermissionMapper;
+    private IdentityRolePermissionMapper rolePermissionMapper;
 
     @Autowired
-    IdentityUserRoleMapper userRoleMapper;
+    private IdentityUserRoleMapper userRoleMapper;
 
     @Override
     public int deleteByPrimaryKey(Long id) {

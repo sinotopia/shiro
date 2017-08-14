@@ -46,9 +46,8 @@ public class RoleAnnotationHandler extends AuthorizingAnnotationHandler {
      * <code>AuthorizingException</code> indicating that access is denied.
      *
      * @param a the RequiresRoles annotation to use to check for one or more roles
-     * @throws org.apache.shiro.authz.AuthorizationException
-     *          if the calling <code>Subject</code> does not have the role(s) necessary to
-     *          proceed.
+     * @throws org.apache.shiro.authz.AuthorizationException if the calling <code>Subject</code> does not have the role(s) necessary to
+     *                                                       proceed.
      */
     public void assertAuthorized(Annotation a) throws AuthorizationException {
         if (!(a instanceof RequiresRoles)) return;
@@ -67,9 +66,12 @@ public class RoleAnnotationHandler extends AuthorizingAnnotationHandler {
         if (Logical.OR.equals(rrAnnotation.logical())) {
             // Avoid processing exceptions unnecessarily - "delay" throwing the exception by calling hasRole first
             boolean hasAtLeastOneRole = false;
-            for (String role : roles) if (getSubject().hasRole(role)) hasAtLeastOneRole = true;
+            for (String role : roles)
+                if (getSubject().hasRole(role))
+                    hasAtLeastOneRole = true;
             // Cause the exception if none of the role match, note that the exception message will be a bit misleading
-            if (!hasAtLeastOneRole) getSubject().checkRole(roles[0]);
+            if (!hasAtLeastOneRole)
+                getSubject().checkRole(roles[0]);
         }
     }
 
