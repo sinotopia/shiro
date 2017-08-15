@@ -9,28 +9,16 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 import com.sinotopia.common.model.IdentityUser;
 import com.sinotopia.common.utils.SpringContextUtil;
 import com.sinotopia.core.shiro.session.CustomSessionManager;
-import com.sinotopia.core.shiro.token.SampleRealm;
+import com.sinotopia.core.shiro.token.IdentityAuthorizingRealm;
 import com.sinotopia.core.shiro.token.ShiroToken;
 
-
 /**
- * <p>
- * <p>
- * <p>
- * <p>
- * 区分　责任人　日期　　　　说明<br/>
- * 创建　周柏成　2014年3月3日 　<br/>
- * <p>
- *
- * @author zhou-baicheng
- * @version 1.0, 2014年3月3日
- *          <p>
- *          Shiro管理下的Token工具类
+ * Shiro管理下的Token工具类
  */
 public class TokenManager {
 
     //用户登录管理
-    public static final SampleRealm realm = SpringContextUtil.getBean("sampleRealm", SampleRealm.class);
+    public static final IdentityAuthorizingRealm realm = SpringContextUtil.getBean("sampleRealm", IdentityAuthorizingRealm.class);
 
     //用户session管理
     public static final CustomSessionManager customSessionManager = SpringContextUtil.getBean("customSessionManager", CustomSessionManager.class);

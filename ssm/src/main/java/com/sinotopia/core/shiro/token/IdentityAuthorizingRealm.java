@@ -3,7 +3,7 @@ package com.sinotopia.core.shiro.token;
 import java.util.Date;
 import java.util.Set;
 
-import com.sinotopia.service.permission.IdentityPermissionService;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
@@ -20,15 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sinotopia.common.model.IdentityUser;
 import com.sinotopia.core.shiro.token.manager.TokenManager;
-import com.sinotopia.service.permission.impl.PermissionService;
 import com.sinotopia.service.role.IdentityRoleService;
 import com.sinotopia.service.user.IdentityUserService;
-
+import com.sinotopia.service.permission.IdentityPermissionService;
 
 /**
  * shiro 认证 + 授权   重写
  */
-public class SampleRealm extends AuthorizingRealm {
+public class IdentityAuthorizingRealm extends AuthorizingRealm {
 
     @Autowired
     private IdentityUserService identityUserService;
@@ -39,7 +38,7 @@ public class SampleRealm extends AuthorizingRealm {
     @Autowired
     private IdentityRoleService roleService;
 
-    public SampleRealm() {
+    public IdentityAuthorizingRealm() {
         super();
     }
 
@@ -50,7 +49,7 @@ public class SampleRealm extends AuthorizingRealm {
             AuthenticationToken authcToken) throws AuthenticationException {
 
         ShiroToken token = (ShiroToken) authcToken;
-        IdentityUser user = userService.login(token.getUsername(), token.getPswd());
+        IdentityUser user = identityUserService.login(token.getUsername(), token.getPswd());
         if (null == user) {
             throw new AccountException("帐号或密码不正确！");
             /**
@@ -61,7 +60,7 @@ public class SampleRealm extends AuthorizingRealm {
         } else {
             //更新登录时间 last login time
             user.setLastLoginTime(new Date());
-            userService.updateByPrimaryKeySelective(user);
+            identityUserService.updateByPrimaryKeySelective(user);
         }
         return new SimpleAuthenticationInfo(user, user.getPswd(), getName());
     }
