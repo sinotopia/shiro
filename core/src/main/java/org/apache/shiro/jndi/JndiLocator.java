@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Convenient superclass for JNDI accessors, providing "jndiTemplate"
  * and "jndiEnvironment" bean properties.
- *
+ * <p>
  * <p>Note that this implementation is an almost exact combined copy of the Spring Framework's 'JndiAccessor' and
  * 'JndiLocatorSupport' classes from their 2.5.4 distribution - we didn't want to re-invent the wheel, but not require
  * a full dependency on the Spring framework, nor does Spring make available only its JNDI classes in a small jar, or
@@ -42,19 +42,23 @@ import org.slf4j.LoggerFactory;
 public class JndiLocator {
 
     /**
-     * Private class log.
-     */
-    private static final Logger log = LoggerFactory.getLogger(JndiLocator.class);
-
-    /**
      * JNDI prefix used in a J2EE container
      */
     public static final String CONTAINER_PREFIX = "java:comp/env/";
-
+    /**
+     * Private class log.
+     */
+    private static final Logger log = LoggerFactory.getLogger(JndiLocator.class);
     private boolean resourceRef = false;
 
     private JndiTemplate jndiTemplate = new JndiTemplate();
 
+    /**
+     * Return the JNDI template to use for JNDI lookups.
+     */
+    public JndiTemplate getJndiTemplate() {
+        return this.jndiTemplate;
+    }
 
     /**
      * Set the JNDI template to use for JNDI lookups.
@@ -67,10 +71,10 @@ public class JndiLocator {
     }
 
     /**
-     * Return the JNDI template to use for JNDI lookups.
+     * Return the JNDI environment to use for JNDI lookups.
      */
-    public JndiTemplate getJndiTemplate() {
-        return this.jndiTemplate;
+    public Properties getJndiEnvironment() {
+        return this.jndiTemplate.getEnvironment();
     }
 
     /**
@@ -84,10 +88,10 @@ public class JndiLocator {
     }
 
     /**
-     * Return the JNDI environment to use for JNDI lookups.
+     * Return whether the lookup occurs in a J2EE container.
      */
-    public Properties getJndiEnvironment() {
-        return this.jndiTemplate.getEnvironment();
+    public boolean isResourceRef() {
+        return this.resourceRef;
     }
 
     /**
@@ -99,14 +103,6 @@ public class JndiLocator {
     public void setResourceRef(boolean resourceRef) {
         this.resourceRef = resourceRef;
     }
-
-    /**
-     * Return whether the lookup occurs in a J2EE container.
-     */
-    public boolean isResourceRef() {
-        return this.resourceRef;
-    }
-
 
     /**
      * Perform an actual JNDI lookup for the given name via the JndiTemplate.
@@ -141,8 +137,7 @@ public class JndiLocator {
         Object jndiObject;
         try {
             jndiObject = getJndiTemplate().lookup(convertedName, requiredType);
-        }
-        catch (NamingException ex) {
+        } catch (NamingException ex) {
             if (!convertedName.equals(jndiName)) {
                 // Try fallback to originally specified name...
                 if (log.isDebugEnabled()) {

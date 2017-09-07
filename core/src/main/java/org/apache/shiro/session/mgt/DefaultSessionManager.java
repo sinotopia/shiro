@@ -43,11 +43,8 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
     //TODO - complete JavaDoc
 
     private static final Logger log = LoggerFactory.getLogger(DefaultSessionManager.class);
-
-    private SessionFactory sessionFactory;
-
     protected SessionDAO sessionDAO;  //todo - move SessionDAO up to AbstractValidatingSessionManager?
-
+    private SessionFactory sessionFactory;
     private CacheManager cacheManager;
 
     private boolean deleteInvalidSessions;
@@ -58,13 +55,13 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         this.sessionDAO = new MemorySessionDAO();
     }
 
+    public SessionDAO getSessionDAO() {
+        return this.sessionDAO;
+    }
+
     public void setSessionDAO(SessionDAO sessionDAO) {
         this.sessionDAO = sessionDAO;
         applyCacheManagerToSessionDAO();
-    }
-
-    public SessionDAO getSessionDAO() {
-        return this.sessionDAO;
     }
 
     /**
@@ -104,7 +101,7 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
      * some other means (cron, quartz, etc).
      *
      * @return {@code true} if sessions should be automatically deleted after they are discovered to be invalid,
-     *         {@code false} if invalid sessions will be manually deleted by some process external to Shiro's control.
+     * {@code false} if invalid sessions will be manually deleted by some process external to Shiro's control.
      * @since 1.0
      */
     public boolean isDeleteInvalidSessions() {

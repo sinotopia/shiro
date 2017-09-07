@@ -50,6 +50,7 @@ public class IniSecurityManagerFactory extends IniFactorySupport<SecurityManager
     public static final String MAIN_SECTION_NAME = "main";
 
     public static final String SECURITY_MANAGER_NAME = "securityManager";
+
     public static final String INI_REALM_NAME = "iniRealm";
 
     private static transient final Logger log = LoggerFactory.getLogger(IniSecurityManagerFactory.class);
@@ -78,7 +79,7 @@ public class IniSecurityManagerFactory extends IniFactorySupport<SecurityManager
     }
 
     public void destroy() {
-        if(getReflectionBuilder() != null) {
+        if (getReflectionBuilder() != null) {
             getReflectionBuilder().destroy();
         }
     }
@@ -247,8 +248,8 @@ public class IniSecurityManagerFactory extends IniFactorySupport<SecurityManager
      *
      * @param ini the Ini instance to inspect for account data resulting in an implicitly created realm.
      * @return {@code true} if the Ini contains account data and a {@code Realm} should be implicitly
-     *         {@link #createRealm(Ini) created} to reflect the account data, {@code false} if no realm should be
-     *         implicitly created.
+     * {@link #createRealm(Ini) created} to reflect the account data, {@code false} if no realm should be
+     * implicitly created.
      */
     protected boolean shouldImplicitlyCreateRealm(Ini ini) {
         return !CollectionUtils.isEmpty(ini) &&
@@ -272,6 +273,7 @@ public class IniSecurityManagerFactory extends IniFactorySupport<SecurityManager
 
     /**
      * Returns the ReflectionBuilder instance used to create SecurityManagers object graph.
+     *
      * @return ReflectionBuilder instance used to create SecurityManagers object graph.
      * @since 1.4
      */
@@ -282,6 +284,7 @@ public class IniSecurityManagerFactory extends IniFactorySupport<SecurityManager
     /**
      * Sets the ReflectionBuilder that will be used to create the SecurityManager based on the contents of
      * the Ini configuration.
+     *
      * @param builder The ReflectionBuilder used to parse the Ini configuration.
      * @since 1.4
      */

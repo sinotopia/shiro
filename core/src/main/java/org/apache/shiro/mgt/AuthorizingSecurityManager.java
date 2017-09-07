@@ -35,10 +35,10 @@ import java.util.List;
  * this class implements all the <tt>Authorizer</tt> methods in the {@link SecurityManager SecurityManager}
  * interface, but in reality, those methods are merely passthrough calls to the underlying 'real'
  * <tt>Authorizer</tt> instance.
- *
+ * <p>
  * <p>All remaining <tt>SecurityManager</tt> methods not covered by this class or its parents (mostly Session support)
  * are left to be implemented by subclasses.
- *
+ * <p>
  * <p>In keeping with the other classes in this hierarchy and Shiro's desire to minimize configuration whenever
  * possible, suitable default instances for all dependencies will be created upon instantiation.
  *
@@ -168,8 +168,8 @@ public abstract class AuthorizingSecurityManager extends AuthenticatingSecurityM
     public void checkRoles(PrincipalCollection principals, Collection<String> roles) throws AuthorizationException {
         this.authorizer.checkRoles(principals, roles);
     }
-    
+
     public void checkRoles(PrincipalCollection principals, String... roles) throws AuthorizationException {
         this.authorizer.checkRoles(principals, roles);
-    }    
+    }
 }

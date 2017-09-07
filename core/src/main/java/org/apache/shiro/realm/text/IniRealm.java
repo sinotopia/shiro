@@ -50,6 +50,7 @@ public class IniRealm extends TextConfigurationRealm {
     private static transient final Logger log = LoggerFactory.getLogger(IniRealm.class);
 
     private String resourcePath;
+
     private Ini ini; //reference added in 1.2 for SHIRO-322
 
     public IniRealm() {
@@ -107,7 +108,7 @@ public class IniRealm extends TextConfigurationRealm {
     /**
      * Returns the Ini instance used to configure this realm.  Provided for JavaBeans-style configuration of this
      * realm, particularly useful in Dependency Injection environments.
-     * 
+     *
      * @return the Ini instance which will be inspected to create accounts, groups and permissions for this realm.
      */
     public Ini getIni() {
@@ -117,7 +118,7 @@ public class IniRealm extends TextConfigurationRealm {
     /**
      * Sets the Ini instance used to configure this realm.  Provided for JavaBeans-style configuration of this
      * realm, particularly useful in Dependency Injection environments.
-     * 
+     *
      * @param ini the Ini instance which will be inspected to create accounts, groups and permissions for this realm.
      */
     public void setIni(Ini ini) {
@@ -130,10 +131,10 @@ public class IniRealm extends TextConfigurationRealm {
 
         // This is an in-memory realm only - no need for an additional cache when we're already
         // as memory-efficient as we can be.
-        
+
         Ini ini = getIni();
         String resourcePath = getResourcePath();
-                
+
         if (!CollectionUtils.isEmpty(this.users) || !CollectionUtils.isEmpty(this.roles)) {
             if (!CollectionUtils.isEmpty(ini)) {
                 log.warn("Users or Roles are already populated.  Configured Ini instance will be ignored.");
@@ -141,15 +142,15 @@ public class IniRealm extends TextConfigurationRealm {
             if (StringUtils.hasText(resourcePath)) {
                 log.warn("Users or Roles are already populated.  resourcePath '{}' will be ignored.", resourcePath);
             }
-            
+
             log.debug("Instance is already populated with users or roles.  No additional user/role population " +
                     "will be performed.");
             return;
         }
-        
+
         if (CollectionUtils.isEmpty(ini)) {
             log.debug("No INI instance configuration present.  Checking resourcePath...");
-            
+
             if (StringUtils.hasText(resourcePath)) {
                 log.debug("Resource path {} defined.  Creating INI instance.", resourcePath);
                 ini = Ini.fromResourcePath(resourcePath);
@@ -158,7 +159,7 @@ public class IniRealm extends TextConfigurationRealm {
                 }
             }
         }
-        
+
         if (CollectionUtils.isEmpty(ini)) {
             String msg = "Ini instance and/or resourcePath resulted in null or empty Ini configuration.  Cannot " +
                     "load account data.";

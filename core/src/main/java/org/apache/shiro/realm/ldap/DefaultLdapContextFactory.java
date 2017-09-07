@@ -213,8 +213,8 @@ public class DefaultLdapContextFactory implements LdapContextFactory {
      * @return a {@code LdapContext} bound using the given username and password.
      * @throws javax.naming.NamingException if there is an error creating the context.
      * @deprecated the {@link #getLdapContext(Object, Object)} method should be used in all cases to ensure more than
-     *             String principals and credentials can be used.  Shiro no longer calls this method - it will be
-     *             removed before the 2.0 release.
+     * String principals and credentials can be used.  Shiro no longer calls this method - it will be
+     * removed before the 2.0 release.
      */
     @Deprecated
     public LdapContext getLdapContext(String username, String password) throws NamingException {
@@ -235,7 +235,7 @@ public class DefaultLdapContextFactory implements LdapContextFactory {
         if (principal != null) {
             env.put(Context.SECURITY_PRINCIPAL, principal);
         }
-        if (credentials!= null) {
+        if (credentials != null) {
             env.put(Context.SECURITY_CREDENTIALS, credentials);
         }
         env.put(Context.INITIAL_CONTEXT_FACTORY, contextFactoryClassName);
@@ -289,26 +289,25 @@ public class DefaultLdapContextFactory implements LdapContextFactory {
      * @throws AuthenticationException if a configuration problem is detected
      */
     private void validateAuthenticationInfo(Hashtable<String, Object> environment)
-        throws AuthenticationException
-    {
+            throws AuthenticationException {
         // validate when using Simple auth both principal and credentials are set
-        if(SIMPLE_AUTHENTICATION_MECHANISM_NAME.equals(environment.get(Context.SECURITY_AUTHENTICATION))) {
+        if (SIMPLE_AUTHENTICATION_MECHANISM_NAME.equals(environment.get(Context.SECURITY_AUTHENTICATION))) {
 
             // only validate credentials if we have a non-empty principal
-            if( environment.get(Context.SECURITY_PRINCIPAL) != null &&
-                StringUtils.hasText( String.valueOf( environment.get(Context.SECURITY_PRINCIPAL) ))) {
+            if (environment.get(Context.SECURITY_PRINCIPAL) != null &&
+                    StringUtils.hasText(String.valueOf(environment.get(Context.SECURITY_PRINCIPAL)))) {
 
                 Object credentials = environment.get(Context.SECURITY_CREDENTIALS);
 
                 // from the FAQ, we need to check for empty credentials:
                 // http://docs.oracle.com/javase/tutorial/jndi/ldap/faq.html
-                if( credentials == null ||
-                    (credentials instanceof byte[] && ((byte[])credentials).length <= 0) || // empty byte[]
-                    (credentials instanceof char[] && ((char[])credentials).length <= 0) || // empty char[]
-                    (String.class.isInstance(credentials) && !StringUtils.hasText(String.valueOf(credentials)))) {
+                if (credentials == null ||
+                        (credentials instanceof byte[] && ((byte[]) credentials).length <= 0) || // empty byte[]
+                        (credentials instanceof char[] && ((char[]) credentials).length <= 0) || // empty char[]
+                        (String.class.isInstance(credentials) && !StringUtils.hasText(String.valueOf(credentials)))) {
 
                     throw new javax.naming.AuthenticationException("LDAP Simple authentication requires both a "
-                                                                       + "principal and credentials.");
+                            + "principal and credentials.");
                 }
             }
         }

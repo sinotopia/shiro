@@ -54,7 +54,7 @@ import java.util.Set;
  * If the default implementation
  * of authentication and authorization cannot handle your schema, this class can be subclassed and the
  * appropriate methods overridden. (usually {@link #doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)},
- * {@link #getRoleNamesForUser(java.sql.Connection,String)}, and/or {@link #getPermissions(java.sql.Connection,String,java.util.Collection)}
+ * {@link #getRoleNamesForUser(java.sql.Connection, String)}, and/or {@link #getPermissions(java.sql.Connection, String, java.util.Collection)}
  * <p/>
  * This realm supports caching by extending from {@link org.apache.shiro.realm.AuthorizingRealm}.
  *
@@ -71,7 +71,7 @@ public class JdbcRealm extends AuthorizingRealm {
      * The default query used to retrieve account data for the user.
      */
     protected static final String DEFAULT_AUTHENTICATION_QUERY = "select password from users where username = ?";
-    
+
     /**
      * The default query used to retrieve account data for the user when {@link #saltStyle} is COLUMN.
      */
@@ -88,40 +88,18 @@ public class JdbcRealm extends AuthorizingRealm {
     protected static final String DEFAULT_PERMISSIONS_QUERY = "select permission from roles_permissions where role_name = ?";
 
     private static final Logger log = LoggerFactory.getLogger(JdbcRealm.class);
-    
-    /**
-     * Password hash salt configuration. <ul>
-     *   <li>NO_SALT - password hashes are not salted.</li>
-     *   <li>CRYPT - password hashes are stored in unix crypt format.</li>
-     *   <li>COLUMN - salt is in a separate column in the database.</li> 
-     *   <li>EXTERNAL - salt is not stored in the database. {@link #getSaltForUser(String)} will be called
-     *       to get the salt</li></ul>
-     */
-    public enum SaltStyle {NO_SALT, CRYPT, COLUMN, EXTERNAL};
-
     /*--------------------------------------------
     |    I N S T A N C E   V A R I A B L E S    |
     ============================================*/
     protected DataSource dataSource;
 
+    ;
     protected String authenticationQuery = DEFAULT_AUTHENTICATION_QUERY;
-
     protected String userRolesQuery = DEFAULT_USER_ROLES_QUERY;
-
     protected String permissionsQuery = DEFAULT_PERMISSIONS_QUERY;
-
     protected boolean permissionsLookupEnabled = false;
-    
     protected SaltStyle saltStyle = SaltStyle.NO_SALT;
 
-    /*--------------------------------------------
-    |         C O N S T R U C T O R S           |
-    ============================================*/
-
-    /*--------------------------------------------
-    |  A C C E S S O R S / M O D I F I E R S    |
-    ============================================*/
-    
     /**
      * Sets the datasource that should be used to retrieve connections used by this realm.
      *
@@ -131,12 +109,20 @@ public class JdbcRealm extends AuthorizingRealm {
         this.dataSource = dataSource;
     }
 
+    /*--------------------------------------------
+    |         C O N S T R U C T O R S           |
+    ============================================*/
+
+    /*--------------------------------------------
+    |  A C C E S S O R S / M O D I F I E R S    |
+    ============================================*/
+
     /**
      * Overrides the default query used to retrieve a user's password during authentication.  When using the default
      * implementation, this query must take the user's username as a single parameter and return a single result
      * with the user's password as the first column.  If you require a solution that does not match this query
      * structure, you can override {@link #doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)} or
-     * just {@link #getPasswordForUser(java.sql.Connection,String)}
+     * just {@link #getPasswordForUser(java.sql.Connection, String)}
      *
      * @param authenticationQuery the query to use for authentication.
      * @see #DEFAULT_AUTHENTICATION_QUERY
@@ -150,7 +136,7 @@ public class JdbcRealm extends AuthorizingRealm {
      * implementation, this query must take the user's username as a single parameter and return a row
      * per role with a single column containing the role name.  If you require a solution that does not match this query
      * structure, you can override {@link #doGetAuthorizationInfo(PrincipalCollection)} or just
-     * {@link #getRoleNamesForUser(java.sql.Connection,String)}
+     * {@link #getRoleNamesForUser(java.sql.Connection, String)}
      *
      * @param userRolesQuery the query to use for retrieving a user's roles.
      * @see #DEFAULT_USER_ROLES_QUERY
@@ -165,7 +151,7 @@ public class JdbcRealm extends AuthorizingRealm {
      * per permission with three columns containing the fully qualified name of the permission class, the permission
      * name, and the permission actions (in that order).  If you require a solution that does not match this query
      * structure, you can override {@link #doGetAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection)} or just
-     * {@link #getPermissions(java.sql.Connection,String,java.util.Collection)}</p>
+     * {@link #getPermissions(java.sql.Connection, String, java.util.Collection)}</p>
      * <p/>
      * <b>Permissions are only retrieved if you set {@link #permissionsLookupEnabled} to true.  Otherwise,
      * this query is ignored.</b>
@@ -188,10 +174,10 @@ public class JdbcRealm extends AuthorizingRealm {
     public void setPermissionsLookupEnabled(boolean permissionsLookupEnabled) {
         this.permissionsLookupEnabled = permissionsLookupEnabled;
     }
-    
+
     /**
      * Sets the salt style.  See {@link #saltStyle}.
-     * 
+     *
      * @param saltStyle new SaltStyle to set.
      */
     public void setSaltStyle(SaltStyle saltStyle) {
@@ -200,10 +186,6 @@ public class JdbcRealm extends AuthorizingRealm {
             authenticationQuery = DEFAULT_SALTED_AUTHENTICATION_QUERY;
         }
     }
-
-    /*--------------------------------------------
-    |               M E T H O D S               |
-    ============================================*/
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
@@ -223,21 +205,21 @@ public class JdbcRealm extends AuthorizingRealm {
             String password = null;
             String salt = null;
             switch (saltStyle) {
-            case NO_SALT:
-                password = getPasswordForUser(conn, username)[0];
-                break;
-            case CRYPT:
-                // TODO: separate password and hash from getPasswordForUser[0]
-                throw new ConfigurationException("Not implemented yet");
-                //break;
-            case COLUMN:
-                String[] queryResults = getPasswordForUser(conn, username);
-                password = queryResults[0];
-                salt = queryResults[1];
-                break;
-            case EXTERNAL:
-                password = getPasswordForUser(conn, username)[0];
-                salt = getSaltForUser(username);
+                case NO_SALT:
+                    password = getPasswordForUser(conn, username)[0];
+                    break;
+                case CRYPT:
+                    // TODO: separate password and hash from getPasswordForUser[0]
+                    throw new ConfigurationException("Not implemented yet");
+                    //break;
+                case COLUMN:
+                    String[] queryResults = getPasswordForUser(conn, username);
+                    password = queryResults[0];
+                    salt = queryResults[1];
+                    break;
+                case EXTERNAL:
+                    password = getPasswordForUser(conn, username)[0];
+                    salt = getSaltForUser(username);
             }
 
             if (password == null) {
@@ -245,7 +227,7 @@ public class JdbcRealm extends AuthorizingRealm {
             }
 
             info = new SimpleAuthenticationInfo(username, password.toCharArray(), getName());
-            
+
             if (salt != null) {
                 info.setCredentialsSalt(ByteSource.Util.bytes(salt));
             }
@@ -265,21 +247,25 @@ public class JdbcRealm extends AuthorizingRealm {
         return info;
     }
 
+    /*--------------------------------------------
+    |               M E T H O D S               |
+    ============================================*/
+
     private String[] getPasswordForUser(Connection conn, String username) throws SQLException {
 
         String[] result;
         boolean returningSeparatedSalt = false;
         switch (saltStyle) {
-        case NO_SALT:
-        case CRYPT:
-        case EXTERNAL:
-            result = new String[1];
-            break;
-        default:
-            result = new String[2];
-            returningSeparatedSalt = true;
+            case NO_SALT:
+            case CRYPT:
+            case EXTERNAL:
+                result = new String[1];
+                break;
+            default:
+                result = new String[2];
+                returningSeparatedSalt = true;
         }
-        
+
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -425,9 +411,21 @@ public class JdbcRealm extends AuthorizingRealm {
 
         return permissions;
     }
-    
+
     protected String getSaltForUser(String username) {
         return username;
+    }
+
+    /**
+     * Password hash salt configuration. <ul>
+     * <li>NO_SALT - password hashes are not salted.</li>
+     * <li>CRYPT - password hashes are stored in unix crypt format.</li>
+     * <li>COLUMN - salt is in a separate column in the database.</li>
+     * <li>EXTERNAL - salt is not stored in the database. {@link #getSaltForUser(String)} will be called
+     * to get the salt</li></ul>
+     */
+    public enum SaltStyle {
+        NO_SALT, CRYPT, COLUMN, EXTERNAL
     }
 
 }

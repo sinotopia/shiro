@@ -72,13 +72,11 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
 
     //TODO - complete JavaDoc
 
-    private static transient final Logger log = LoggerFactory.getLogger(CookieRememberMeManager.class);
-
     /**
      * The default name of the underlying rememberMe cookie which is {@code rememberMe}.
      */
     public static final String DEFAULT_REMEMBER_ME_COOKIE_NAME = "rememberMe";
-
+    private static transient final Logger log = LoggerFactory.getLogger(CookieRememberMeManager.class);
     private Cookie cookie;
 
     /**
@@ -101,7 +99,7 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
      * Please see the class-level JavaDoc for the default cookie's attribute values.
      *
      * @return the cookie 'template' that will be used to set all attributes of outgoing rememberMe cookies created by
-     *         this {@code RememberMeManager}.
+     * this {@code RememberMeManager}.
      */
     public Cookie getCookie() {
         return cookie;

@@ -117,7 +117,6 @@ public class ActiveDirectoryRealm extends AbstractLdapRealm {
         return new SimpleAuthenticationInfo(username, password, getName());
     }
 
-
     /**
      * Builds an {@link org.apache.shiro.authz.AuthorizationInfo} object by querying the active directory LDAP context for the
      * groups that a user is a member of.  The groups are then translated to role names by using the

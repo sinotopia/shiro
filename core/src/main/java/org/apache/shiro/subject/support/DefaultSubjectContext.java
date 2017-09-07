@@ -46,36 +46,24 @@ import java.io.Serializable;
  */
 public class DefaultSubjectContext extends MapContext implements SubjectContext {
 
-    private static final String SECURITY_MANAGER = DefaultSubjectContext.class.getName() + ".SECURITY_MANAGER";
-
-    private static final String SESSION_ID = DefaultSubjectContext.class.getName() + ".SESSION_ID";
-
-    private static final String AUTHENTICATION_TOKEN = DefaultSubjectContext.class.getName() + ".AUTHENTICATION_TOKEN";
-
-    private static final String AUTHENTICATION_INFO = DefaultSubjectContext.class.getName() + ".AUTHENTICATION_INFO";
-
-    private static final String SUBJECT = DefaultSubjectContext.class.getName() + ".SUBJECT";
-
-    private static final String PRINCIPALS = DefaultSubjectContext.class.getName() + ".PRINCIPALS";
-
-    private static final String SESSION = DefaultSubjectContext.class.getName() + ".SESSION";
-
-    private static final String AUTHENTICATED = DefaultSubjectContext.class.getName() + ".AUTHENTICATED";
-
-    private static final String HOST = DefaultSubjectContext.class.getName() + ".HOST";
-
     public static final String SESSION_CREATION_ENABLED = DefaultSubjectContext.class.getName() + ".SESSION_CREATION_ENABLED";
-
     /**
      * The session key that is used to store subject principals.
      */
     public static final String PRINCIPALS_SESSION_KEY = DefaultSubjectContext.class.getName() + "_PRINCIPALS_SESSION_KEY";
-
     /**
      * The session key that is used to store whether or not the user is authenticated.
      */
     public static final String AUTHENTICATED_SESSION_KEY = DefaultSubjectContext.class.getName() + "_AUTHENTICATED_SESSION_KEY";
-
+    private static final String SECURITY_MANAGER = DefaultSubjectContext.class.getName() + ".SECURITY_MANAGER";
+    private static final String SESSION_ID = DefaultSubjectContext.class.getName() + ".SESSION_ID";
+    private static final String AUTHENTICATION_TOKEN = DefaultSubjectContext.class.getName() + ".AUTHENTICATION_TOKEN";
+    private static final String AUTHENTICATION_INFO = DefaultSubjectContext.class.getName() + ".AUTHENTICATION_INFO";
+    private static final String SUBJECT = DefaultSubjectContext.class.getName() + ".SUBJECT";
+    private static final String PRINCIPALS = DefaultSubjectContext.class.getName() + ".PRINCIPALS";
+    private static final String SESSION = DefaultSubjectContext.class.getName() + ".SESSION";
+    private static final String AUTHENTICATED = DefaultSubjectContext.class.getName() + ".AUTHENTICATED";
+    private static final String HOST = DefaultSubjectContext.class.getName() + ".HOST";
     private static final transient Logger log = LoggerFactory.getLogger(DefaultSubjectContext.class);
 
     public DefaultSubjectContext() {
@@ -84,6 +72,10 @@ public class DefaultSubjectContext extends MapContext implements SubjectContext 
 
     public DefaultSubjectContext(SubjectContext ctx) {
         super(ctx);
+    }
+
+    private static boolean isEmpty(PrincipalCollection pc) {
+        return pc == null || pc.isEmpty();
     }
 
     public SecurityManager getSecurityManager() {
@@ -130,10 +122,6 @@ public class DefaultSubjectContext extends MapContext implements SubjectContext 
 
     public PrincipalCollection getPrincipals() {
         return getTypedValue(PRINCIPALS, PrincipalCollection.class);
-    }
-
-    private static boolean isEmpty(PrincipalCollection pc) {
-        return pc == null || pc.isEmpty();
     }
 
     public void setPrincipals(PrincipalCollection principals) {

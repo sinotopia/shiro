@@ -100,21 +100,21 @@ public class ModularRealmAuthenticator extends AbstractAuthenticator {
     ============================================*/
 
     /**
-     * Sets all realms used by this Authenticator, providing PAM (Pluggable Authentication Module) configuration.
-     *
-     * @param realms the realms to consult during authentication attempts.
-     */
-    public void setRealms(Collection<Realm> realms) {
-        this.realms = realms;
-    }
-
-    /**
      * Returns the realm(s) used by this {@code Authenticator} during an authentication attempt.
      *
      * @return the realm(s) used by this {@code Authenticator} during an authentication attempt.
      */
     protected Collection<Realm> getRealms() {
         return this.realms;
+    }
+
+    /**
+     * Sets all realms used by this Authenticator, providing PAM (Pluggable Authentication Module) configuration.
+     *
+     * @param realms the realms to consult during authentication attempts.
+     */
+    public void setRealms(Collection<Realm> realms) {
+        this.realms = realms;
     }
 
     /**
@@ -193,7 +193,7 @@ public class ModularRealmAuthenticator extends AbstractAuthenticator {
      * @param realms the multiple realms configured on this Authenticator instance.
      * @param token  the submitted AuthenticationToken representing the subject's (user's) log-in principals and credentials.
      * @return an aggregated AuthenticationInfo instance representing account data across all the successfully
-     *         consulted realms.
+     * consulted realms.
      */
     protected AuthenticationInfo doMultiRealmAuthentication(Collection<Realm> realms, AuthenticationToken token) {
 

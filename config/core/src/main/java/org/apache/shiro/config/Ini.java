@@ -46,17 +46,14 @@ import java.util.Set;
  */
 public class Ini implements Map<String, Ini.Section> {
 
-    private static transient final Logger log = LoggerFactory.getLogger(Ini.class);
-
     public static final String DEFAULT_SECTION_NAME = ""; //empty string means the first unnamed section
     public static final String DEFAULT_CHARSET_NAME = "UTF-8";
-
     public static final String COMMENT_POUND = "#";
     public static final String COMMENT_SEMICOLON = ";";
     public static final String SECTION_PREFIX = "[";
     public static final String SECTION_SUFFIX = "]";
-
     protected static final char ESCAPE_TOKEN = '\\';
+    private static transient final Logger log = LoggerFactory.getLogger(Ini.class);
 
     private final Map<String, Section> sections;
 
@@ -83,12 +80,52 @@ public class Ini implements Map<String, Ini.Section> {
         }
     }
 
+    private static String cleanName(String sectionName) {
+        String name = StringUtils.clean(sectionName);
+        if (name == null) {
+            log.trace("Specified name was null or empty.  Defaulting to the default section (name = \"\")");
+            name = DEFAULT_SECTION_NAME;
+        }
+        return name;
+    }
+
+    /**
+     * Creates a new {@code Ini} instance loaded with the INI-formatted data in the resource at the given path.  The
+     * resource path may be any value interpretable by the
+     * {@link ResourceUtils#getInputStreamForPath(String) ResourceUtils.getInputStreamForPath} method.
+     *
+     * @param resourcePath the resource location of the INI data to load when creating the {@code Ini} instance.
+     * @return a new {@code Ini} instance loaded with the INI-formatted data in the resource at the given path.
+     * @throws ConfigurationException if the path cannot be loaded into an {@code Ini} instance.
+     */
+    public static Ini fromResourcePath(String resourcePath) throws ConfigurationException {
+        if (!StringUtils.hasLength(resourcePath)) {
+            throw new IllegalArgumentException("Resource Path argument cannot be null or empty.");
+        }
+        Ini ini = new Ini();
+        ini.loadFromPath(resourcePath);
+        return ini;
+    }
+
+    protected static boolean isSectionHeader(String line) {
+        String s = StringUtils.clean(line);
+        return s != null && s.startsWith(SECTION_PREFIX) && s.endsWith(SECTION_SUFFIX);
+    }
+
+    protected static String getSectionName(String line) {
+        String s = StringUtils.clean(line);
+        if (isSectionHeader(s)) {
+            return cleanName(s.substring(1, s.length() - 1));
+        }
+        return null;
+    }
+
     /**
      * Returns {@code true} if no sections have been configured, or if there are sections, but the sections themselves
      * are all empty, {@code false} otherwise.
      *
      * @return {@code true} if no sections have been configured, or if there are sections, but the sections themselves
-     *         are all empty, {@code false} otherwise.
+     * are all empty, {@code false} otherwise.
      */
     public boolean isEmpty() {
         Collection<Section> sections = this.sections.values();
@@ -107,7 +144,7 @@ public class Ini implements Map<String, Ini.Section> {
      * no sections.
      *
      * @return the names of all sections managed by this {@code Ini} instance or an empty collection if there are
-     *         no sections.
+     * no sections.
      */
     public Set<String> getSectionNames() {
         return Collections.unmodifiableSet(sections.keySet());
@@ -118,7 +155,7 @@ public class Ini implements Map<String, Ini.Section> {
      * no sections.
      *
      * @return the sections managed by this {@code Ini} instance or an empty collection if there are
-     *         no sections.
+     * no sections.
      */
     public Collection<Section> getSections() {
         return Collections.unmodifiableCollection(sections.values());
@@ -162,15 +199,6 @@ public class Ini implements Map<String, Ini.Section> {
         return this.sections.remove(name);
     }
 
-    private static String cleanName(String sectionName) {
-        String name = StringUtils.clean(sectionName);
-        if (name == null) {
-            log.trace("Specified name was null or empty.  Defaulting to the default section (name = \"\")");
-            name = DEFAULT_SECTION_NAME;
-        }
-        return name;
-    }
-
     /**
      * Sets a name/value pair for the section with the given {@code sectionName}.  If the section does not yet exist,
      * it will be created.  If the {@code sectionName} is null or empty, the name/value pair will be placed in the
@@ -209,29 +237,11 @@ public class Ini implements Map<String, Ini.Section> {
      * @param propertyName the name of the property to add
      * @param defaultValue the default value to return if the section or property do not exist.
      * @return the value of the specified section property, or the {@code defaultValue} if the section or
-     *         property do not exist.
+     * property do not exist.
      */
     public String getSectionProperty(String sectionName, String propertyName, String defaultValue) {
         String value = getSectionProperty(sectionName, propertyName);
         return value != null ? value : defaultValue;
-    }
-
-    /**
-     * Creates a new {@code Ini} instance loaded with the INI-formatted data in the resource at the given path.  The
-     * resource path may be any value interpretable by the
-     * {@link ResourceUtils#getInputStreamForPath(String) ResourceUtils.getInputStreamForPath} method.
-     *
-     * @param resourcePath the resource location of the INI data to load when creating the {@code Ini} instance.
-     * @return a new {@code Ini} instance loaded with the INI-formatted data in the resource at the given path.
-     * @throws ConfigurationException if the path cannot be loaded into an {@code Ini} instance.
-     */
-    public static Ini fromResourcePath(String resourcePath) throws ConfigurationException {
-        if (!StringUtils.hasLength(resourcePath)) {
-            throw new IllegalArgumentException("Resource Path argument cannot be null or empty.");
-        }
-        Ini ini = new Ini();
-        ini.loadFromPath(resourcePath);
-        return ini;
     }
 
     /**
@@ -315,7 +325,7 @@ public class Ini implements Map<String, Ini.Section> {
      * [section2]
      * key2 = value2
      * </code> </pre>
-     *
+     * <p>
      * To be merged:
      * <pre>
      * <code>[section1]
@@ -324,7 +334,7 @@ public class Ini implements Map<String, Ini.Section> {
      * [section2]
      * key2 = new value
      * </code> </pre>
-     *
+     * <p>
      * Result:
      * <pre>
      * <code>[section1]
@@ -334,7 +344,7 @@ public class Ini implements Map<String, Ini.Section> {
      * [section2]
      * key2 = new value
      * </code> </pre>
-     *
+     * <p>
      * </p>
      *
      * @param m map to be merged
@@ -408,19 +418,6 @@ public class Ini implements Map<String, Ini.Section> {
 
         //finish any remaining buffered content:
         addSection(sectionName, sectionContent);
-    }
-
-    protected static boolean isSectionHeader(String line) {
-        String s = StringUtils.clean(line);
-        return s != null && s.startsWith(SECTION_PREFIX) && s.endsWith(SECTION_SUFFIX);
-    }
-
-    protected static String getSectionName(String line) {
-        String s = StringUtils.clean(line);
-        if (isSectionHeader(s)) {
-            return cleanName(s.substring(1, s.length() - 1));
-        }
-        return null;
     }
 
     public boolean equals(Object obj) {
@@ -518,16 +515,16 @@ public class Ini implements Map<String, Ini.Section> {
                 throw new NullPointerException("name");
             }
             this.name = name;
-            Map<String,String> props;
-            if (StringUtils.hasText(sectionContent) ) {
+            Map<String, String> props;
+            if (StringUtils.hasText(sectionContent)) {
                 props = toMapProps(sectionContent);
             } else {
-                props = new LinkedHashMap<String,String>();
+                props = new LinkedHashMap<String, String>();
             }
-            if ( props != null ) {
+            if (props != null) {
                 this.props = props;
             } else {
-                this.props = new LinkedHashMap<String,String>();
+                this.props = new LinkedHashMap<String, String>();
             }
         }
 

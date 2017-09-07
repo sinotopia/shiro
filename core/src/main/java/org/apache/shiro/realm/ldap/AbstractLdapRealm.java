@@ -35,19 +35,19 @@ import javax.naming.NamingException;
  * server to build the Subject for a user.  This implementation only returns roles for a
  * particular user, and not permissions - but it can be subclassed to build a permission
  * list as well.</p>
- *
+ * <p>
  * <p>Implementations would need to implement the
- * {@link #queryForAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken ,LdapContextFactory)} and
- * {@link #queryForAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection ,LdapContextFactory)} abstract methods.</p>
- *
+ * {@link #queryForAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken, LdapContextFactory)} and
+ * {@link #queryForAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection, LdapContextFactory)} abstract methods.</p>
+ * <p>
  * <p>By default, this implementation will create an instance of {@link DefaultLdapContextFactory} to use for
  * creating LDAP connections using the principalSuffix, searchBase, url, systemUsername, and systemPassword properties
  * specified on the realm.  The remaining settings use the defaults of {@link DefaultLdapContextFactory}, which are usually
  * sufficient.  If more customized connections are needed, you should inject a custom {@link LdapContextFactory}, which
  * will cause these properties specified on the realm to be ignored.</p>
  *
- * @see #queryForAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken , LdapContextFactory)
- * @see #queryForAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection , LdapContextFactory)
+ * @see #queryForAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken, LdapContextFactory)
+ * @see #queryForAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection, LdapContextFactory)
  * @since 0.1
  */
 public abstract class AbstractLdapRealm extends AuthorizingRealm {

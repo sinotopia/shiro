@@ -78,7 +78,6 @@ import javax.naming.ldap.LdapContext;
  * properties as necessary.
  *
  * @see JndiLdapContextFactory
- *
  * @since 1.3
  */
 public class DefaultLdapRealm extends AuthorizingRealm {
@@ -126,7 +125,7 @@ public class DefaultLdapRealm extends AuthorizingRealm {
      * occurs before the {@link #USERDN_SUBSTITUTION_TOKEN} in the {@link #getUserDnTemplate() userDnTemplate} value.
      *
      * @return the the User DN prefix to use when building a runtime User DN value or {@code null} if no
-     *         {@link #getUserDnTemplate() userDnTemplate} has been configured.
+     * {@link #getUserDnTemplate() userDnTemplate} has been configured.
      */
     protected String getUserDnPrefix() {
         return userDnPrefix;
@@ -138,7 +137,7 @@ public class DefaultLdapRealm extends AuthorizingRealm {
      * occurs after the {@link #USERDN_SUBSTITUTION_TOKEN} in the {@link #getUserDnTemplate() userDnTemplate} value.
      *
      * @return the User DN suffix to use when building a runtime User DN value or {@code null} if no
-     *         {@link #getUserDnTemplate() userDnTemplate} has been configured.
+     * {@link #getUserDnTemplate() userDnTemplate} has been configured.
      */
     protected String getUserDnSuffix() {
         return userDnSuffix;
@@ -147,6 +146,16 @@ public class DefaultLdapRealm extends AuthorizingRealm {
     /*--------------------------------------------
     |               M E T H O D S               |
     ============================================*/
+
+    /**
+     * Returns the User Distinguished Name (DN) template to use when creating User DNs at runtime - see the
+     * {@link #setUserDnTemplate(String) setUserDnTemplate} JavaDoc for a full explanation.
+     *
+     * @return the User Distinguished Name (DN) template to use when creating User DNs at runtime.
+     */
+    public String getUserDnTemplate() {
+        return getUserDn(USERDN_SUBSTITUTION_TOKEN);
+    }
 
     /**
      * Sets the User Distinguished Name (DN) template to use when creating User DNs at runtime.  A User DN is an LDAP
@@ -176,7 +185,7 @@ public class DefaultLdapRealm extends AuthorizingRealm {
      * @param template the User Distinguished Name template to use for runtime substitution
      * @throws IllegalArgumentException if the template is null, empty, or does not contain the
      *                                  {@code {0}} substitution token.
-     * @see LdapContextFactory#getLdapContext(Object,Object)
+     * @see LdapContextFactory#getLdapContext(Object, Object)
      */
     public void setUserDnTemplate(String template) throws IllegalArgumentException {
         if (!StringUtils.hasText(template)) {
@@ -197,16 +206,6 @@ public class DefaultLdapRealm extends AuthorizingRealm {
         }
         this.userDnPrefix = prefix;
         this.userDnSuffix = suffix;
-    }
-
-    /**
-     * Returns the User Distinguished Name (DN) template to use when creating User DNs at runtime - see the
-     * {@link #setUserDnTemplate(String) setUserDnTemplate} JavaDoc for a full explanation.
-     *
-     * @return the User Distinguished Name (DN) template to use when creating User DNs at runtime.
-     */
-    public String getUserDnTemplate() {
-        return getUserDn(USERDN_SUBSTITUTION_TOKEN);
     }
 
     /**
@@ -251,6 +250,18 @@ public class DefaultLdapRealm extends AuthorizingRealm {
     }
 
     /**
+     * Returns the LdapContextFactory instance used to acquire connections to the LDAP directory during authentication
+     * attempts and authorization queries.  Unless specified otherwise, the default is a {@link JndiLdapContextFactory}
+     * instance.
+     *
+     * @return the LdapContextFactory instance used to acquire connections to the LDAP directory during
+     * authentication attempts and authorization queries
+     */
+    public LdapContextFactory getContextFactory() {
+        return this.contextFactory;
+    }
+
+    /**
      * Sets the LdapContextFactory instance used to acquire connections to the LDAP directory during authentication
      * attempts and authorization queries.  Unless specified otherwise, the default is a {@link JndiLdapContextFactory}
      * instance.
@@ -261,18 +272,6 @@ public class DefaultLdapRealm extends AuthorizingRealm {
     @SuppressWarnings({"UnusedDeclaration"})
     public void setContextFactory(LdapContextFactory contextFactory) {
         this.contextFactory = contextFactory;
-    }
-
-    /**
-     * Returns the LdapContextFactory instance used to acquire connections to the LDAP directory during authentication
-     * attempts and authorization queries.  Unless specified otherwise, the default is a {@link JndiLdapContextFactory}
-     * instance.
-     *
-     * @return the LdapContextFactory instance used to acquire connections to the LDAP directory during
-     *         authentication attempts and authorization queries
-     */
-    public LdapContextFactory getContextFactory() {
-        return this.contextFactory;
     }
 
     /*--------------------------------------------
@@ -418,7 +417,7 @@ public class DefaultLdapRealm extends AuthorizingRealm {
      * {@link AuthorizationInfo} object by querying the LDAP context for the
      * specified principal.</p>
      *
-     * @param principals          the principals of the Subject whose AuthenticationInfo should be queried from the LDAP server.
+     * @param principals         the principals of the Subject whose AuthenticationInfo should be queried from the LDAP server.
      * @param ldapContextFactory factory used to retrieve LDAP connections.
      * @return an {@link AuthorizationInfo} instance containing information retrieved from the LDAP server.
      * @throws NamingException if any LDAP errors occur during the search.

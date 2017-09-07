@@ -41,14 +41,12 @@ public abstract class AbstractValidatingSessionManager extends AbstractNativeSes
 
     //TODO - complete JavaDoc
 
-    private static final Logger log = LoggerFactory.getLogger(AbstractValidatingSessionManager.class);
-
     /**
      * The default interval at which sessions will be validated (1 hour);
      * This can be overridden by calling {@link #setSessionValidationInterval(long)}
      */
     public static final long DEFAULT_SESSION_VALIDATION_INTERVAL = MILLIS_PER_HOUR;
-
+    private static final Logger log = LoggerFactory.getLogger(AbstractValidatingSessionManager.class);
     protected boolean sessionValidationSchedulerEnabled;
 
     /**
@@ -72,12 +70,12 @@ public abstract class AbstractValidatingSessionManager extends AbstractNativeSes
         this.sessionValidationSchedulerEnabled = sessionValidationSchedulerEnabled;
     }
 
-    public void setSessionValidationScheduler(SessionValidationScheduler sessionValidationScheduler) {
-        this.sessionValidationScheduler = sessionValidationScheduler;
-    }
-
     public SessionValidationScheduler getSessionValidationScheduler() {
         return sessionValidationScheduler;
+    }
+
+    public void setSessionValidationScheduler(SessionValidationScheduler sessionValidationScheduler) {
+        this.sessionValidationScheduler = sessionValidationScheduler;
     }
 
     private void enableSessionValidationIfNecessary() {
@@ -85,6 +83,10 @@ public abstract class AbstractValidatingSessionManager extends AbstractNativeSes
         if (isSessionValidationSchedulerEnabled() && (scheduler == null || !scheduler.isEnabled())) {
             enableSessionValidation();
         }
+    }
+
+    public long getSessionValidationInterval() {
+        return sessionValidationInterval;
     }
 
     /**
@@ -103,10 +105,6 @@ public abstract class AbstractValidatingSessionManager extends AbstractNativeSes
      */
     public void setSessionValidationInterval(long sessionValidationInterval) {
         this.sessionValidationInterval = sessionValidationInterval;
-    }
-
-    public long getSessionValidationInterval() {
-        return sessionValidationInterval;
     }
 
     @Override

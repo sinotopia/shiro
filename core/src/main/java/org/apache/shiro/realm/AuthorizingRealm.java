@@ -76,6 +76,7 @@ public abstract class AuthorizingRealm extends AuthenticatingRealm
      * The cache used by this realm to store AuthorizationInfo instances associated with individual Subject principals.
      */
     private boolean authorizationCachingEnabled;
+
     private Cache<Object, AuthorizationInfo> authorizationCache;
     private String authorizationCacheName;
 
@@ -128,12 +129,12 @@ public abstract class AuthorizingRealm extends AuthenticatingRealm
         }
     }
 
-    public void setAuthorizationCache(Cache<Object, AuthorizationInfo> authorizationCache) {
-        this.authorizationCache = authorizationCache;
-    }
-
     public Cache<Object, AuthorizationInfo> getAuthorizationCache() {
         return this.authorizationCache;
+    }
+
+    public void setAuthorizationCache(Cache<Object, AuthorizationInfo> authorizationCache) {
+        this.authorizationCache = authorizationCache;
     }
 
     public String getAuthorizationCacheName() {

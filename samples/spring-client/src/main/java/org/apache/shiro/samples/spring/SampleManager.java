@@ -36,7 +36,6 @@ public interface SampleManager {
      */
     String getValue();
 
-
     /**
      * Sets a value to be stored in the user's session.
      *

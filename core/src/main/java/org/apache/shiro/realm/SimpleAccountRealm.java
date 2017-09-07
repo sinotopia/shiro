@@ -57,6 +57,7 @@ public class SimpleAccountRealm extends AuthorizingRealm {
     protected final ReadWriteLock ROLES_LOCK;
 
     public SimpleAccountRealm() {
+
         this.users = new LinkedHashMap<String, SimpleAccount>();
         this.roles = new LinkedHashMap<String, SimpleRole>();
         USERS_LOCK = new ReentrantReadWriteLock();
@@ -69,6 +70,23 @@ public class SimpleAccountRealm extends AuthorizingRealm {
     public SimpleAccountRealm(String name) {
         this();
         setName(name);
+    }
+
+    protected static Set<String> toSet(String delimited, String delimiter) {
+        if (delimited == null || delimited.trim().equals("")) {
+            return null;
+        }
+
+        Set<String> values = new HashSet<String>();
+        String[] rolenamesArray = delimited.split(delimiter);
+        for (String s : rolenamesArray) {
+            String trimmed = s.trim();
+            if (trimmed.length() > 0) {
+                values.add(trimmed);
+            }
+        }
+
+        return values;
     }
 
     protected SimpleAccount getUser(String username) {
@@ -136,23 +154,6 @@ public class SimpleAccountRealm extends AuthorizingRealm {
         } finally {
             ROLES_LOCK.writeLock().unlock();
         }
-    }
-
-    protected static Set<String> toSet(String delimited, String delimiter) {
-        if (delimited == null || delimited.trim().equals("")) {
-            return null;
-        }
-
-        Set<String> values = new HashSet<String>();
-        String[] rolenamesArray = delimited.split(delimiter);
-        for (String s : rolenamesArray) {
-            String trimmed = s.trim();
-            if (trimmed.length() > 0) {
-                values.add(trimmed);
-            }
-        }
-
-        return values;
     }
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {

@@ -122,25 +122,6 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      ===========================================*/
 
     /**
-     * Sets the type of LDAP authentication mechanism to use when connecting to the LDAP server.
-     * This is a wrapper method for setting the JNDI {@link #getEnvironment() environment template}'s
-     * {@link Context#SECURITY_AUTHENTICATION} property.
-     * <p/>
-     * "none" (i.e. anonymous) and "simple" authentications are supported automatically and don't need to be configured
-     * via this property.  However, if you require a different mechanism, such as a SASL or External mechanism, you
-     * must configure that explicitly via this property.  See the
-     * <a href="http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html">JNDI LDAP
-     * Authentication Mechanisms</a> for more information.
-     *
-     * @param authenticationMechanism the type of LDAP authentication to perform.
-     * @see <a href="http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html">
-     *      http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html</a>
-     */
-    public void setAuthenticationMechanism(String authenticationMechanism) {
-        setEnvironmentProperty(Context.SECURITY_AUTHENTICATION, authenticationMechanism);
-    }
-
-    /**
      * Returns the type of LDAP authentication mechanism to use when connecting to the LDAP server.
      * This is a wrapper method for getting the JNDI {@link #getEnvironment() environment template}'s
      * {@link Context#SECURITY_AUTHENTICATION} property.
@@ -154,22 +135,29 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      *
      * @return the type of LDAP authentication mechanism to use when connecting to the LDAP server.
      * @see <a href="http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html">
-     *      http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html</a>
+     * http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html</a>
      */
     public String getAuthenticationMechanism() {
         return (String) getEnvironmentProperty(Context.SECURITY_AUTHENTICATION);
     }
 
     /**
-     * The name of the ContextFactory class to use. This defaults to the SUN LDAP JNDI implementation
-     * but can be overridden to use custom LDAP factories.
+     * Sets the type of LDAP authentication mechanism to use when connecting to the LDAP server.
+     * This is a wrapper method for setting the JNDI {@link #getEnvironment() environment template}'s
+     * {@link Context#SECURITY_AUTHENTICATION} property.
      * <p/>
-     * This is a wrapper method for setting the JNDI environment's {@link Context#INITIAL_CONTEXT_FACTORY} property.
+     * "none" (i.e. anonymous) and "simple" authentications are supported automatically and don't need to be configured
+     * via this property.  However, if you require a different mechanism, such as a SASL or External mechanism, you
+     * must configure that explicitly via this property.  See the
+     * <a href="http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html">JNDI LDAP
+     * Authentication Mechanisms</a> for more information.
      *
-     * @param contextFactoryClassName the context factory that should be used.
+     * @param authenticationMechanism the type of LDAP authentication to perform.
+     * @see <a href="http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html">
+     * http://download-llnw.oracle.com/javase/tutorial/jndi/ldap/auth_mechs.html</a>
      */
-    public void setContextFactoryClassName(String contextFactoryClassName) {
-        setEnvironmentProperty(Context.INITIAL_CONTEXT_FACTORY, contextFactoryClassName);
+    public void setAuthenticationMechanism(String authenticationMechanism) {
+        setEnvironmentProperty(Context.SECURITY_AUTHENTICATION, authenticationMechanism);
     }
 
     /**
@@ -182,6 +170,18 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      */
     public String getContextFactoryClassName() {
         return (String) getEnvironmentProperty(Context.INITIAL_CONTEXT_FACTORY);
+    }
+
+    /**
+     * The name of the ContextFactory class to use. This defaults to the SUN LDAP JNDI implementation
+     * but can be overridden to use custom LDAP factories.
+     * <p/>
+     * This is a wrapper method for setting the JNDI environment's {@link Context#INITIAL_CONTEXT_FACTORY} property.
+     *
+     * @param contextFactoryClassName the context factory that should be used.
+     */
+    public void setContextFactoryClassName(String contextFactoryClassName) {
+        setEnvironmentProperty(Context.INITIAL_CONTEXT_FACTORY, contextFactoryClassName);
     }
 
     /**
@@ -290,17 +290,6 @@ public class JndiLdapContextFactory implements LdapContextFactory {
     }
 
     /**
-     * Sets the LDAP referral behavior when creating a connection.  Defaults to {@code follow}.  See the Sun/Oracle LDAP
-     * <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html">referral documentation</a> for more.
-     *
-     * @param referral the referral property.
-     * @see <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html">Referrals in JNDI</a>
-     */
-    public void setReferral(String referral) {
-        setEnvironmentProperty(Context.REFERRAL, referral);
-    }
-
-    /**
      * Returns the LDAP referral behavior when creating a connection.  Defaults to {@code follow}.
      * See the Sun/Oracle LDAP
      * <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html">referral documentation</a> for more.
@@ -313,12 +302,14 @@ public class JndiLdapContextFactory implements LdapContextFactory {
     }
 
     /**
-     * The LDAP url to connect to. (e.g. ldap://&lt;ldapDirectoryHostname&gt;:&lt;port&gt;).  This must be configured.
+     * Sets the LDAP referral behavior when creating a connection.  Defaults to {@code follow}.  See the Sun/Oracle LDAP
+     * <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html">referral documentation</a> for more.
      *
-     * @param url the LDAP url to connect to. (e.g. ldap://&lt;ldapDirectoryHostname&gt;:&lt;port&gt;)
+     * @param referral the referral property.
+     * @see <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html">Referrals in JNDI</a>
      */
-    public void setUrl(String url) {
-        setEnvironmentProperty(Context.PROVIDER_URL, url);
+    public void setReferral(String referral) {
+        setEnvironmentProperty(Context.REFERRAL, referral);
     }
 
     /**
@@ -329,6 +320,29 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      */
     public String getUrl() {
         return (String) getEnvironmentProperty(Context.PROVIDER_URL);
+    }
+
+    /**
+     * The LDAP url to connect to. (e.g. ldap://&lt;ldapDirectoryHostname&gt;:&lt;port&gt;).  This must be configured.
+     *
+     * @param url the LDAP url to connect to. (e.g. ldap://&lt;ldapDirectoryHostname&gt;:&lt;port&gt;)
+     */
+    public void setUrl(String url) {
+        setEnvironmentProperty(Context.PROVIDER_URL, url);
+    }
+
+    /**
+     * Returns the password of the {@link #setSystemUsername(String) systemUsername} that will be used when creating an
+     * LDAP connection used for authorization queries.
+     * <p/>
+     * Note that setting this property is not required if the calling LDAP Realm does not perform authorization
+     * checks.
+     *
+     * @return the password of the {@link #setSystemUsername(String) systemUsername} that will be used when creating an
+     * LDAP connection used for authorization queries.
+     */
+    public String getSystemPassword() {
+        return this.systemPassword;
     }
 
     /**
@@ -346,17 +360,16 @@ public class JndiLdapContextFactory implements LdapContextFactory {
     }
 
     /**
-     * Returns the password of the {@link #setSystemUsername(String) systemUsername} that will be used when creating an
-     * LDAP connection used for authorization queries.
+     * Returns the system username that will be used when creating an LDAP connection used for authorization queries.
+     * The user must have the ability to query for authorization data for any application user.
      * <p/>
      * Note that setting this property is not required if the calling LDAP Realm does not perform authorization
      * checks.
      *
-     * @return the password of the {@link #setSystemUsername(String) systemUsername} that will be used when creating an
-     *         LDAP connection used for authorization queries.
+     * @return the system username that will be used when creating an LDAP connection used for authorization queries.
      */
-    public String getSystemPassword() {
-        return this.systemPassword;
+    public String getSystemUsername() {
+        return systemUsername;
     }
 
     /**
@@ -373,19 +386,6 @@ public class JndiLdapContextFactory implements LdapContextFactory {
         this.systemUsername = systemUsername;
     }
 
-    /**
-     * Returns the system username that will be used when creating an LDAP connection used for authorization queries.
-     * The user must have the ability to query for authorization data for any application user.
-     * <p/>
-     * Note that setting this property is not required if the calling LDAP Realm does not perform authorization
-     * checks.
-     *
-     * @return the system username that will be used when creating an LDAP connection used for authorization queries.
-     */
-    public String getSystemUsername() {
-        return systemUsername;
-    }
-
     /*--------------------------------------------
     |               M E T H O D S               |
     ============================================*/
@@ -399,7 +399,7 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      * @throws NamingException if there is a problem connecting to the LDAP directory
      */
     public LdapContext getSystemLdapContext() throws NamingException {
-        return getLdapContext((Object)getSystemUsername(), getSystemPassword());
+        return getLdapContext((Object) getSystemUsername(), getSystemPassword());
     }
 
     /**
@@ -410,8 +410,8 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      * @return a {@code LdapContext} bound using the given username and password.
      * @throws javax.naming.NamingException if there is an error creating the context.
      * @deprecated the {@link #getLdapContext(Object, Object)} method should be used in all cases to ensure more than
-     *             String principals and credentials can be used.  Shiro no longer calls this method - it will be
-     *             removed before the 2.0 release.
+     * String principals and credentials can be used.  Shiro no longer calls this method - it will be
+     * removed before the 2.0 release.
      */
     @Deprecated
     public LdapContext getLdapContext(String username, String password) throws NamingException {
@@ -429,7 +429,7 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      *
      * @param principal the principal under which the connection will be made
      * @return {@code true} if LDAP connection pooling should be used when acquiring a connection based on the specified
-     *         account principal, {@code false} otherwise.
+     * account principal, {@code false} otherwise.
      */
     protected boolean isPoolingConnections(Object principal) {
         return isPoolingEnabled() && principal != null && principal.equals(getSystemUsername());
@@ -521,26 +521,25 @@ public class JndiLdapContextFactory implements LdapContextFactory {
      * @throws AuthenticationException if a configuration problem is detected
      */
     protected void validateAuthenticationInfo(Hashtable<String, Object> environment)
-        throws AuthenticationException
-    {
+            throws AuthenticationException {
         // validate when using Simple auth both principal and credentials are set
-        if(SIMPLE_AUTHENTICATION_MECHANISM_NAME.equals(environment.get(Context.SECURITY_AUTHENTICATION))) {
+        if (SIMPLE_AUTHENTICATION_MECHANISM_NAME.equals(environment.get(Context.SECURITY_AUTHENTICATION))) {
 
             // only validate credentials if we have a non-empty principal
-            if( environment.get(Context.SECURITY_PRINCIPAL) != null &&
-                StringUtils.hasText( String.valueOf( environment.get(Context.SECURITY_PRINCIPAL) ))) {
+            if (environment.get(Context.SECURITY_PRINCIPAL) != null &&
+                    StringUtils.hasText(String.valueOf(environment.get(Context.SECURITY_PRINCIPAL)))) {
 
                 Object credentials = environment.get(Context.SECURITY_CREDENTIALS);
 
                 // from the FAQ, we need to check for empty credentials:
                 // http://docs.oracle.com/javase/tutorial/jndi/ldap/faq.html
-                if( credentials == null ||
-                    (credentials instanceof byte[] && ((byte[])credentials).length <= 0) || // empty byte[]
-                    (credentials instanceof char[] && ((char[])credentials).length <= 0) || // empty char[]
-                    (String.class.isInstance(credentials) && !StringUtils.hasText(String.valueOf(credentials)))) {
+                if (credentials == null ||
+                        (credentials instanceof byte[] && ((byte[]) credentials).length <= 0) || // empty byte[]
+                        (credentials instanceof char[] && ((char[]) credentials).length <= 0) || // empty char[]
+                        (String.class.isInstance(credentials) && !StringUtils.hasText(String.valueOf(credentials)))) {
 
                     throw new javax.naming.AuthenticationException("LDAP Simple authentication requires both a "
-                                                                       + "principal and credentials.");
+                            + "principal and credentials.");
                 }
             }
         }

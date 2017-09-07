@@ -165,7 +165,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
         if (!(servletRequest instanceof HttpServletRequest)) {
             return null;
         }
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         String uri = request.getRequestURI();
         if (uri == null) {
             return null;
@@ -186,7 +186,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
 
         final String TOKEN = paramName + "=";
 
-        uri = uri.substring(index+1); //uri now contains only the path segment params
+        uri = uri.substring(index + 1); //uri now contains only the path segment params
 
         //we only care about the last JSESSIONID param:
         index = uri.lastIndexOf(TOKEN);
@@ -198,7 +198,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
         uri = uri.substring(index + TOKEN.length());
 
         index = uri.indexOf(';'); //strip off any remaining segment params:
-        if(index >= 0) {
+        if (index >= 0) {
             uri = uri.substring(0, index);
         }
 

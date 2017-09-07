@@ -61,6 +61,15 @@ public class HttpServletSession implements Session {
         }
     }
 
+    private static String assertString(Object key) {
+        if (!(key instanceof String)) {
+            String msg = "HttpSession based implementations of the Shiro Session interface requires attribute keys " +
+                    "to be String objects.  The HttpSession class does not support anything other than String keys.";
+            throw new IllegalArgumentException(msg);
+        }
+        return (String) key;
+    }
+
     public Serializable getId() {
         return httpSession.getId();
     }
@@ -90,12 +99,12 @@ public class HttpServletSession implements Session {
         }
     }
 
-    protected void setHost(String host) {
-        setAttribute(HOST_SESSION_KEY, host);
-    }
-
     public String getHost() {
         return (String) getAttribute(HOST_SESSION_KEY);
+    }
+
+    protected void setHost(String host) {
+        setAttribute(HOST_SESSION_KEY, host);
     }
 
     public void touch() throws InvalidSessionException {
@@ -130,15 +139,6 @@ public class HttpServletSession implements Session {
         } catch (Exception e) {
             throw new InvalidSessionException(e);
         }
-    }
-
-    private static String assertString(Object key) {
-        if (!(key instanceof String)) {
-            String msg = "HttpSession based implementations of the Shiro Session interface requires attribute keys " +
-                    "to be String objects.  The HttpSession class does not support anything other than String keys.";
-            throw new IllegalArgumentException(msg);
-        }
-        return (String) key;
     }
 
     public Object getAttribute(Object key) throws InvalidSessionException {

@@ -79,7 +79,7 @@ public abstract class NameableFilter extends AbstractFilter implements Nameable 
      * {@code super.toStringBuilder()} instance.
      *
      * @return a StringBuilder instance to use for appending String data that will eventually be returned from a
-     *         {@code toString()} invocation.
+     * {@code toString()} invocation.
      */
     protected StringBuilder toStringBuilder() {
         String name = getName();

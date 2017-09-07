@@ -60,6 +60,35 @@ public abstract class SecurityUtils {
     }
 
     /**
+     * Returns the SecurityManager accessible to the calling code.
+     * <p/>
+     * This implementation favors acquiring a thread-bound {@code SecurityManager} if it can find one.  If one is
+     * not available to the executing thread, it will attempt to use the static singleton if available (see the
+     * {@link #setSecurityManager setSecurityManager} method for more on the static singleton).
+     * <p/>
+     * If neither the thread-local or static singleton instances are available, this method throws an
+     * {@code UnavailableSecurityManagerException} to indicate an error - a SecurityManager should always be accessible
+     * to calling code in an application. If it is not, it is likely due to a Shiro configuration problem.
+     *
+     * @return the SecurityManager accessible to the calling code.
+     * @throws UnavailableSecurityManagerException if there is no {@code SecurityManager} instance available to the
+     *                                             calling code, which typically indicates an invalid application configuration.
+     */
+    public static SecurityManager getSecurityManager() throws UnavailableSecurityManagerException {
+        SecurityManager securityManager = ThreadContext.getSecurityManager();
+        if (securityManager == null) {
+            securityManager = SecurityUtils.securityManager;
+        }
+        if (securityManager == null) {
+            String msg = "No SecurityManager accessible to the calling code, either bound to the " +
+                    ThreadContext.class.getName() + " or as a vm static singleton.  This is an invalid application " +
+                    "configuration.";
+            throw new UnavailableSecurityManagerException(msg);
+        }
+        return securityManager;
+    }
+
+    /**
      * Sets a VM (static) singleton SecurityManager, specifically for transparent use in the
      * {@link #getSubject() getSubject()} implementation.
      * <p/>
@@ -93,34 +122,5 @@ public abstract class SecurityUtils {
      */
     public static void setSecurityManager(SecurityManager securityManager) {
         SecurityUtils.securityManager = securityManager;
-    }
-
-    /**
-     * Returns the SecurityManager accessible to the calling code.
-     * <p/>
-     * This implementation favors acquiring a thread-bound {@code SecurityManager} if it can find one.  If one is
-     * not available to the executing thread, it will attempt to use the static singleton if available (see the
-     * {@link #setSecurityManager setSecurityManager} method for more on the static singleton).
-     * <p/>
-     * If neither the thread-local or static singleton instances are available, this method throws an
-     * {@code UnavailableSecurityManagerException} to indicate an error - a SecurityManager should always be accessible
-     * to calling code in an application. If it is not, it is likely due to a Shiro configuration problem.
-     *
-     * @return the SecurityManager accessible to the calling code.
-     * @throws UnavailableSecurityManagerException if there is no {@code SecurityManager} instance available to the
-     *                                             calling code, which typically indicates an invalid application configuration.
-     */
-    public static SecurityManager getSecurityManager() throws UnavailableSecurityManagerException {
-        SecurityManager securityManager = ThreadContext.getSecurityManager();
-        if (securityManager == null) {
-            securityManager = SecurityUtils.securityManager;
-        }
-        if (securityManager == null) {
-            String msg = "No SecurityManager accessible to the calling code, either bound to the " +
-                    ThreadContext.class.getName() + " or as a vm static singleton.  This is an invalid application " +
-                    "configuration.";
-            throw new UnavailableSecurityManagerException(msg);
-        }
-        return securityManager;
     }
 }

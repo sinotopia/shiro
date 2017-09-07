@@ -35,6 +35,7 @@ public class DefaultSessionContext extends MapContext implements SessionContext 
     private static final long serialVersionUID = -1424160751361252966L;
 
     private static final String HOST = DefaultSessionContext.class.getName() + ".HOST";
+    
     private static final String SESSION_ID = DefaultSessionContext.class.getName() + ".SESSION_ID";
 
     public DefaultSessionContext() {

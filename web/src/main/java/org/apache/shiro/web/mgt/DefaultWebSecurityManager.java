@@ -54,13 +54,11 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
 
     //TODO - complete JavaDoc
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultWebSecurityManager.class);
-
     @Deprecated
     public static final String HTTP_SESSION_MODE = "http";
     @Deprecated
     public static final String NATIVE_SESSION_MODE = "native";
-
+    private static final Logger log = LoggerFactory.getLogger(DefaultWebSecurityManager.class);
     /**
      * @deprecated as of 1.2.  This should NOT be used for anything other than determining if the sessionMode has changed.
      */
@@ -111,9 +109,9 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
     private void applySessionManagerToSessionStorageEvaluatorIfPossible() {
         SubjectDAO subjectDAO = getSubjectDAO();
         if (subjectDAO instanceof DefaultSubjectDAO) {
-            SessionStorageEvaluator evaluator = ((DefaultSubjectDAO)subjectDAO).getSessionStorageEvaluator();
+            SessionStorageEvaluator evaluator = ((DefaultSubjectDAO) subjectDAO).getSessionStorageEvaluator();
             if (evaluator instanceof DefaultWebSessionStorageEvaluator) {
-                ((DefaultWebSessionStorageEvaluator)evaluator).setSessionManager(getSessionManager());
+                ((DefaultWebSessionStorageEvaluator) evaluator).setSessionManager(getSessionManager());
             }
         }
     }
@@ -189,7 +187,7 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
      */
     public boolean isHttpSessionMode() {
         SessionManager sessionManager = getSessionManager();
-        return sessionManager instanceof WebSessionManager && ((WebSessionManager)sessionManager).isServletContainerSessions();
+        return sessionManager instanceof WebSessionManager && ((WebSessionManager) sessionManager).isServletContainerSessions();
     }
 
     protected SessionManager createSessionManager(String sessionMode) {

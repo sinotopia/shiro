@@ -48,7 +48,9 @@ public class JndiTemplate {
 
     private Properties environment;
 
-    /** Create a new JndiTemplate instance. */
+    /**
+     * Create a new JndiTemplate instance.
+     */
     public JndiTemplate() {
     }
 
@@ -62,21 +64,21 @@ public class JndiTemplate {
     }
 
     /**
-     * Set the environment for the JNDI InitialContext.
-     *
-     * @param environment the Properties to initialize with
-     */
-    public void setEnvironment(Properties environment) {
-        this.environment = environment;
-    }
-
-    /**
      * Return the environment for the JNDI InitialContext, or <code>null</code> if none should be used.
      *
      * @return the environment for the JNDI InitialContext, or <code>null</code> if none should be used.
      */
     public Properties getEnvironment() {
         return this.environment;
+    }
+
+    /**
+     * Set the environment for the JNDI InitialContext.
+     *
+     * @param environment the Properties to initialize with
+     */
+    public void setEnvironment(Properties environment) {
+        this.environment = environment;
     }
 
     /**
@@ -91,8 +93,7 @@ public class JndiTemplate {
         Context ctx = createInitialContext();
         try {
             return contextCallback.doInContext(ctx);
-        }
-        finally {
+        } finally {
             try {
                 ctx.close();
             } catch (NamingException ex) {
@@ -115,7 +116,7 @@ public class JndiTemplate {
         Hashtable icEnv = null;
         if (env != null) {
             icEnv = new Hashtable(env.size());
-            for (Enumeration en = env.propertyNames(); en.hasMoreElements();) {
+            for (Enumeration en = env.propertyNames(); en.hasMoreElements(); ) {
                 String key = (String) en.nextElement();
                 icEnv.put(key, env.getProperty(key));
             }
@@ -128,7 +129,7 @@ public class JndiTemplate {
      *
      * @param name the JNDI name of the object
      * @return object found (cannot be <code>null</code>; if a not so well-behaved
-     *         JNDI implementations returns null, a NamingException gets thrown)
+     * JNDI implementations returns null, a NamingException gets thrown)
      * @throws NamingException if there is no object with the given
      *                         name bound to JNDI
      */
@@ -155,7 +156,7 @@ public class JndiTemplate {
      *                     if the value is <code>Object.class</code>, this method will succeed whatever
      *                     the class of the returned instance.
      * @return object found (cannot be <code>null</code>; if a not so well-behaved
-     *         JNDI implementations returns null, a NamingException gets thrown)
+     * JNDI implementations returns null, a NamingException gets thrown)
      * @throws NamingException if there is no object with the given
      *                         name bound to JNDI
      */

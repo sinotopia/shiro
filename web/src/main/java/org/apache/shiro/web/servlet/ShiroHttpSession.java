@@ -41,7 +41,6 @@ import java.util.*;
 public class ShiroHttpSession implements HttpSession {
 
     //TODO - complete JavaDoc
-
     public static final String DEFAULT_SESSION_ID_NAME = "JSESSIONID";
 
     private static final Enumeration EMPTY_ENUMERATION = new Enumeration() {
@@ -105,17 +104,17 @@ public class ShiroHttpSession implements HttpSession {
         return this.servletContext;
     }
 
-    public void setMaxInactiveInterval(int i) {
+    public int getMaxInactiveInterval() {
         try {
-            getSession().setTimeout(i * 1000);
+            return (new Long(getSession().getTimeout() / 1000)).intValue();
         } catch (InvalidSessionException e) {
             throw new IllegalStateException(e);
         }
     }
 
-    public int getMaxInactiveInterval() {
+    public void setMaxInactiveInterval(int i) {
         try {
-            return (new Long(getSession().getTimeout() / 1000)).intValue();
+            getSession().setTimeout(i * 1000);
         } catch (InvalidSessionException e) {
             throw new IllegalStateException(e);
         }

@@ -31,10 +31,17 @@ import org.apache.shiro.ShiroException;
  */
 public class ExecutionException extends ShiroException {
 
+    /**
+     * @param cause
+     */
     public ExecutionException(Throwable cause) {
         super(cause);
     }
 
+    /**
+     * @param message
+     * @param cause
+     */
     public ExecutionException(String message, Throwable cause) {
         super(message, cause);
     }

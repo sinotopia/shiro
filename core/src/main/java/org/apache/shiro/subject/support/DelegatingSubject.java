@@ -110,6 +110,10 @@ public class DelegatingSubject implements Subject {
         this.sessionCreationEnabled = sessionCreationEnabled;
     }
 
+    private static boolean isEmpty(PrincipalCollection pc) {
+        return pc == null || pc.isEmpty();
+    }
+
     protected Session decorate(Session session) {
         if (session == null) {
             throw new IllegalArgumentException("session cannot be null");
@@ -119,10 +123,6 @@ public class DelegatingSubject implements Subject {
 
     public SecurityManager getSecurityManager() {
         return securityManager;
-    }
-
-    private static boolean isEmpty(PrincipalCollection pc) {
-        return pc == null || pc.isEmpty();
     }
 
     protected boolean hasPrincipals() {
@@ -409,26 +409,6 @@ public class DelegatingSubject implements Subject {
         return new SubjectRunnable(this, runnable);
     }
 
-    private class StoppingAwareProxiedSession extends ProxiedSession {
-
-        private final DelegatingSubject owner;
-
-        private StoppingAwareProxiedSession(Session target, DelegatingSubject owningSubject) {
-            super(target);
-            owner = owningSubject;
-        }
-
-        public void stop() throws InvalidSessionException {
-            super.stop();
-            owner.sessionStopped();
-        }
-    }
-
-
-    // ======================================
-    // 'Run As' support implementations
-    // ======================================
-
     public void runAs(PrincipalCollection principals) {
         if (!hasPrincipals()) {
             String msg = "This subject does not yet have an identity.  Assuming the identity of another " +
@@ -439,6 +419,11 @@ public class DelegatingSubject implements Subject {
         }
         pushIdentity(principals);
     }
+
+
+    // ======================================
+    // 'Run As' support implementations
+    // ======================================
 
     public boolean isRunAs() {
         List<PrincipalCollection> stack = getRunAsPrincipalsStack();
@@ -513,5 +498,20 @@ public class DelegatingSubject implements Subject {
         }
 
         return popped;
+    }
+
+    private class StoppingAwareProxiedSession extends ProxiedSession {
+
+        private final DelegatingSubject owner;
+
+        private StoppingAwareProxiedSession(Session target, DelegatingSubject owningSubject) {
+            super(target);
+            owner = owningSubject;
+        }
+
+        public void stop() throws InvalidSessionException {
+            super.stop();
+            owner.sessionStopped();
+        }
     }
 }

@@ -75,6 +75,7 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
      * Loads configuration {@link Ini} from {@link #getConfigLocations()} if set, otherwise falling back
      * to the {@link #getDefaultConfigLocations()}. Finally any Ini objects will be merged with the value returned
      * from {@link #getFrameworkIni()}
+     *
      * @return Ini configuration to be used by this Environment.
      * @since 1.4
      */
@@ -86,8 +87,8 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
         if (log.isWarnEnabled() && !CollectionUtils.isEmpty(ini) &&
                 configLocations != null && configLocations.length > 0) {
             log.warn("Explicit INI instance has been provided, but configuration locations have also been " +
-                    "specified.  The {} implementation does not currently support multiple Ini config, but this may " +
-                    "be supported in the future. Only the INI instance will be used for configuration.",
+                            "specified.  The {} implementation does not currently support multiple Ini config, but this may " +
+                            "be supported in the future. Only the INI instance will be used for configuration.",
                     IniWebEnvironment.class.getName());
         }
 
@@ -142,14 +143,14 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
      *     [main]
      *     realm = net.differentco.MyCustomRealm
      * </code></pre>
-     *
+     * <p>
      * This would merge into:
      * <pre><code>
      *     [main]
      *     realm = net.differentco.MyCustomRealm
      *     realm.foobarSpecificField = A string
      * </code></pre>
-     *
+     * <p>
      * This may cause a configuration error if <code>MyCustomRealm</code> does not contain the field <code>foobarSpecificField</code>.
      * This can be avoided if the Framework Ini uses more unique names, such as <code>foobarRealm</code>. which would result
      * in a merged configuration that looks like:
@@ -159,7 +160,7 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
      *     foobarRealm.foobarSpecificField = A string
      *     realm = net.differentco.MyCustomRealm
      * </code></pre>
-     *
+     * <p>
      * </p>
      *
      * @return Ini configuration used by the framework integrations.
@@ -233,7 +234,7 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
      * @param configLocation the resource path to load into an {@code Ini} instance.
      * @param required       if the path must exist and be converted to a non-empty {@link Ini} instance.
      * @return an {@link Ini} instance reflecting the specified path, or {@code null} if the path does not exist and
-     *         is not required.
+     * is not required.
      * @throws ConfigurationException if the path is required but results in a null or empty Ini instance.
      */
     protected Ini createIni(String configLocation, boolean required) throws ConfigurationException {
@@ -290,7 +291,7 @@ public class IniWebEnvironment extends ResourceBasedWebEnvironment implements In
             factory.setDefaults(defaults);
         }
 
-        WebSecurityManager wsm = (WebSecurityManager)factory.getInstance();
+        WebSecurityManager wsm = (WebSecurityManager) factory.getInstance();
 
         //SHIRO-306 - get beans after they've been created (the call was before the factory.getInstance() call,
         //which always returned null.

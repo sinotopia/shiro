@@ -41,20 +41,17 @@ import java.util.*;
  */
 public class SimpleSession implements ValidatingSession, Serializable {
 
+    protected static final long MILLIS_PER_SECOND = 1000;
+    protected static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND;
+    protected static final long MILLIS_PER_HOUR = 60 * MILLIS_PER_MINUTE;
     // Serialization reminder:
     // You _MUST_ change this number if you introduce a change to this class
     // that is NOT serialization backwards compatible.  Serialization-compatible
     // changes do not require a change to this number.  If you need to generate
     // a new number in this case, use the JDK's 'serialver' program to generate it.
     private static final long serialVersionUID = -7125642695178165650L;
-
     //TODO - complete JavaDoc
     private transient static final Logger log = LoggerFactory.getLogger(SimpleSession.class);
-
-    protected static final long MILLIS_PER_SECOND = 1000;
-    protected static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND;
-    protected static final long MILLIS_PER_HOUR = 60 * MILLIS_PER_MINUTE;
-
     //serialization bitmask fields. DO NOT CHANGE THE ORDER THEY ARE DECLARED!
     static int bitIndexCounter = 0;
     private static final int ID_BIT_MASK = 1 << bitIndexCounter++;
@@ -103,6 +100,22 @@ public class SimpleSession implements ValidatingSession, Serializable {
         this.host = host;
     }
 
+    /**
+     * Returns {@code true} if the given {@code bitMask} argument indicates that the specified field has been
+     * serialized and therefore should be read during deserialization, {@code false} otherwise.
+     *
+     * @param bitMask      the aggregate bitmask for all fields that have been serialized.  Individual bits represent
+     *                     the fields that have been serialized.  A bit set to 1 means that corresponding field has
+     *                     been serialized, 0 means it hasn't been serialized.
+     * @param fieldBitMask the field bit mask constant identifying which bit to inspect (corresponds to a class attribute).
+     * @return {@code true} if the given {@code bitMask} argument indicates that the specified field has been
+     * serialized and therefore should be read during deserialization, {@code false} otherwise.
+     * @since 1.0
+     */
+    private static boolean isFieldPresent(short bitMask, int fieldBitMask) {
+        return (bitMask & fieldBitMask) != 0;
+    }
+
     public Serializable getId() {
         return this.id;
     }
@@ -134,7 +147,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
      * Once stopped, a session may no longer be used.  It is locked from all further activity.
      *
      * @return The time the session was stopped, or <tt>null</tt> if the session is still
-     *         active.
+     * active.
      */
     public Date getStopTimestamp() {
         return stopTimestamp;
@@ -415,7 +428,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
      * <code>getClass().getName() + &quot;,id=&quot; + getId()</code>.
      *
      * @return the string representation of this SimpleSession, equal to
-     *         <code>getClass().getName() + &quot;,id=&quot; + getId()</code>.
+     * <code>getClass().getName() + &quot;,id=&quot; + getId()</code>.
      * @since 1.0
      */
     @Override
@@ -520,22 +533,6 @@ public class SimpleSession implements ValidatingSession, Serializable {
         bitMask = host != null ? bitMask | HOST_BIT_MASK : bitMask;
         bitMask = !CollectionUtils.isEmpty(attributes) ? bitMask | ATTRIBUTES_BIT_MASK : bitMask;
         return (short) bitMask;
-    }
-
-    /**
-     * Returns {@code true} if the given {@code bitMask} argument indicates that the specified field has been
-     * serialized and therefore should be read during deserialization, {@code false} otherwise.
-     *
-     * @param bitMask      the aggregate bitmask for all fields that have been serialized.  Individual bits represent
-     *                     the fields that have been serialized.  A bit set to 1 means that corresponding field has
-     *                     been serialized, 0 means it hasn't been serialized.
-     * @param fieldBitMask the field bit mask constant identifying which bit to inspect (corresponds to a class attribute).
-     * @return {@code true} if the given {@code bitMask} argument indicates that the specified field has been
-     *         serialized and therefore should be read during deserialization, {@code false} otherwise.
-     * @since 1.0
-     */
-    private static boolean isFieldPresent(short bitMask, int fieldBitMask) {
-        return (bitMask & fieldBitMask) != 0;
     }
 
 }

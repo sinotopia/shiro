@@ -53,40 +53,12 @@ public abstract class IniFactorySupport<T> extends AbstractFactory<T> {
         this.ini = ini;
     }
 
-    public Ini getIni() {
-        return ini;
-    }
-
-    public void setIni(Ini ini) {
-        this.ini = ini;
-    }
-
-    /**
-     * Returns a mapping of String to bean representing the default set of object used by the factory.
-     * These beans can be used by this factory in conjunction with objects parsed from the INI configuration.
-     * @return A Map of default objects, or <code>null</code>.
-     * @since 1.4
-     */
-    protected Map<String, ?> getDefaults() {
-        return defaultBeans;
-    }
-
-    /**
-     * Sets the default objects used by this factory. These defaults may be used in conjunction with the INI
-     * configuration.
-     * @param defaultBeans String to object mapping used for default configuration in this factory.
-     * @since 1.4
-     */
-    public void setDefaults(Map<String, ?> defaultBeans) {
-        this.defaultBeans = defaultBeans;
-    }
-
     /**
      * Returns a new Ini instance created from the default {@code classpath:shiro.ini} file, or {@code null} if
      * the file does not exist.
      *
      * @return a new Ini instance created from the default {@code classpath:shiro.ini} file, or {@code null} if
-     *         the file does not exist.
+     * the file does not exist.
      */
     public static Ini loadDefaultClassPathIni() {
         Ini ini = null;
@@ -99,6 +71,36 @@ public abstract class IniFactorySupport<T> extends AbstractFactory<T> {
             }
         }
         return ini;
+    }
+
+    public Ini getIni() {
+        return ini;
+    }
+
+    public void setIni(Ini ini) {
+        this.ini = ini;
+    }
+
+    /**
+     * Returns a mapping of String to bean representing the default set of object used by the factory.
+     * These beans can be used by this factory in conjunction with objects parsed from the INI configuration.
+     *
+     * @return A Map of default objects, or <code>null</code>.
+     * @since 1.4
+     */
+    protected Map<String, ?> getDefaults() {
+        return defaultBeans;
+    }
+
+    /**
+     * Sets the default objects used by this factory. These defaults may be used in conjunction with the INI
+     * configuration.
+     *
+     * @param defaultBeans String to object mapping used for default configuration in this factory.
+     * @since 1.4
+     */
+    public void setDefaults(Map<String, ?> defaultBeans) {
+        this.defaultBeans = defaultBeans;
     }
 
     /**

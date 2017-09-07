@@ -66,6 +66,20 @@ public abstract class RealmSecurityManager extends CachingSecurityManager {
         setRealms(realms);
     }
 
+    protected void afterRealmsSet() {
+        applyCacheManagerToRealms();
+        applyEventBusToRealms();
+    }
+
+    /**
+     * Returns the {@link Realm Realm}s managed by this SecurityManager instance.
+     *
+     * @return the {@link Realm Realm}s managed by this SecurityManager instance.
+     */
+    public Collection<Realm> getRealms() {
+        return realms;
+    }
+
     /**
      * Sets the realms managed by this <tt>SecurityManager</tt> instance.
      *
@@ -81,20 +95,6 @@ public abstract class RealmSecurityManager extends CachingSecurityManager {
         }
         this.realms = realms;
         afterRealmsSet();
-    }
-
-    protected void afterRealmsSet() {
-        applyCacheManagerToRealms();
-        applyEventBusToRealms();
-    }
-
-    /**
-     * Returns the {@link Realm Realm}s managed by this SecurityManager instance.
-     *
-     * @return the {@link Realm Realm}s managed by this SecurityManager instance.
-     */
-    public Collection<Realm> getRealms() {
-        return realms;
     }
 
     /**
@@ -139,9 +139,9 @@ public abstract class RealmSecurityManager extends CachingSecurityManager {
         EventBus eventBus = getEventBus();
         Collection<Realm> realms = getRealms();
         if (eventBus != null && realms != null && !realms.isEmpty()) {
-            for(Realm realm : realms) {
+            for (Realm realm : realms) {
                 if (realm instanceof EventBusAware) {
-                    ((EventBusAware)realm).setEventBus(eventBus);
+                    ((EventBusAware) realm).setEventBus(eventBus);
                 }
             }
         }

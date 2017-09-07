@@ -144,7 +144,7 @@ public class IniFilterChainResolverFactory extends IniFactorySupport<FilterChain
         if (!CollectionUtils.isEmpty(section)) {
             ReflectionBuilder builder = new ReflectionBuilder(defaults);
             Map<String, ?> built = builder.buildObjects(section);
-            Map<String,Filter> sectionFilters = extractFilters(built);
+            Map<String, Filter> sectionFilters = extractFilters(built);
 
             if (CollectionUtils.isEmpty(filters)) {
                 filters = sectionFilters;

@@ -37,7 +37,7 @@ import java.io.IOException;
  * is based on the configured name of the concrete filter instance.
  * <h3>Controlling filter execution</h3>
  * 1.2 introduced the {@link #isEnabled(javax.servlet.ServletRequest, javax.servlet.ServletResponse)} method and
- * {@link #isEnabled()} property to allow explicit controll over whether the filter executes (or allows passthrough)
+ * {@link #isEnabled()} property to allow explicit control over whether the filter executes (or allows passthrough)
  * for any given request.
  * <p/>
  * <b>NOTE</b> This class was initially borrowed from the Spring framework but has continued modifications.
@@ -47,17 +47,15 @@ import java.io.IOException;
 public abstract class OncePerRequestFilter extends NameableFilter {
 
     /**
-     * Private internal log instance.
-     */
-    private static final Logger log = LoggerFactory.getLogger(OncePerRequestFilter.class);
-
-    /**
      * Suffix that gets appended to the filter name for the "already filtered" request attribute.
      *
      * @see #getAlreadyFilteredAttributeName
      */
     public static final String ALREADY_FILTERED_SUFFIX = ".FILTERED";
-
+    /**
+     * Private internal log instance.
+     */
+    private static final Logger log = LoggerFactory.getLogger(OncePerRequestFilter.class);
     /**
      * Determines generally if this filter should execute or let requests fall through to the next chain element.
      *
@@ -107,28 +105,28 @@ public abstract class OncePerRequestFilter extends NameableFilter {
     public final void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String alreadyFilteredAttributeName = getAlreadyFilteredAttributeName();
-        if ( request.getAttribute(alreadyFilteredAttributeName) != null ) {
+        if (request.getAttribute(alreadyFilteredAttributeName) != null) {
             log.trace("Filter '{}' already executed.  Proceeding without invoking this filter.", getName());
             filterChain.doFilter(request, response);
         } else //noinspection deprecation
             if (/* added in 1.2: */ !isEnabled(request, response) ||
-                /* retain backwards compatibility: */ shouldNotFilter(request) ) {
-            log.debug("Filter '{}' is not enabled for the current request.  Proceeding without invoking this filter.",
-                    getName());
-            filterChain.doFilter(request, response);
-        } else {
-            // Do invoke this filter...
-            log.trace("Filter '{}' not yet executed.  Executing now.", getName());
-            request.setAttribute(alreadyFilteredAttributeName, Boolean.TRUE);
+                /* retain backwards compatibility: */ shouldNotFilter(request)) {
+                log.debug("Filter '{}' is not enabled for the current request.  Proceeding without invoking this filter.",
+                        getName());
+                filterChain.doFilter(request, response);
+            } else {
+                // Do invoke this filter...
+                log.trace("Filter '{}' not yet executed.  Executing now.", getName());
+                request.setAttribute(alreadyFilteredAttributeName, Boolean.TRUE);
 
-            try {
-                doFilterInternal(request, response, filterChain);
-            } finally {
-                // Once the request has finished, we're done and we don't
-                // need to mark as 'already filtered' any more.
-                request.removeAttribute(alreadyFilteredAttributeName);
+                try {
+                    doFilterInternal(request, response, filterChain);
+                } finally {
+                    // Once the request has finished, we're done and we don't
+                    // need to mark as 'already filtered' any more.
+                    request.removeAttribute(alreadyFilteredAttributeName);
+                }
             }
-        }
     }
 
     /**
@@ -146,11 +144,11 @@ public abstract class OncePerRequestFilter extends NameableFilter {
      * PathMatchingFilter.isEnabled(request,response,path,pathSpecificConfig)}
      * method if you want to make your enable/disable decision based on any path-specific configuration.
      *
-     * @param request the incoming servlet request
+     * @param request  the incoming servlet request
      * @param response the outbound servlet response
      * @return {@code true} if this filter should filter the specified request, {@code false} if it should let the
      * request/response pass through immediately to the next element in the {@code FilterChain}.
-     * @throws IOException in the case of any IO error
+     * @throws IOException      in the case of any IO error
      * @throws ServletException in the case of any error
      * @see org.apache.shiro.web.filter.PathMatchingFilter#isEnabled(javax.servlet.ServletRequest, javax.servlet.ServletResponse, String, Object)
      * @since 1.2

@@ -41,4 +41,5 @@ public interface Environment {
      * @return the application's {@code SecurityManager} instance.
      */
     SecurityManager getSecurityManager();
+
 }

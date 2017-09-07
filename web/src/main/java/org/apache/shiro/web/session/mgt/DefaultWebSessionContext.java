@@ -45,23 +45,23 @@ public class DefaultWebSessionContext extends DefaultSessionContext implements W
         super(map);
     }
 
+    public ServletRequest getServletRequest() {
+        return getTypedValue(SERVLET_REQUEST, ServletRequest.class);
+    }
+
     public void setServletRequest(ServletRequest request) {
         if (request != null) {
             put(SERVLET_REQUEST, request);
         }
     }
 
-    public ServletRequest getServletRequest() {
-        return getTypedValue(SERVLET_REQUEST, ServletRequest.class);
+    public ServletResponse getServletResponse() {
+        return getTypedValue(SERVLET_RESPONSE, ServletResponse.class);
     }
 
     public void setServletResponse(ServletResponse response) {
         if (response != null) {
             put(SERVLET_RESPONSE, response);
         }
-    }
-
-    public ServletResponse getServletResponse() {
-        return getTypedValue(SERVLET_RESPONSE, ServletResponse.class);
     }
 }

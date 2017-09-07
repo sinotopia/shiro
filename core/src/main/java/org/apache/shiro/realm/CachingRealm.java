@@ -73,12 +73,16 @@ public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware
         this.name = getClass().getName() + "_" + INSTANCE_COUNT.getAndIncrement();
     }
 
+    private static boolean isEmpty(PrincipalCollection pc) {
+        return pc == null || pc.isEmpty();
+    }
+
     /**
      * Returns the <tt>CacheManager</tt> used for data caching to reduce EIS round trips, or <tt>null</tt> if
      * caching is disabled.
      *
      * @return the <tt>CacheManager</tt> used for data caching to reduce EIS round trips, or <tt>null</tt> if
-     *         caching is disabled.
+     * caching is disabled.
      */
     public CacheManager getCacheManager() {
         return this.cacheManager;
@@ -105,7 +109,7 @@ public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware
      * manage account data in memory already lookups would already be as efficient as possible.
      *
      * @return {@code true} if caching will be globally enabled if a {@link CacheManager} has been
-     *         configured, {@code false} otherwise
+     * configured, {@code false} otherwise
      */
     public boolean isCachingEnabled() {
         return cachingEnabled;
@@ -152,10 +156,6 @@ public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware
         clearCache(principals);
     }
 
-    private static boolean isEmpty(PrincipalCollection pc) {
-        return pc == null || pc.isEmpty();
-    }
-
     /**
      * Clears out any cached data associated with the specified account identity/identities.
      * <p/>
@@ -196,7 +196,7 @@ public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware
      *
      * @param principals the PrincipalCollection holding all principals (from all realms) associated with a single Subject.
      * @return the 'primary' principal attributed to this particular realm, or the fallback 'master' principal if it
-     *         exists, or if not {@code null}.
+     * exists, or if not {@code null}.
      * @since 1.2
      */
     protected Object getAvailablePrincipal(PrincipalCollection principals) {

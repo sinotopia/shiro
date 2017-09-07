@@ -92,6 +92,10 @@ public class DefaultSubjectDAO implements SubjectDAO {
         this.sessionStorageEvaluator = new DefaultSessionStorageEvaluator();
     }
 
+    private static boolean isEmpty(PrincipalCollection pc) {
+        return pc == null || pc.isEmpty();
+    }
+
     /**
      * Determines if the subject's session will be used to persist subject state or not.  This implementation
      * merely delegates to the internal {@link SessionStorageEvaluator} (a
@@ -112,7 +116,7 @@ public class DefaultSubjectDAO implements SubjectDAO {
      * the Subject's session.  The default instance is a {@link DefaultSessionStorageEvaluator}.
      *
      * @return the {@code SessionStorageEvaluator} that will determine if a {@code Subject}'s state may be persisted in
-     *         the Subject's session.
+     * the Subject's session.
      * @see DefaultSessionStorageEvaluator
      */
     public SessionStorageEvaluator getSessionStorageEvaluator() {
@@ -166,10 +170,6 @@ public class DefaultSubjectDAO implements SubjectDAO {
         mergeAuthenticationState(subject);
     }
 
-    private static boolean isEmpty(PrincipalCollection pc) {
-        return pc == null || pc.isEmpty();
-    }
-
     /**
      * Merges the Subject's current {@link org.apache.shiro.subject.Subject#getPrincipals()} with whatever may be in
      * any available session.  Only updates the Subject's session if the session does not match the current principals
@@ -191,7 +191,7 @@ public class DefaultSubjectDAO implements SubjectDAO {
             try {
                 Field field = DelegatingSubject.class.getDeclaredField("principals");
                 field.setAccessible(true);
-                currentPrincipals = (PrincipalCollection)field.get(subject);
+                currentPrincipals = (PrincipalCollection) field.get(subject);
             } catch (Exception e) {
                 throw new IllegalStateException("Unable to access DelegatingSubject principals property.", e);
             }

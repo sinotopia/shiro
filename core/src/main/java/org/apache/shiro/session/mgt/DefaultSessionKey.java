@@ -35,11 +35,11 @@ public class DefaultSessionKey implements SessionKey, Serializable {
         this.sessionId = sessionId;
     }
 
-    public void setSessionId(Serializable sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public Serializable getSessionId() {
         return this.sessionId;
+    }
+
+    public void setSessionId(Serializable sessionId) {
+        this.sessionId = sessionId;
     }
 }

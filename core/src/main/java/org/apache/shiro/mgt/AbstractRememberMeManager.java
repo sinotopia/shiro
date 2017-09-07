@@ -107,7 +107,7 @@ public abstract class AbstractRememberMeManager implements RememberMeManager {
      * {@link org.apache.shiro.io.DefaultSerializer}.
      *
      * @return the {@code Serializer} used to serialize and deserialize {@link PrincipalCollection} instances for
-     *         persistent remember me storage.
+     * persistent remember me storage.
      */
     public Serializer<PrincipalCollection> getSerializer() {
         return serializer;
@@ -133,7 +133,7 @@ public abstract class AbstractRememberMeManager implements RememberMeManager {
      * Unless overridden by the {@link #setCipherService} method, the default instance is an {@link AesCipherService}.
      *
      * @return the {@code Cipher} to use for encrypting and decrypting serialized identity data to prevent easy
-     *         inspection of Subject identity data
+     * inspection of Subject identity data
      */
     public CipherService getCipherService() {
         return cipherService;
@@ -401,7 +401,7 @@ public abstract class AbstractRememberMeManager implements RememberMeManager {
      *                       is being used to construct a {@link Subject} instance.  To be used to assist with data
      *                       lookup.
      * @return the previously persisted serialized identity, or {@code null} if there is no available data for the
-     *         Subject.
+     * Subject.
      */
     protected abstract byte[] getRememberedSerializedIdentity(SubjectContext subjectContext);
 

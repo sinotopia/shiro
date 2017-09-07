@@ -141,14 +141,17 @@ public interface SubjectContext extends Map<String, Object> {
      */
     PrincipalCollection getPrincipals();
 
-    PrincipalCollection resolvePrincipals();
-
     /**
      * Sets the principals (aka identity) that the constructed {@code Subject} should reflect.
      *
      * @param principals the principals (aka identity) that the constructed {@code Subject} should reflect.
      */
     void setPrincipals(PrincipalCollection principals);
+
+    /**
+     * @return
+     */
+    PrincipalCollection resolvePrincipals();
 
     /**
      * Returns the {@code Session} to use when building the {@code Subject} instance.  Note that it is more
@@ -168,6 +171,9 @@ public interface SubjectContext extends Map<String, Object> {
      */
     void setSession(Session session);
 
+    /**
+     * @return
+     */
     Session resolveSession();
 
     /**
@@ -209,14 +215,29 @@ public interface SubjectContext extends Map<String, Object> {
      */
     void setSessionCreationEnabled(boolean enabled);
 
+    /**
+     * @return
+     */
     boolean resolveAuthenticated();
 
+    /**
+     * @return
+     */
     AuthenticationInfo getAuthenticationInfo();
 
+    /**
+     * @param info
+     */
     void setAuthenticationInfo(AuthenticationInfo info);
 
+    /**
+     * @return
+     */
     AuthenticationToken getAuthenticationToken();
 
+    /**
+     * @param token
+     */
     void setAuthenticationToken(AuthenticationToken token);
 
     /**
@@ -233,5 +254,8 @@ public interface SubjectContext extends Map<String, Object> {
      */
     void setHost(String host);
 
+    /**
+     * @return
+     */
     String resolveHost();
 }

@@ -37,6 +37,7 @@ public class DefaultWebSubjectContext extends DefaultSubjectContext implements W
     private static final long serialVersionUID = 8188555355305827739L;
 
     private static final String SERVLET_REQUEST = DefaultWebSubjectContext.class.getName() + ".SERVLET_REQUEST";
+
     private static final String SERVLET_RESPONSE = DefaultWebSubjectContext.class.getName() + ".SERVLET_RESPONSE";
 
     public DefaultWebSubjectContext() {

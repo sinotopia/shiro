@@ -137,7 +137,7 @@ public class EnvironmentLoader {
         try {
 
             WebEnvironment environment = createEnvironment(servletContext);
-            servletContext.setAttribute(ENVIRONMENT_ATTRIBUTE_KEY,environment);
+            servletContext.setAttribute(ENVIRONMENT_ATTRIBUTE_KEY, environment);
 
             log.debug("Published WebEnvironment as ServletContext attribute with name [{}]",
                     ENVIRONMENT_ATTRIBUTE_KEY);
@@ -175,7 +175,7 @@ public class EnvironmentLoader {
     @Deprecated
     protected Class<?> determineWebEnvironmentClass(ServletContext servletContext) {
         Class<? extends WebEnvironment> webEnvironmentClass = webEnvironmentClassFromServletContext(servletContext);
-        if( webEnvironmentClass != null) {
+        if (webEnvironmentClass != null) {
             return webEnvironmentClass;
         } else {
 
@@ -218,13 +218,14 @@ public class EnvironmentLoader {
             }
             throw new ConfigurationException("ServiceLoader for class [" + WebEnvironment.class + "] returned more then one " +
                     "result.  ServiceLoader must return zero or exactly one result for this class. Select one using the " +
-                    "servlet init parameter '"+ ENVIRONMENT_CLASS_PARAM +"'. Found: " + allWebEnvironments);
+                    "servlet init parameter '" + ENVIRONMENT_CLASS_PARAM + "'. Found: " + allWebEnvironments);
         }
         return webEnvironment;
     }
 
     /**
      * Returns the default WebEnvironment class, which is unless overridden: {@link IniWebEnvironment}.
+     *
      * @return the default WebEnvironment class.
      */
     protected Class<? extends WebEnvironment> getDefaultWebEnvironmentClass() {
@@ -234,16 +235,15 @@ public class EnvironmentLoader {
     /**
      * Return the WebEnvironment implementation class to use, based on the order of:
      * <ul>
-     *     <li>A custom WebEnvironment class - specified in the {@code servletContext} {@link #ENVIRONMENT_ATTRIBUTE_KEY} property</li>
-     *     <li>{@code ServiceLoader.load(WebEnvironment.class)} - (if more then one instance is found a {@link ConfigurationException} will be thrown</li>
-     *     <li>A call to {@link #getDefaultWebEnvironmentClass()} (default: {@link IniWebEnvironment})</li>
+     * <li>A custom WebEnvironment class - specified in the {@code servletContext} {@link #ENVIRONMENT_ATTRIBUTE_KEY} property</li>
+     * <li>{@code ServiceLoader.load(WebEnvironment.class)} - (if more then one instance is found a {@link ConfigurationException} will be thrown</li>
+     * <li>A call to {@link #getDefaultWebEnvironmentClass()} (default: {@link IniWebEnvironment})</li>
      * </ul>
      *
      * @param servletContext current servlet context
-     * @return the WebEnvironment implementation class to use
-     * @see #ENVIRONMENT_CLASS_PARAM
      * @param servletContext the {@code servletContext} to query the {@code ENVIRONMENT_ATTRIBUTE_KEY} property from
      * @return the {@code WebEnvironment} to be used
+     * @see #ENVIRONMENT_CLASS_PARAM
      */
     protected WebEnvironment determineWebEnvironment(ServletContext servletContext) {
 
@@ -318,6 +318,7 @@ public class EnvironmentLoader {
     /**
      * Any additional customization of the Environment can be by overriding this method. For example setup shared
      * resources, etc. By default this method does nothing.
+     *
      * @param environment
      */
     protected void customizeEnvironment(WebEnvironment environment) {
@@ -344,6 +345,7 @@ public class EnvironmentLoader {
     /**
      * Any additional cleanup of the Environment can be done by overriding this method.  For example clean up shared
      * resources, etc. By default this method does nothing.
+     *
      * @param environment
      * @since 1.3
      */

@@ -59,11 +59,36 @@ public class TextConfigurationRealm extends SimpleAccountRealm {
         super();
     }
 
+    protected static Set<String> toLines(String s) {
+        LinkedHashSet<String> set = new LinkedHashSet<String>();
+        Scanner scanner = new Scanner(s);
+        while (scanner.hasNextLine()) {
+            set.add(scanner.nextLine());
+        }
+        return set;
+    }
+
+    protected static Map<String, String> toMap(Collection<String> keyValuePairs) throws ParseException {
+        if (keyValuePairs == null || keyValuePairs.isEmpty()) {
+            return null;
+        }
+
+        Map<String, String> pairs = new HashMap<String, String>();
+        for (String pairString : keyValuePairs) {
+            String[] pair = StringUtils.splitKeyValue(pairString);
+            if (pair != null) {
+                pairs.put(pair[0].trim(), pair[1].trim());
+            }
+        }
+
+        return pairs;
+    }
+
     /**
      * Will call 'processDefinitions' on startup.
      *
-     * @since 1.2
      * @see <a href="https://issues.apache.org/jira/browse/SHIRO-223">SHIRO-223</a>
+     * @since 1.2
      */
     @Override
     protected void onInit() {
@@ -206,30 +231,5 @@ public class TextConfigurationRealm extends SimpleAccountRealm {
                 account.setRoles(null);
             }
         }
-    }
-
-    protected static Set<String> toLines(String s) {
-        LinkedHashSet<String> set = new LinkedHashSet<String>();
-        Scanner scanner = new Scanner(s);
-        while (scanner.hasNextLine()) {
-            set.add(scanner.nextLine());
-        }
-        return set;
-    }
-
-    protected static Map<String, String> toMap(Collection<String> keyValuePairs) throws ParseException {
-        if (keyValuePairs == null || keyValuePairs.isEmpty()) {
-            return null;
-        }
-
-        Map<String, String> pairs = new HashMap<String, String>();
-        for (String pairString : keyValuePairs) {
-            String[] pair = StringUtils.splitKeyValue(pairString);
-            if (pair != null) {
-                pairs.put(pair[0].trim(), pair[1].trim());
-            }
-        }
-
-        return pairs;
     }
 }

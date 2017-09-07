@@ -37,6 +37,7 @@ public class DefaultSubjectFactory implements SubjectFactory {
     }
 
     public Subject createSubject(SubjectContext context) {
+
         SecurityManager securityManager = context.resolveSecurityManager();
         Session session = context.resolveSession();
         boolean sessionCreationEnabled = context.isSessionCreationEnabled();
@@ -49,7 +50,7 @@ public class DefaultSubjectFactory implements SubjectFactory {
 
     /**
      * @deprecated since 1.2 - override {@link #createSubject(org.apache.shiro.subject.SubjectContext)} directly if you
-     *             need to instantiate a custom {@link Subject} class.
+     * need to instantiate a custom {@link Subject} class.
      */
     @Deprecated
     protected Subject newSubjectInstance(PrincipalCollection principals, boolean authenticated, String host,

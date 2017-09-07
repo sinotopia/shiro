@@ -54,13 +54,13 @@ public abstract class AbstractNativeSessionManager extends AbstractSessionManage
         this.listeners = new ArrayList<SessionListener>();
     }
 
-    public void setSessionListeners(Collection<SessionListener> listeners) {
-        this.listeners = listeners != null ? listeners : new ArrayList<SessionListener>();
-    }
-
     @SuppressWarnings({"UnusedDeclaration"})
     public Collection<SessionListener> getSessionListeners() {
         return this.listeners;
+    }
+
+    public void setSessionListeners(Collection<SessionListener> listeners) {
+        this.listeners = listeners != null ? listeners : new ArrayList<SessionListener>();
     }
 
     /**

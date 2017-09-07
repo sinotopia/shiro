@@ -38,9 +38,9 @@ import org.apache.shiro.util.ThreadState;
  * <li>Any previous thread state that might have existed before the {@code Subject} was bound is fully restored</li>
  * </ol>
  * <p/>
- *
+ * <p>
  * <h3>Usage</h3>
- *
+ * <p>
  * This is typically considered a support class and is not often directly referenced.  Most people prefer to use
  * the {@code Subject.}{@link Subject#execute(Runnable) execute} or
  * {@code Subject.}{@link Subject#associateWith(Runnable) associateWith} methods, which transparently perform the

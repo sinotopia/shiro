@@ -64,6 +64,21 @@ public abstract class SessionsSecurityManager extends AuthorizingSecurityManager
         applyCacheManagerToSessionManager();
     }
 
+    protected void afterSessionManagerSet() {
+        applyCacheManagerToSessionManager();
+        applyEventBusToSessionManager();
+    }
+
+    /**
+     * Returns this security manager's internal delegate {@link SessionManager SessionManager}.
+     *
+     * @return this security manager's internal delegate {@link SessionManager SessionManager}.
+     * @see #setSessionManager(org.apache.shiro.session.mgt.SessionManager) setSessionManager
+     */
+    public SessionManager getSessionManager() {
+        return this.sessionManager;
+    }
+
     /**
      * Sets the underlying delegate {@link SessionManager} instance that will be used to support this implementation's
      * <tt>SessionManager</tt> method calls.
@@ -80,21 +95,6 @@ public abstract class SessionsSecurityManager extends AuthorizingSecurityManager
     public void setSessionManager(SessionManager sessionManager) {
         this.sessionManager = sessionManager;
         afterSessionManagerSet();
-    }
-
-    protected void afterSessionManagerSet() {
-        applyCacheManagerToSessionManager();
-        applyEventBusToSessionManager();
-    }
-
-    /**
-     * Returns this security manager's internal delegate {@link SessionManager SessionManager}.
-     *
-     * @return this security manager's internal delegate {@link SessionManager SessionManager}.
-     * @see #setSessionManager(org.apache.shiro.session.mgt.SessionManager) setSessionManager
-     */
-    public SessionManager getSessionManager() {
-        return this.sessionManager;
     }
 
     /**
@@ -144,7 +144,7 @@ public abstract class SessionsSecurityManager extends AuthorizingSecurityManager
     protected void applyEventBusToSessionManager() {
         EventBus eventBus = getEventBus();
         if (eventBus != null && this.sessionManager instanceof EventBusAware) {
-            ((EventBusAware)this.sessionManager).setEventBus(eventBus);
+            ((EventBusAware) this.sessionManager).setEventBus(eventBus);
         }
     }
 

@@ -133,6 +133,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
     private Cache<Object, AuthenticationInfo> authenticationCache;
 
     private boolean authenticationCachingEnabled;
+
     private String authenticationCacheName;
 
     /**
@@ -181,6 +182,10 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
     /*--------------------------------------------
     |  A C C E S S O R S / M O D I F I E R S    |
     ============================================*/
+
+    private static boolean isEmpty(PrincipalCollection pc) {
+        return pc == null || pc.isEmpty();
+    }
 
     /**
      * Returns the <code>CredentialsMatcher</code> used during an authentication attempt to verify submitted
@@ -242,6 +247,20 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
     }
 
     /**
+     * Returns a {@link Cache} instance to use for authentication caching, or {@code null} if no cache has been
+     * set.
+     *
+     * @return a {@link Cache} instance to use for authentication caching, or {@code null} if no cache has been
+     * set.
+     * @see #setAuthenticationCache(org.apache.shiro.cache.Cache)
+     * @see #isAuthenticationCachingEnabled()
+     * @since 1.2
+     */
+    public Cache<Object, AuthenticationInfo> getAuthenticationCache() {
+        return this.authenticationCache;
+    }
+
+    /**
      * Sets an explicit {@link Cache} instance to use for authentication caching.  If not set and authentication
      * caching is {@link #isAuthenticationCachingEnabled() enabled}, any available
      * {@link #getCacheManager() cacheManager} will be used to acquire the cache instance if available.
@@ -256,20 +275,6 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      */
     public void setAuthenticationCache(Cache<Object, AuthenticationInfo> authenticationCache) {
         this.authenticationCache = authenticationCache;
-    }
-
-    /**
-     * Returns a {@link Cache} instance to use for authentication caching, or {@code null} if no cache has been
-     * set.
-     *
-     * @return a {@link Cache} instance to use for authentication caching, or {@code null} if no cache has been
-     * set.
-     * @see #setAuthenticationCache(org.apache.shiro.cache.Cache)
-     * @see #isAuthenticationCachingEnabled()
-     * @since 1.2
-     */
-    public Cache<Object, AuthenticationInfo> getAuthenticationCache() {
-        return this.authenticationCache;
     }
 
     /**
@@ -339,6 +344,11 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
         }
     }
 
+
+    /*--------------------------------------------
+    |               M E T H O D S               |
+    ============================================*/
+
     public void setName(String name) {
         super.setName(name);
         String authcCacheName = this.authenticationCacheName;
@@ -348,11 +358,6 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
             this.authenticationCacheName = name + DEFAULT_AUTHORIZATION_CACHE_SUFFIX;
         }
     }
-
-
-    /*--------------------------------------------
-    |               M E T H O D S               |
-    ============================================*/
 
     /**
      * Convenience implementation that returns
@@ -478,6 +483,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      * @since 1.2
      */
     private AuthenticationInfo getCachedAuthenticationInfo(AuthenticationToken token) {
+
         AuthenticationInfo info = null;
 
         Cache<Object, AuthenticationInfo> cache = getAvailableAuthenticationCache();
@@ -656,10 +662,6 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
     protected void doClearCache(PrincipalCollection principals) {
         super.doClearCache(principals);
         clearCachedAuthenticationInfo(principals);
-    }
-
-    private static boolean isEmpty(PrincipalCollection pc) {
-        return pc == null || pc.isEmpty();
     }
 
     /**

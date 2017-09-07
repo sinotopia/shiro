@@ -53,6 +53,7 @@ public class DefaultWebSessionStorageEvaluator extends DefaultSessionStorageEval
 
     /**
      * Sets the session manager to use when checking to see if session storage is possible.
+     *
      * @param sessionManager the session manager instance for checking.
      * @since 1.2.1
      */
@@ -71,8 +72,8 @@ public class DefaultWebSessionStorageEvaluator extends DefaultSessionStorageEval
      *
      * @param subject the {@code Subject} for which session state persistence may be enabled
      * @return {@code true} if session storage is generally available (as determined by the super class's global
-     *         configuration property {@link #isSessionStorageEnabled()} and no request-specific override has turned off
-     *         session storage, {@code false} otherwise.
+     * configuration property {@link #isSessionStorageEnabled()} and no request-specific override has turned off
+     * session storage, {@code false} otherwise.
      */
     @SuppressWarnings({"SimplifiableIfStatement"})
     @Override
