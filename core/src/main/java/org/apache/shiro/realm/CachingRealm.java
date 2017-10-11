@@ -57,7 +57,9 @@ public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware
     |    I N S T A N C E   V A R I A B L E S    |
     ============================================*/
     private String name;
+
     private boolean cachingEnabled;
+
     private CacheManager cacheManager;
 
     /**

@@ -114,6 +114,9 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
 
     //TODO - complete JavaDoc
 
+    /*-------------------------------------------
+    |             C O N S T A N T S             |
+    ============================================*/
     private static final Logger log = LoggerFactory.getLogger(AuthenticatingRealm.class);
 
     private static final AtomicInteger INSTANCE_COUNT = new AtomicInteger();
@@ -125,6 +128,9 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
      */
     private static final String DEFAULT_AUTHORIZATION_CACHE_SUFFIX = ".authenticationCache";
 
+    /*-------------------------------------------
+    |    I N S T A N C E   V A R I A B L E S    |
+    ============================================*/
     /**
      * Credentials matcher used to determine if the provided credentials match the credentials stored in the data store.
      */
