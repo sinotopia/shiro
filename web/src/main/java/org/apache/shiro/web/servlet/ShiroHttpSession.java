@@ -44,10 +44,13 @@ public class ShiroHttpSession implements HttpSession {
     public static final String DEFAULT_SESSION_ID_NAME = "JSESSIONID";
 
     private static final Enumeration EMPTY_ENUMERATION = new Enumeration() {
+
+        @Override
         public boolean hasMoreElements() {
             return false;
         }
 
+        @Override
         public Object nextElement() {
             return null;
         }
@@ -56,10 +59,13 @@ public class ShiroHttpSession implements HttpSession {
     @SuppressWarnings({"deprecation"})
     private static final javax.servlet.http.HttpSessionContext HTTP_SESSION_CONTEXT =
             new javax.servlet.http.HttpSessionContext() {
+
+                @Override
                 public HttpSession getSession(String s) {
                     return null;
                 }
 
+                @Override
                 public Enumeration getIds() {
                     return EMPTY_ENUMERATION;
                 }
@@ -67,7 +73,9 @@ public class ShiroHttpSession implements HttpSession {
 
     protected ServletContext servletContext = null;
     protected HttpServletRequest currentRequest = null;
-    protected Session session = null; //'real' Shiro Session
+
+    //'real' Shiro Session
+    protected Session session = null;
 
     public ShiroHttpSession(Session session, HttpServletRequest currentRequest, ServletContext servletContext) {
         if (session instanceof HttpServletSession) {
@@ -84,6 +92,7 @@ public class ShiroHttpSession implements HttpSession {
         return this.session;
     }
 
+    @Override
     public long getCreationTime() {
         try {
             return getSession().getStartTimestamp().getTime();
@@ -92,18 +101,22 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public String getId() {
         return getSession().getId().toString();
     }
 
+    @Override
     public long getLastAccessedTime() {
         return getSession().getLastAccessTime().getTime();
     }
 
+    @Override
     public ServletContext getServletContext() {
         return this.servletContext;
     }
 
+    @Override
     public int getMaxInactiveInterval() {
         try {
             return (new Long(getSession().getTimeout() / 1000)).intValue();
@@ -112,6 +125,7 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public void setMaxInactiveInterval(int i) {
         try {
             getSession().setTimeout(i * 1000);
@@ -121,10 +135,12 @@ public class ShiroHttpSession implements HttpSession {
     }
 
     @SuppressWarnings({"deprecation"})
+    @Override
     public javax.servlet.http.HttpSessionContext getSessionContext() {
         return HTTP_SESSION_CONTEXT;
     }
 
+    @Override
     public Object getAttribute(String s) {
         try {
             return getSession().getAttribute(s);
@@ -133,6 +149,7 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public Object getValue(String s) {
         return getAttribute(s);
     }
@@ -157,6 +174,7 @@ public class ShiroHttpSession implements HttpSession {
         return keyNames;
     }
 
+    @Override
     public Enumeration getAttributeNames() {
         Set<String> keyNames = getKeyNames();
         final Iterator iterator = keyNames.iterator();
@@ -171,6 +189,7 @@ public class ShiroHttpSession implements HttpSession {
         };
     }
 
+    @Override
     public String[] getValueNames() {
         Set<String> keyNames = getKeyNames();
         String[] array = new String[keyNames.size()];
@@ -196,6 +215,7 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public void setAttribute(String s, Object o) {
         try {
             getSession().setAttribute(s, o);
@@ -211,10 +231,12 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public void putValue(String s, Object o) {
         setAttribute(s, o);
     }
 
+    @Override
     public void removeAttribute(String s) {
         try {
             Object attribute = getSession().removeAttribute(s);
@@ -224,10 +246,12 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public void removeValue(String s) {
         removeAttribute(s);
     }
 
+    @Override
     public void invalidate() {
         try {
             getSession().stop();
@@ -236,6 +260,7 @@ public class ShiroHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public boolean isNew() {
         Boolean value = (Boolean) currentRequest.getAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_IS_NEW);
         return value != null && value.equals(Boolean.TRUE);

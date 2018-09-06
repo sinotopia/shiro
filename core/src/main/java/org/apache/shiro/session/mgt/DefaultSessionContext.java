@@ -35,7 +35,7 @@ public class DefaultSessionContext extends MapContext implements SessionContext 
     private static final long serialVersionUID = -1424160751361252966L;
 
     private static final String HOST = DefaultSessionContext.class.getName() + ".HOST";
-    
+
     private static final String SESSION_ID = DefaultSessionContext.class.getName() + ".SESSION_ID";
 
     public DefaultSessionContext() {
@@ -46,20 +46,24 @@ public class DefaultSessionContext extends MapContext implements SessionContext 
         super(map);
     }
 
+    @Override
     public String getHost() {
         return getTypedValue(HOST, String.class);
     }
 
+    @Override
     public void setHost(String host) {
         if (StringUtils.hasText(host)) {
             put(HOST, host);
         }
     }
 
+    @Override
     public Serializable getSessionId() {
         return getTypedValue(SESSION_ID, Serializable.class);
     }
 
+    @Override
     public void setSessionId(Serializable sessionId) {
         nullSafePut(SESSION_ID, sessionId);
     }

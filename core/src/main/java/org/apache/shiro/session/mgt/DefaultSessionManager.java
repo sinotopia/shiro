@@ -43,7 +43,8 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
     //TODO - complete JavaDoc
 
     private static final Logger log = LoggerFactory.getLogger(DefaultSessionManager.class);
-    protected SessionDAO sessionDAO;  //todo - move SessionDAO up to AbstractValidatingSessionManager?
+    //todo - move SessionDAO up to AbstractValidatingSessionManager?
+    protected SessionDAO sessionDAO;
     private SessionFactory sessionFactory;
     private CacheManager cacheManager;
 
@@ -125,6 +126,7 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         this.deleteInvalidSessions = deleteInvalidSessions;
     }
 
+    @Override
     public void setCacheManager(CacheManager cacheManager) {
         this.cacheManager = cacheManager;
         applyCacheManagerToSessionDAO();
@@ -147,6 +149,7 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         }
     }
 
+    @Override
     protected Session doCreateSession(SessionContext context) {
         Session s = newSessionInstance(context);
         if (log.isTraceEnabled()) {
@@ -191,6 +194,7 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         }
     }
 
+    @Override
     protected void onExpiration(Session session) {
         if (session instanceof SimpleSession) {
             ((SimpleSession) session).setExpired(true);
@@ -205,10 +209,12 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         }
     }
 
+    @Override
     protected void onChange(Session session) {
         sessionDAO.update(session);
     }
 
+    @Override
     protected Session retrieveSession(SessionKey sessionKey) throws UnknownSessionException {
         Serializable sessionId = getSessionId(sessionKey);
         if (sessionId == null) {
@@ -237,6 +243,7 @@ public class DefaultSessionManager extends AbstractValidatingSessionManager impl
         sessionDAO.delete(session);
     }
 
+    @Override
     protected Collection<Session> getActiveSessions() {
         Collection<Session> active = sessionDAO.getActiveSessions();
         return active != null ? active : Collections.<Session>emptySet();

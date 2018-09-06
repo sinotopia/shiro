@@ -163,6 +163,7 @@ public abstract class RealmSecurityManager extends CachingSecurityManager {
         applyEventBusToRealms();
     }
 
+    @Override
     public void destroy() {
         LifecycleUtils.destroy(getRealms());
         this.realms = null;

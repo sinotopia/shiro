@@ -148,14 +148,17 @@ public abstract class SessionsSecurityManager extends AuthorizingSecurityManager
         }
     }
 
+    @Override
     public Session start(SessionContext context) throws AuthorizationException {
         return this.sessionManager.start(context);
     }
 
+    @Override
     public Session getSession(SessionKey key) throws SessionException {
         return this.sessionManager.getSession(key);
     }
 
+    @Override
     public void destroy() {
         LifecycleUtils.destroy(getSessionManager());
         this.sessionManager = null;

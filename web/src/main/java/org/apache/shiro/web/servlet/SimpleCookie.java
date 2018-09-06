@@ -103,10 +103,12 @@ public class SimpleCookie implements Cookie {
         this.httpOnly = cookie.isHttpOnly();
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         if (!StringUtils.hasText(name)) {
             throw new IllegalArgumentException("Name cannot be null/empty.");
@@ -114,66 +116,82 @@ public class SimpleCookie implements Cookie {
         this.name = name;
     }
 
+    @Override
     public String getValue() {
         return value;
     }
 
+    @Override
     public void setValue(String value) {
         this.value = value;
     }
 
+    @Override
     public String getComment() {
         return comment;
     }
 
+    @Override
     public void setComment(String comment) {
         this.comment = comment;
     }
 
+    @Override
     public String getDomain() {
         return domain;
     }
 
+    @Override
     public void setDomain(String domain) {
         this.domain = domain;
     }
 
+    @Override
     public String getPath() {
         return path;
     }
 
+    @Override
     public void setPath(String path) {
         this.path = path;
     }
 
+    @Override
     public int getMaxAge() {
         return maxAge;
     }
 
+    @Override
     public void setMaxAge(int maxAge) {
         this.maxAge = Math.max(DEFAULT_MAX_AGE, maxAge);
     }
 
+    @Override
     public int getVersion() {
         return version;
     }
 
+    @Override
     public void setVersion(int version) {
         this.version = Math.max(DEFAULT_VERSION, version);
     }
 
+    @Override
     public boolean isSecure() {
         return secure;
     }
 
+    @Override
     public void setSecure(boolean secure) {
         this.secure = secure;
     }
 
+    @Override
     public boolean isHttpOnly() {
         return httpOnly;
     }
 
+    @Override
     public void setHttpOnly(boolean httpOnly) {
         this.httpOnly = httpOnly;
     }
@@ -200,6 +218,7 @@ public class SimpleCookie implements Cookie {
         return path;
     }
 
+    @Override
     public void saveTo(HttpServletRequest request, HttpServletResponse response) {
 
         String name = getName();
@@ -233,7 +252,6 @@ public class SimpleCookie implements Cookie {
      *
      * @return the 'Set-Cookie' header value for this cookie instance.
      */
-
     protected String buildHeaderValue(String name, String value, String comment,
                                       String domain, String path, int maxAge, int version,
                                       boolean secure, boolean httpOnly) {
@@ -283,8 +301,8 @@ public class SimpleCookie implements Cookie {
 
     private void appendExpires(StringBuilder sb, int maxAge) {
         // if maxAge is negative, cookie should should expire when browser closes
-	// Don't write the maxAge cookie value if it's negative - at least on Firefox it'll cause the 
-	// cookie to be deleted immediately
+        // Don't write the maxAge cookie value if it's negative - at least on Firefox it'll cause the
+        // cookie to be deleted immediately
         // Write the expires header used by older browsers, but may be unnecessary
         // and it is not by the spec, see http://www.faqs.org/rfcs/rfc2965.html
         // TODO consider completely removing the following 
@@ -342,8 +360,8 @@ public class SimpleCookie implements Cookie {
         }
 
         return requestPath.length() == cookiePath.length()
-            || cookiePath.charAt(cookiePath.length() - 1) == '/'
-            || requestPath.charAt(cookiePath.length()) == '/';
+                || cookiePath.charAt(cookiePath.length() - 1) == '/'
+                || requestPath.charAt(cookiePath.length()) == '/';
     }
 
     /**
@@ -359,6 +377,7 @@ public class SimpleCookie implements Cookie {
         return fmt.format(date);
     }
 
+    @Override
     public void removeFrom(HttpServletRequest request, HttpServletResponse response) {
         String name = getName();
         String value = DELETED_COOKIE_VALUE;
@@ -375,6 +394,7 @@ public class SimpleCookie implements Cookie {
         log.trace("Removed '{}' cookie by setting maxAge=0", name);
     }
 
+    @Override
     public String readValue(HttpServletRequest request, HttpServletResponse ignored) {
         String name = getName();
         String value = null;
@@ -383,7 +403,7 @@ public class SimpleCookie implements Cookie {
             // Validate that the cookie is used at the correct place.
             String path = StringUtils.clean(getPath());
             if (path != null && !pathMatches(path, request.getRequestURI())) {
-                log.warn("Found '{}' cookie at path '{}', but should be only used for '{}'", new Object[] { name, request.getRequestURI(), path});
+                log.warn("Found '{}' cookie at path '{}', but should be only used for '{}'", new Object[]{name, request.getRequestURI(), path});
             } else {
                 value = cookie.getValue();
                 log.debug("Found '{}' cookie value [{}]", name, value);
@@ -402,7 +422,7 @@ public class SimpleCookie implements Cookie {
      * @param request    the current executing http request.
      * @param cookieName the name of the cookie to find and return.
      * @return the cookie with the given name from the request or {@code null} if no cookie
-     *         with that name could be found.
+     * with that name could be found.
      */
     private static javax.servlet.http.Cookie getCookie(HttpServletRequest request, String cookieName) {
         javax.servlet.http.Cookie cookies[] = request.getCookies();

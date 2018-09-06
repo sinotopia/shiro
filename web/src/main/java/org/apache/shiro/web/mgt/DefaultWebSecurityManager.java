@@ -56,9 +56,12 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
 
     @Deprecated
     public static final String HTTP_SESSION_MODE = "http";
+
     @Deprecated
     public static final String NATIVE_SESSION_MODE = "native";
+
     private static final Logger log = LoggerFactory.getLogger(DefaultWebSecurityManager.class);
+
     /**
      * @deprecated as of 1.2.  This should NOT be used for anything other than determining if the sessionMode has changed.
      */
@@ -185,6 +188,7 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
     /**
      * @since 1.0
      */
+    @Override
     public boolean isHttpSessionMode() {
         SessionManager sessionManager = getSessionManager();
         return sessionManager instanceof WebSessionManager && ((WebSessionManager) sessionManager).isServletContainerSessions();
@@ -229,7 +233,6 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
             return new WebSessionKey(sessionId, request, response);
         } else {
             return super.getSessionKey(context);
-
         }
     }
 

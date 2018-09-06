@@ -54,7 +54,7 @@ public interface SessionContext extends Map<String, Object> {
      * {@code host} allows for more flexibility when securing a system: by requiring an host, access control policies
      * can also ensure access is restricted to specific client <em>locations</em> in addition to {@code Subject}
      * principals, if so desired.
-     * <p/>
+     * <p/>=
      * <b>Caveat</b> - if clients to your system are on a
      * public network (as would be the case for a public web site), odds are high the clients can be
      * behind a NAT (Network Address Translation) router or HTTP proxy server.  If so, all clients
@@ -79,11 +79,16 @@ public interface SessionContext extends Map<String, Object> {
      * {@code Session} host.
      *
      * @return the originating host name or IP address (as a String) from where the {@code Subject} is initiating the
-     *         {@code Session}.
+     * {@code Session}.
      * @see #setHost(String) setHost(String)
      */
     String getHost();
 
+    /**
+     * sessionId
+     *
+     * @return sessionId
+     */
     Serializable getSessionId();
 
     void setSessionId(Serializable sessionId);

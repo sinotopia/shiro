@@ -90,7 +90,8 @@ public class SimpleSession implements ValidatingSession, Serializable {
     private transient Map<Object, Object> attributes;
 
     public SimpleSession() {
-        this.timeout = DefaultSessionManager.DEFAULT_GLOBAL_SESSION_TIMEOUT; //TODO - remove concrete reference to DefaultSessionManager
+        //TODO - remove concrete reference to DefaultSessionManager
+        this.timeout = DefaultSessionManager.DEFAULT_GLOBAL_SESSION_TIMEOUT;
         this.startTimestamp = new Date();
         this.lastAccessTime = this.startTimestamp;
     }
@@ -116,6 +117,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         return (bitMask & fieldBitMask) != 0;
     }
 
+    @Override
     public Serializable getId() {
         return this.id;
     }
@@ -124,6 +126,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         this.id = id;
     }
 
+    @Override
     public Date getStartTimestamp() {
         return startTimestamp;
     }
@@ -157,6 +160,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         this.stopTimestamp = stopTimestamp;
     }
 
+    @Override
     public Date getLastAccessTime() {
         return lastAccessTime;
     }
@@ -179,14 +183,17 @@ public class SimpleSession implements ValidatingSession, Serializable {
         this.expired = expired;
     }
 
+    @Override
     public long getTimeout() {
         return timeout;
     }
 
+    @Override
     public void setTimeout(long timeout) {
         this.timeout = timeout;
     }
 
+    @Override
     public String getHost() {
         return host;
     }
@@ -203,10 +210,12 @@ public class SimpleSession implements ValidatingSession, Serializable {
         this.attributes = attributes;
     }
 
+    @Override
     public void touch() {
         this.lastAccessTime = new Date();
     }
 
+    @Override
     public void stop() {
         if (this.stopTimestamp == null) {
             this.stopTimestamp = new Date();
@@ -225,6 +234,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
     /**
      * @since 0.9
      */
+    @Override
     public boolean isValid() {
         return !isStopped() && !isExpired();
     }
@@ -273,6 +283,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         return false;
     }
 
+    @Override
     public void validate() throws InvalidSessionException {
         //check for stopped:
         if (isStopped()) {
@@ -315,6 +326,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         return attributes;
     }
 
+    @Override
     public Collection<Object> getAttributeKeys() throws InvalidSessionException {
         Map<Object, Object> attributes = getAttributes();
         if (attributes == null) {
@@ -323,6 +335,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         return attributes.keySet();
     }
 
+    @Override
     public Object getAttribute(Object key) {
         Map<Object, Object> attributes = getAttributes();
         if (attributes == null) {
@@ -331,6 +344,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         return attributes.get(key);
     }
 
+    @Override
     public void setAttribute(Object key, Object value) {
         if (value == null) {
             removeAttribute(key);
@@ -339,6 +353,7 @@ public class SimpleSession implements ValidatingSession, Serializable {
         }
     }
 
+    @Override
     public Object removeAttribute(Object key) {
         Map<Object, Object> attributes = getAttributes();
         if (attributes == null) {

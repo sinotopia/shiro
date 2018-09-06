@@ -55,7 +55,6 @@ public class DelegatingSession implements Session, Serializable {
      */
     private final transient NativeSessionManager sessionManager;
 
-
     public DelegatingSession(NativeSessionManager sessionManager, SessionKey key) {
         if (sessionManager == null) {
             throw new IllegalArgumentException("sessionManager argument cannot be null.");
@@ -76,6 +75,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#getId()
      */
+    @Override
     public Serializable getId() {
         return key.getSessionId();
     }
@@ -83,6 +83,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#getStartTimestamp()
      */
+    @Override
     public Date getStartTimestamp() {
         if (startTimestamp == null) {
             startTimestamp = sessionManager.getStartTimestamp(key);
@@ -93,19 +94,23 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#getLastAccessTime()
      */
+    @Override
     public Date getLastAccessTime() {
         //can't cache - only business pojo knows the accurate time:
         return sessionManager.getLastAccessTime(key);
     }
 
+    @Override
     public long getTimeout() throws InvalidSessionException {
         return sessionManager.getTimeout(key);
     }
 
+    @Override
     public void setTimeout(long maxIdleTimeInMillis) throws InvalidSessionException {
         sessionManager.setTimeout(key, maxIdleTimeInMillis);
     }
 
+    @Override
     public String getHost() {
         if (host == null) {
             host = sessionManager.getHost(key);
@@ -116,6 +121,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#touch()
      */
+    @Override
     public void touch() throws InvalidSessionException {
         sessionManager.touch(key);
     }
@@ -123,6 +129,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#stop()
      */
+    @Override
     public void stop() throws InvalidSessionException {
         sessionManager.stop(key);
     }
@@ -130,6 +137,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#getAttributeKeys
      */
+    @Override
     public Collection<Object> getAttributeKeys() throws InvalidSessionException {
         return sessionManager.getAttributeKeys(key);
     }
@@ -137,6 +145,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see org.apache.shiro.session.Session#getAttribute(Object key)
      */
+    @Override
     public Object getAttribute(Object attributeKey) throws InvalidSessionException {
         return sessionManager.getAttribute(this.key, attributeKey);
     }
@@ -144,6 +153,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see Session#setAttribute(Object key, Object value)
      */
+    @Override
     public void setAttribute(Object attributeKey, Object value) throws InvalidSessionException {
         if (value == null) {
             removeAttribute(attributeKey);
@@ -155,6 +165,7 @@ public class DelegatingSession implements Session, Serializable {
     /**
      * @see Session#removeAttribute(Object key)
      */
+    @Override
     public Object removeAttribute(Object attributeKey) throws InvalidSessionException {
         return sessionManager.removeAttribute(this.key, attributeKey);
     }

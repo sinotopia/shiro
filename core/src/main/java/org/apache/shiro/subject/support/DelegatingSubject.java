@@ -148,23 +148,28 @@ public class DelegatingSubject implements Subject {
     /**
      * @see Subject#getPrincipal()
      */
+    @Override
     public Object getPrincipal() {
         return getPrimaryPrincipal(getPrincipals());
     }
 
+    @Override
     public PrincipalCollection getPrincipals() {
         List<PrincipalCollection> runAsPrincipals = getRunAsPrincipalsStack();
         return CollectionUtils.isEmpty(runAsPrincipals) ? this.principals : runAsPrincipals.get(0);
     }
 
+    @Override
     public boolean isPermitted(String permission) {
         return hasPrincipals() && securityManager.isPermitted(getPrincipals(), permission);
     }
 
+    @Override
     public boolean isPermitted(Permission permission) {
         return hasPrincipals() && securityManager.isPermitted(getPrincipals(), permission);
     }
 
+    @Override
     public boolean[] isPermitted(String... permissions) {
         if (hasPrincipals()) {
             return securityManager.isPermitted(getPrincipals(), permissions);
@@ -173,6 +178,7 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public boolean[] isPermitted(List<Permission> permissions) {
         if (hasPrincipals()) {
             return securityManager.isPermitted(getPrincipals(), permissions);
@@ -181,10 +187,12 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public boolean isPermittedAll(String... permissions) {
         return hasPrincipals() && securityManager.isPermittedAll(getPrincipals(), permissions);
     }
 
+    @Override
     public boolean isPermittedAll(Collection<Permission> permissions) {
         return hasPrincipals() && securityManager.isPermittedAll(getPrincipals(), permissions);
     }
@@ -203,30 +211,36 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public void checkPermission(String permission) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkPermission(getPrincipals(), permission);
     }
 
+    @Override
     public void checkPermission(Permission permission) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkPermission(getPrincipals(), permission);
     }
 
+    @Override
     public void checkPermissions(String... permissions) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkPermissions(getPrincipals(), permissions);
     }
 
+    @Override
     public void checkPermissions(Collection<Permission> permissions) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkPermissions(getPrincipals(), permissions);
     }
 
+    @Override
     public boolean hasRole(String roleIdentifier) {
         return hasPrincipals() && securityManager.hasRole(getPrincipals(), roleIdentifier);
     }
 
+    @Override
     public boolean[] hasRoles(List<String> roleIdentifiers) {
         if (hasPrincipals()) {
             return securityManager.hasRoles(getPrincipals(), roleIdentifiers);
@@ -235,27 +249,33 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public boolean hasAllRoles(Collection<String> roleIdentifiers) {
         return hasPrincipals() && securityManager.hasAllRoles(getPrincipals(), roleIdentifiers);
     }
 
+    @Override
     public void checkRole(String role) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkRole(getPrincipals(), role);
     }
 
+    @Override
     public void checkRoles(String... roleIdentifiers) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkRoles(getPrincipals(), roleIdentifiers);
     }
 
+    @Override
     public void checkRoles(Collection<String> roles) throws AuthorizationException {
         assertAuthzCheckPossible();
         securityManager.checkRoles(getPrincipals(), roles);
     }
 
+    @Override
     public void login(AuthenticationToken token) throws AuthenticationException {
         clearRunAsIdentitiesInternal();
+
         Subject subject = securityManager.login(this, token);
 
         PrincipalCollection principals;
@@ -292,10 +312,12 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public boolean isAuthenticated() {
         return authenticated;
     }
 
+    @Override
     public boolean isRemembered() {
         PrincipalCollection principals = getPrincipals();
         return principals != null && !principals.isEmpty() && !isAuthenticated();
@@ -311,17 +333,18 @@ public class DelegatingSubject implements Subject {
         return this.sessionCreationEnabled;
     }
 
+    @Override
     public Session getSession() {
         return getSession(true);
     }
 
+    @Override
     public Session getSession(boolean create) {
         if (log.isTraceEnabled()) {
             log.trace("attempting to get session; create = " + create +
                     "; session is null = " + (this.session == null) +
                     "; session has id = " + (this.session != null && session.getId() != null));
         }
-
         if (this.session == null && create) {
 
             //added in 1.2:
@@ -336,6 +359,7 @@ public class DelegatingSubject implements Subject {
 
             log.trace("Starting session for host {}", getHost());
             SessionContext sessionContext = createSessionContext();
+            //开始会话
             Session session = this.securityManager.start(sessionContext);
             this.session = decorate(session);
         }
@@ -360,6 +384,7 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public void logout() {
         try {
             clearRunAsIdentitiesInternal();
@@ -380,6 +405,7 @@ public class DelegatingSubject implements Subject {
         this.session = null;
     }
 
+    @Override
     public <V> V execute(Callable<V> callable) throws ExecutionException {
         Callable<V> associated = associateWith(callable);
         try {
@@ -389,15 +415,18 @@ public class DelegatingSubject implements Subject {
         }
     }
 
+    @Override
     public void execute(Runnable runnable) {
         Runnable associated = associateWith(runnable);
         associated.run();
     }
 
+    @Override
     public <V> Callable<V> associateWith(Callable<V> callable) {
         return new SubjectCallable<V>(this, callable);
     }
 
+    @Override
     public Runnable associateWith(Runnable runnable) {
         if (runnable instanceof Thread) {
             String msg = "This implementation does not support Thread arguments because of JDK ThreadLocal " +
@@ -409,6 +438,7 @@ public class DelegatingSubject implements Subject {
         return new SubjectRunnable(this, runnable);
     }
 
+    @Override
     public void runAs(PrincipalCollection principals) {
         if (!hasPrincipals()) {
             String msg = "This subject does not yet have an identity.  Assuming the identity of another " +
@@ -424,12 +454,13 @@ public class DelegatingSubject implements Subject {
     // ======================================
     // 'Run As' support implementations
     // ======================================
-
+    @Override
     public boolean isRunAs() {
         List<PrincipalCollection> stack = getRunAsPrincipalsStack();
         return !CollectionUtils.isEmpty(stack);
     }
 
+    @Override
     public PrincipalCollection getPreviousPrincipals() {
         PrincipalCollection previousPrincipals = null;
         List<PrincipalCollection> stack = getRunAsPrincipalsStack();
@@ -446,6 +477,7 @@ public class DelegatingSubject implements Subject {
         return previousPrincipals;
     }
 
+    @Override
     public PrincipalCollection releaseRunAs() {
         return popIdentity();
     }
@@ -509,6 +541,7 @@ public class DelegatingSubject implements Subject {
             owner = owningSubject;
         }
 
+        @Override
         public void stop() throws InvalidSessionException {
             super.stop();
             owner.sessionStopped();

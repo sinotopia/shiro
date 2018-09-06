@@ -50,12 +50,15 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
     private static final Logger log = LoggerFactory.getLogger(DefaultWebSessionManager.class);
 
     private Cookie sessionIdCookie;
+
     private boolean sessionIdCookieEnabled;
+
     private boolean sessionIdUrlRewritingEnabled;
 
     public DefaultWebSessionManager() {
         Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);
-        cookie.setHttpOnly(true); //more secure, protects against XSS attacks
+        //more secure, protects against XSS attacks
+        cookie.setHttpOnly(true);
         this.sessionIdCookie = cookie;
         this.sessionIdCookieEnabled = true;
         this.sessionIdUrlRewritingEnabled = true;
@@ -172,7 +175,8 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
         }
 
         int queryStartIndex = uri.indexOf('?');
-        if (queryStartIndex >= 0) { //get rid of the query string
+        if (queryStartIndex >= 0) {
+            //get rid of the query string
             uri = uri.substring(0, queryStartIndex);
         }
 
@@ -214,6 +218,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
         return name;
     }
 
+    @Override
     protected Session createExposedSession(Session session, SessionContext context) {
         if (!WebUtils.isWeb(context)) {
             return super.createExposedSession(session, context);
@@ -224,6 +229,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
         return new DelegatingSession(this, key);
     }
 
+    @Override
     protected Session createExposedSession(Session session, SessionKey key) {
         if (!WebUtils.isWeb(key)) {
             return super.createExposedSession(session, key);

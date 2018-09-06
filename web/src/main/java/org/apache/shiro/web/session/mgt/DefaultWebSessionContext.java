@@ -35,6 +35,7 @@ public class DefaultWebSessionContext extends DefaultSessionContext implements W
     private static final long serialVersionUID = -3974604687792523072L;
 
     private static final String SERVLET_REQUEST = DefaultWebSessionContext.class.getName() + ".SERVLET_REQUEST";
+
     private static final String SERVLET_RESPONSE = DefaultWebSessionContext.class.getName() + ".SERVLET_RESPONSE";
 
     public DefaultWebSessionContext() {
@@ -45,20 +46,24 @@ public class DefaultWebSessionContext extends DefaultSessionContext implements W
         super(map);
     }
 
+    @Override
     public ServletRequest getServletRequest() {
         return getTypedValue(SERVLET_REQUEST, ServletRequest.class);
     }
 
+    @Override
     public void setServletRequest(ServletRequest request) {
         if (request != null) {
             put(SERVLET_REQUEST, request);
         }
     }
 
+    @Override
     public ServletResponse getServletResponse() {
         return getTypedValue(SERVLET_RESPONSE, ServletResponse.class);
     }
 
+    @Override
     public void setServletResponse(ServletResponse response) {
         if (response != null) {
             put(SERVLET_RESPONSE, response);

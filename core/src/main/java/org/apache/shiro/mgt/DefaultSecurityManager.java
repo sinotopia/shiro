@@ -77,7 +77,9 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
     private static final Logger log = LoggerFactory.getLogger(DefaultSecurityManager.class);
 
     protected RememberMeManager rememberMeManager;
+
     protected SubjectDAO subjectDAO;
+
     protected SubjectFactory subjectFactory;
 
     /**
@@ -272,6 +274,7 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
      * @return a Subject representing the authenticated user.
      * @throws AuthenticationException if there is a problem authenticating the specified {@code token}.
      */
+    @Override
     public Subject login(Subject subject, AuthenticationToken token) throws AuthenticationException {
         AuthenticationInfo info;
         try {
@@ -285,7 +288,8 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
                             "exception.  Logging and propagating original AuthenticationException.", e);
                 }
             }
-            throw ae; //propagate
+            //propagate
+            throw ae;
         }
 
         Subject loggedIn = createSubject(token, info, subject);
@@ -333,6 +337,7 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
      * @see #save(org.apache.shiro.subject.Subject)
      * @since 1.0
      */
+    @Override
     public Subject createSubject(SubjectContext subjectContext) {
         //create a copy so we don't modify the argument's backing map:
         SubjectContext context = copy(subjectContext);
@@ -544,6 +549,7 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
         return sessionContext;
     }
 
+    @Override
     public void logout(Subject subject) {
 
         if (subject == null) {

@@ -106,6 +106,7 @@ public abstract class AuthenticatingSecurityManager extends RealmSecurityManager
         return this.authenticator.authenticate(token);
     }
 
+    @Override
     public void destroy() {
         LifecycleUtils.destroy(getAuthenticator());
         this.authenticator = null;

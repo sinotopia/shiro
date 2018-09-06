@@ -35,6 +35,7 @@ public class DefaultSessionKey implements SessionKey, Serializable {
         this.sessionId = sessionId;
     }
 
+    @Override
     public Serializable getSessionId() {
         return this.sessionId;
     }

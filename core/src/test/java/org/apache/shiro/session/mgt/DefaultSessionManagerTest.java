@@ -110,7 +110,7 @@ public class DefaultSessionManagerTest {
         SessionListener listener = new SessionListenerAdapter() {
             public void onStop(Session session) {
                 stopped[0] = true;
-                value[0] = (String)session.getAttribute("foo");
+                value[0] = (String) session.getAttribute("foo");
             }
         };
         sm.getSessionListeners().add(listener);
@@ -157,6 +157,7 @@ public class DefaultSessionManagerTest {
 
         final Session[] activeSession = new SimpleSession[]{session1};
         sm.setSessionFactory(new SessionFactory() {
+            @Override
             public Session createSession(SessionContext initData) {
                 return activeSession[0];
             }
@@ -214,8 +215,7 @@ public class DefaultSessionManagerTest {
 
             // now sessionValidationScheduler should be enabled
             assertTrue("sessionValidationScheduler was not enabled", sessionValidationScheduler.isEnabled());
-        }
-        finally {
+        } finally {
             // cleanup after test
             sessionManager.destroy();
         }

@@ -70,18 +70,22 @@ public class HttpServletSession implements Session {
         return (String) key;
     }
 
+    @Override
     public Serializable getId() {
         return httpSession.getId();
     }
 
+    @Override
     public Date getStartTimestamp() {
         return new Date(httpSession.getCreationTime());
     }
 
+    @Override
     public Date getLastAccessTime() {
         return new Date(httpSession.getLastAccessedTime());
     }
 
+    @Override
     public long getTimeout() throws InvalidSessionException {
         try {
             return httpSession.getMaxInactiveInterval() * 1000L;
@@ -90,6 +94,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public void setTimeout(long maxIdleTimeInMillis) throws InvalidSessionException {
         try {
             int timeout = Long.valueOf(maxIdleTimeInMillis / 1000).intValue();
@@ -99,6 +104,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public String getHost() {
         return (String) getAttribute(HOST_SESSION_KEY);
     }
@@ -107,6 +113,7 @@ public class HttpServletSession implements Session {
         setAttribute(HOST_SESSION_KEY, host);
     }
 
+    @Override
     public void touch() throws InvalidSessionException {
         //just manipulate the session to update the access time:
         try {
@@ -117,6 +124,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public void stop() throws InvalidSessionException {
         try {
             httpSession.invalidate();
@@ -125,6 +133,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public Collection<Object> getAttributeKeys() throws InvalidSessionException {
         try {
             Enumeration namesEnum = httpSession.getAttributeNames();
@@ -141,6 +150,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public Object getAttribute(Object key) throws InvalidSessionException {
         try {
             return httpSession.getAttribute(assertString(key));
@@ -149,6 +159,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public void setAttribute(Object key, Object value) throws InvalidSessionException {
         try {
             httpSession.setAttribute(assertString(key), value);
@@ -157,6 +168,7 @@ public class HttpServletSession implements Session {
         }
     }
 
+    @Override
     public Object removeAttribute(Object key) throws InvalidSessionException {
         try {
             String sKey = assertString(key);

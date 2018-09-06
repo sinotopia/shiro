@@ -43,6 +43,7 @@ public class WebDelegatingSubject extends DelegatingSubject implements WebSubjec
     private static final long serialVersionUID = -1655724323350159250L;
 
     private final ServletRequest servletRequest;
+
     private final ServletResponse servletResponse;
 
     public WebDelegatingSubject(PrincipalCollection principals, boolean authenticated,
@@ -62,10 +63,12 @@ public class WebDelegatingSubject extends DelegatingSubject implements WebSubjec
         this.servletResponse = response;
     }
 
+    @Override
     public ServletRequest getServletRequest() {
         return servletRequest;
     }
 
+    @Override
     public ServletResponse getServletResponse() {
         return servletResponse;
     }

@@ -34,6 +34,7 @@ public class SimpleSessionFactory implements SessionFactory {
      * @param initData the initialization data to be used during {@link Session} creation.
      * @return a new {@link SimpleSession SimpleSession} instance
      */
+    @Override
     public Session createSession(SessionContext initData) {
         if (initData != null) {
             String host = initData.getHost();

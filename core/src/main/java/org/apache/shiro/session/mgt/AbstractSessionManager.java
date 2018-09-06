@@ -37,6 +37,7 @@ public abstract class AbstractSessionManager implements SessionManager {
 
     protected static final long MILLIS_PER_SECOND = 1000;
     protected static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND;
+
     /**
      * Default main session timeout value, equal to {@code 30} minutes.
      */
