@@ -46,8 +46,9 @@ public class DefaultAnnotationResolver implements AnnotationResolver {
      * @param mi    the intercepted method to be invoked.
      * @param clazz the annotation class to use to find an annotation instance on the method.
      * @return the discovered annotation or {@code null} if an annotation instance could not be
-     *         found.
+     * found.
      */
+    @Override
     public Annotation getAnnotation(MethodInvocation mi, Class<? extends Annotation> clazz) {
         if (mi == null) {
             throw new IllegalArgumentException("method argument cannot be null");
@@ -56,10 +57,9 @@ public class DefaultAnnotationResolver implements AnnotationResolver {
         if (m == null) {
             String msg = MethodInvocation.class.getName() + " parameter incorrectly constructed.  getMethod() returned null";
             throw new IllegalArgumentException(msg);
-
         }
         Annotation annotation = m.getAnnotation(clazz);
-        if (annotation == null ) {
+        if (annotation == null) {
             Object miThis = mi.getThis();
             //SHIRO-473 - miThis could be null for static methods, just return null
             annotation = miThis != null ? miThis.getClass().getAnnotation(clazz) : null;

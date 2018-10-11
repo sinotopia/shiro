@@ -37,6 +37,7 @@ import org.apache.shiro.web.util.WebUtils;
 class SimpleFilterChainResolver implements FilterChainResolver {
     private final Map<String, Key<? extends Filter>[]> chains;
     private final Injector injector;
+
     private final PatternMatcher patternMatcher;
 
     SimpleFilterChainResolver(Map<String, Key<? extends Filter>[]> chains, Injector injector, PatternMatcher patternMatcher) {
@@ -45,20 +46,25 @@ class SimpleFilterChainResolver implements FilterChainResolver {
         this.patternMatcher = patternMatcher;
     }
 
+    @Override
     public FilterChain getChain(ServletRequest request, ServletResponse response, final FilterChain originalChain) {
         String path = WebUtils.getPathWithinApplication(WebUtils.toHttp(request));
         for (final String pathPattern : chains.keySet()) {
             if (patternMatcher.matches(pathPattern, path)) {
                 final Iterator<Key<? extends Filter>> chain = Arrays.asList(chains.get(pathPattern)).iterator();
+
                 return new SimpleFilterChain(originalChain, new Iterator<Filter>() {
+                    @Override
                     public boolean hasNext() {
                         return chain.hasNext();
                     }
 
+                    @Override
                     public Filter next() {
                         return injector.getInstance(chain.next());
                     }
 
+                    @Override
                     public void remove() {
                         throw new UnsupportedOperationException();
                     }

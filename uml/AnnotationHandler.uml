@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.aop.AnnotationHandler</OriginalElement>
+  <nodes>
+    <node x="778.0" y="79.0">org.apache.shiro.guice.aop.ShiroAopModuleTest.MyAnnotationHandler</node>
+    <node x="535.0" y="158.0">org.apache.shiro.authz.aop.GuestAnnotationHandler</node>
+    <node x="0.0" y="158.0">org.apache.shiro.authz.aop.AuthenticatedAnnotationHandler</node>
+    <node x="972.0" y="158.0">org.apache.shiro.authz.aop.UserAnnotationHandler</node>
+    <node x="278.0" y="158.0">org.apache.shiro.authz.aop.PermissionAnnotationHandler</node>
+    <node x="514.0" y="79.0">org.apache.shiro.authz.aop.AuthorizingAnnotationHandler</node>
+    <node x="668.75" y="0.0">org.apache.shiro.aop.AnnotationHandler</node>
+    <node x="757.0" y="158.0">org.apache.shiro.authz.aop.RoleAnnotationHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler" target="org.apache.shiro.aop.AnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="636.0" y="54.0" />
+      <point x="710.5" y="54.0" />
+      <point x="-41.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.aop.RoleAnnotationHandler" target="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="854.5" y="138.0" />
+      <point x="684.8" y="138.0" />
+      <point x="48.799999999999955" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.aop.GuestAnnotationHandler" target="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.aop.UserAnnotationHandler" target="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="1069.5" y="128.0" />
+      <point x="733.6" y="128.0" />
+      <point x="97.60000000000002" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.guice.aop.ShiroAopModuleTest.MyAnnotationHandler" target="org.apache.shiro.aop.AnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="868.5" y="54.0" />
+      <point x="794.0" y="54.0" />
+      <point x="41.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.aop.AuthenticatedAnnotationHandler" target="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="129.0" y="128.0" />
+      <point x="538.4" y="128.0" />
+      <point x="-97.60000000000002" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.aop.PermissionAnnotationHandler" target="org.apache.shiro.authz.aop.AuthorizingAnnotationHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="396.5" y="138.0" />
+      <point x="587.2" y="138.0" />
+      <point x="-48.80000000000001" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="559.5" y="29.0" />
+  <SelectedNodes>
+    <node>org.apache.shiro.authz.aop.UserAnnotationHandler</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

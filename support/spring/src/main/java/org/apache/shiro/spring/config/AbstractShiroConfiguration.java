@@ -154,6 +154,6 @@ public class AbstractShiroConfiguration {
 
     protected Realm iniRealmFromLocation(String iniLocation) {
         Ini ini = Ini.fromResourcePath(iniLocation);
-        return new IniRealm( ini );
+        return new IniRealm(ini);
     }
 }

@@ -63,7 +63,7 @@ public class PathMatchingFilterChainResolver implements FilterChainResolver {
      * default implementation is an {@link org.apache.shiro.util.AntPathMatcher AntPathMatcher}.
      *
      * @return the {@code PatternMatcher} used when determining if an incoming request's path
-     *         matches a configured filter chain.
+     * matches a configured filter chain.
      */
     public PatternMatcher getPathMatcher() {
         return pathMatcher;
@@ -90,6 +90,7 @@ public class PathMatchingFilterChainResolver implements FilterChainResolver {
         this.filterChainManager = filterChainManager;
     }
 
+    @Override
     public FilterChain getChain(ServletRequest request, ServletResponse response, FilterChain originalChain) {
         FilterChainManager filterChainManager = getFilterChainManager();
         if (!filterChainManager.hasChains()) {
@@ -128,7 +129,7 @@ public class PathMatchingFilterChainResolver implements FilterChainResolver {
      * @param pattern the pattern to match against
      * @param path    the value to match with the specified {@code pattern}
      * @return {@code true} if the request {@code path} matches the specified filter chain url {@code pattern},
-     *         {@code false} otherwise.
+     * {@code false} otherwise.
      */
     protected boolean pathMatches(String pattern, String path) {
         PatternMatcher pathMatcher = getPathMatcher();
