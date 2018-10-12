@@ -447,7 +447,7 @@ public class WebUtils {
      * @param requestPairSource a {@link RequestPairSource} instance, almost always a
      *                          {@link org.apache.shiro.web.subject.WebSubject WebSubject} instance.
      * @return {@code true} if a session is allowed to be created for a subject-associated request, {@code false}
-     *         otherwise.
+     * otherwise.
      */
     public static boolean _isSessionCreationEnabled(Object requestPairSource) {
         if (requestPairSource instanceof RequestPairSource) {
@@ -466,7 +466,7 @@ public class WebUtils {
      *
      * @param request incoming servlet request.
      * @return {@code true} if a session is allowed to be created for a subject-associated request, {@code false}
-     *         otherwise.
+     * otherwise.
      */
     public static boolean _isSessionCreationEnabled(ServletRequest request) {
         if (request != null) {

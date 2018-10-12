@@ -338,6 +338,7 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
      * @return the application's Shiro Filter instance used to filter incoming web requests.
      * @throws Exception if there is a problem creating the {@code Filter} instance.
      */
+    @Override
     public Object getObject() throws Exception {
         if (instance == null) {
             instance = createInstance();
@@ -350,6 +351,7 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
      *
      * @return <code>{@link org.apache.shiro.web.servlet.AbstractShiroFilter}.class</code>
      */
+    @Override
     public Class getObjectType() {
         return SpringShiroFilter.class;
     }
@@ -359,6 +361,7 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
      *
      * @return {@code true} always.  There is almost always only ever 1 Shiro {@code Filter} per web application.
      */
+    @Override
     public boolean isSingleton() {
         return true;
     }

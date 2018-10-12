@@ -113,6 +113,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * @param permissionResolver the permissionResolver to set on all of the wrapped realms that implement the
      *                           {@link org.apache.shiro.authz.permission.PermissionResolverAware PermissionResolverAware} interface.
      */
+    @Override
     public void setPermissionResolver(PermissionResolver permissionResolver) {
         this.permissionResolver = permissionResolver;
         applyPermissionResolverToRealms();
@@ -165,6 +166,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * @param rolePermissionResolver the rolePermissionResolver to set on all of the wrapped realms that implement the
      *                               {@link org.apache.shiro.authz.permission.RolePermissionResolverAware RolePermissionResolverAware} interface.
      */
+    @Override
     public void setRolePermissionResolver(RolePermissionResolver rolePermissionResolver) {
         this.rolePermissionResolver = rolePermissionResolver;
         applyRolePermissionResolverToRealms();
@@ -216,10 +218,13 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, String)} returns <code>true</code>,
      * <code>false</code> otherwise.
      */
+    @Override
     public boolean isPermitted(PrincipalCollection principals, String permission) {
         assertRealmsConfigured();
         for (Realm realm : getRealms()) {
-            if (!(realm instanceof Authorizer)) continue;
+            if (!(realm instanceof Authorizer)) {
+                continue;
+            }
             if (((Authorizer) realm).isPermitted(principals, permission)) {
                 return true;
             }
@@ -232,10 +237,13 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, Permission)} call returns <code>true</code>,
      * <code>false</code> otherwise.
      */
+    @Override
     public boolean isPermitted(PrincipalCollection principals, Permission permission) {
         assertRealmsConfigured();
         for (Realm realm : getRealms()) {
-            if (!(realm instanceof Authorizer)) continue;
+            if (!(realm instanceof Authorizer)) {
+                continue;
+            }
             if (((Authorizer) realm).isPermitted(principals, permission)) {
                 return true;
             }
@@ -248,6 +256,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermittedAll(org.apache.shiro.subject.PrincipalCollection, String...)} call returns
      * <code>true</code>, <code>false</code> otherwise.
      */
+    @Override
     public boolean[] isPermitted(PrincipalCollection principals, String... permissions) {
         assertRealmsConfigured();
         if (permissions != null && permissions.length > 0) {
@@ -265,6 +274,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, List)} call returns <code>true</code>,
      * <code>false</code> otherwise.
      */
+    @Override
     public boolean[] isPermitted(PrincipalCollection principals, List<Permission> permissions) {
         assertRealmsConfigured();
         if (permissions != null && !permissions.isEmpty()) {
@@ -284,6 +294,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, String)} call returns <code>true</code>
      * for <em>all</em> of the specified string permissions, <code>false</code> otherwise.
      */
+    @Override
     public boolean isPermittedAll(PrincipalCollection principals, String... permissions) {
         assertRealmsConfigured();
         if (permissions != null && permissions.length > 0) {
@@ -301,6 +312,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, Permission)} call returns <code>true</code>
      * for <em>all</em> of the specified Permissions, <code>false</code> otherwise.
      */
+    @Override
     public boolean isPermittedAll(PrincipalCollection principals, Collection<Permission> permissions) {
         assertRealmsConfigured();
         if (permissions != null && !permissions.isEmpty()) {
@@ -317,6 +329,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * If !{@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, String) isPermitted(permission)}, throws
      * an <code>UnauthorizedException</code> otherwise returns quietly.
      */
+    @Override
     public void checkPermission(PrincipalCollection principals, String permission) throws AuthorizationException {
         assertRealmsConfigured();
         if (!isPermitted(principals, permission)) {
@@ -328,6 +341,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * If !{@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, Permission) isPermitted(permission)}, throws
      * an <code>UnauthorizedException</code> otherwise returns quietly.
      */
+    @Override
     public void checkPermission(PrincipalCollection principals, Permission permission) throws AuthorizationException {
         assertRealmsConfigured();
         if (!isPermitted(principals, permission)) {
@@ -339,6 +353,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * If !{@link #isPermitted(org.apache.shiro.subject.PrincipalCollection, String...) isPermitted(permission)},
      * throws an <code>UnauthorizedException</code> otherwise returns quietly.
      */
+    @Override
     public void checkPermissions(PrincipalCollection principals, String... permissions) throws AuthorizationException {
         assertRealmsConfigured();
         if (permissions != null && permissions.length > 0) {
@@ -353,6 +368,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * <em>all</em> the given Permissions, throws
      * an <code>UnauthorizedException</code> otherwise returns quietly.
      */
+    @Override
     public void checkPermissions(PrincipalCollection principals, Collection<Permission> permissions) throws AuthorizationException {
         assertRealmsConfigured();
         if (permissions != null) {
@@ -367,6 +383,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #hasRole(org.apache.shiro.subject.PrincipalCollection, String)} call returns <code>true</code>,
      * <code>false</code> otherwise.
      */
+    @Override
     public boolean hasRole(PrincipalCollection principals, String roleIdentifier) {
         assertRealmsConfigured();
         for (Realm realm : getRealms()) {
@@ -382,6 +399,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * Calls {@link #hasRole(org.apache.shiro.subject.PrincipalCollection, String)} for each role name in the specified
      * collection and places the return value from each call at the respective location in the returned array.
      */
+    @Override
     public boolean[] hasRoles(PrincipalCollection principals, List<String> roleIdentifiers) {
         assertRealmsConfigured();
         if (roleIdentifiers != null && !roleIdentifiers.isEmpty()) {
@@ -401,6 +419,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * {@link #hasRole(org.apache.shiro.subject.PrincipalCollection, String)} call returns <code>true</code> for
      * <em>all</em> roles specified, <code>false</code> otherwise.
      */
+    @Override
     public boolean hasAllRoles(PrincipalCollection principals, Collection<String> roleIdentifiers) {
         assertRealmsConfigured();
         for (String roleIdentifier : roleIdentifiers) {
@@ -415,6 +434,7 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
      * If !{@link #hasRole(org.apache.shiro.subject.PrincipalCollection, String) hasRole(role)}, throws
      * an <code>UnauthorizedException</code> otherwise returns quietly.
      */
+    @Override
     public void checkRole(PrincipalCollection principals, String role) throws AuthorizationException {
         assertRealmsConfigured();
         if (!hasRole(principals, role)) {
@@ -425,14 +445,18 @@ public class ModularRealmAuthorizer implements Authorizer, PermissionResolverAwa
     /**
      * Calls {@link #checkRoles(PrincipalCollection principals, String... roles) checkRoles(PrincipalCollection principals, String... roles) }.
      */
+    @Override
     public void checkRoles(PrincipalCollection principals, Collection<String> roles) throws AuthorizationException {
         //SHIRO-234 - roles.toArray() -> roles.toArray(new String[roles.size()])
-        if (roles != null && !roles.isEmpty()) checkRoles(principals, roles.toArray(new String[roles.size()]));
+        if (roles != null && !roles.isEmpty()) {
+            checkRoles(principals, roles.toArray(new String[roles.size()]));
+        }
     }
 
     /**
      * Calls {@link #checkRole(org.apache.shiro.subject.PrincipalCollection, String) checkRole} for each role specified.
      */
+    @Override
     public void checkRoles(PrincipalCollection principals, String... roles) throws AuthorizationException {
         assertRealmsConfigured();
         if (roles != null) {

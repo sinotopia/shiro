@@ -50,9 +50,11 @@ public class DefaultFilterChainManager implements FilterChainManager {
 
     private FilterConfig filterConfig;
 
-    private Map<String, Filter> filters; //pool of filters available for creating chains
+    //pool of filters available for creating chains
+    private Map<String, Filter> filters;
 
-    private Map<String, NamedFilterList> filterChains; //key: chain name, value: chain
+    //key: chain name, value: chain
+    private Map<String, NamedFilterList> filterChains;
 
     public DefaultFilterChainManager() {
         this.filters = new LinkedHashMap<String, Filter>();
@@ -85,6 +87,7 @@ public class DefaultFilterChainManager implements FilterChainManager {
         this.filterConfig = filterConfig;
     }
 
+    @Override
     public Map<String, Filter> getFilters() {
         return filters;
     }
@@ -107,14 +110,17 @@ public class DefaultFilterChainManager implements FilterChainManager {
         return this.filters.get(name);
     }
 
+    @Override
     public void addFilter(String name, Filter filter) {
         addFilter(name, filter, false);
     }
 
+    @Override
     public void addFilter(String name, Filter filter, boolean init) {
         addFilter(name, filter, init, true);
     }
 
+    @Override
     public void createChain(String chainName, String chainDefinition) {
         if (!StringUtils.hasText(chainName)) {
             throw new NullPointerException("chainName cannot be null or empty.");
@@ -162,10 +168,11 @@ public class DefaultFilterChainManager implements FilterChainManager {
      *     output[1] == bar[baz]
      *     output[2] == blah[x, y]
      * </pre>
+     *
      * @param chainDefinition the comma-delimited filter chain definition.
      * @return an array of filter definition tokens
-     * @since 1.2
      * @see <a href="https://issues.apache.org/jira/browse/SHIRO-205">SHIRO-205</a>
+     * @since 1.2
      */
     protected String[] splitChainDefinition(String chainDefinition) {
         return StringUtils.split(chainDefinition, StringUtils.DEFAULT_DELIMITER_CHAR, '[', ']', true, true);
@@ -175,24 +182,25 @@ public class DefaultFilterChainManager implements FilterChainManager {
      * Based on the given filter chain definition token (e.g. 'foo' or 'foo[bar, baz]'), this will return the token
      * as a name/value pair, removing any brackets as necessary.  Examples:
      * <table>
-     *     <tr>
-     *         <th>Input</th>
-     *         <th>Result</th>
-     *     </tr>
-     *     <tr>
-     *         <td>{@code foo}</td>
-     *         <td>returned[0] == {@code foo}<br/>returned[1] == {@code null}</td>
-     *     </tr>
-     *     <tr>
-     *         <td>{@code foo[bar, baz]}</td>
-     *         <td>returned[0] == {@code foo}<br/>returned[1] == {@code bar, baz}</td>
-     *     </tr>
+     * <tr>
+     * <th>Input</th>
+     * <th>Result</th>
+     * </tr>
+     * <tr>
+     * <td>{@code foo}</td>
+     * <td>returned[0] == {@code foo}<br/>returned[1] == {@code null}</td>
+     * </tr>
+     * <tr>
+     * <td>{@code foo[bar, baz]}</td>
+     * <td>returned[0] == {@code foo}<br/>returned[1] == {@code bar, baz}</td>
+     * </tr>
      * </table>
+     *
      * @param token the filter chain definition token
      * @return A name/value pair representing the filter name and a (possibly null) config value.
      * @throws ConfigurationException if the token cannot be parsed
-     * @since 1.2
      * @see <a href="https://issues.apache.org/jira/browse/SHIRO-205">SHIRO-205</a>
+     * @since 1.2
      */
     protected String[] toNameConfigPair(String token) throws ConfigurationException {
 
@@ -230,7 +238,7 @@ public class DefaultFilterChainManager implements FilterChainManager {
                     //So we ignore the stripped value.
                 }
             }
-            
+
             return new String[]{name, config};
 
         } catch (Exception e) {
@@ -252,10 +260,12 @@ public class DefaultFilterChainManager implements FilterChainManager {
         }
     }
 
+    @Override
     public void addToChain(String chainName, String filterName) {
         addToChain(chainName, filterName, null);
     }
 
+    @Override
     public void addToChain(String chainName, String filterName, String chainSpecificFilterConfig) {
         if (!StringUtils.hasText(chainName)) {
             throw new IllegalArgumentException("chainName cannot be null or empty.");
@@ -302,19 +312,23 @@ public class DefaultFilterChainManager implements FilterChainManager {
         return chain;
     }
 
+    @Override
     public NamedFilterList getChain(String chainName) {
         return this.filterChains.get(chainName);
     }
 
+    @Override
     public boolean hasChains() {
         return !CollectionUtils.isEmpty(this.filterChains);
     }
 
+    @Override
     public Set<String> getChainNames() {
         //noinspection unchecked
         return this.filterChains != null ? this.filterChains.keySet() : Collections.EMPTY_SET;
     }
 
+    @Override
     public FilterChain proxy(FilterChain original, String chainName) {
         NamedFilterList configured = getChain(chainName);
         if (configured == null) {

@@ -46,7 +46,7 @@ public interface FilterChainManager {
      *
      * @param chainName the name identifying the filter chain.
      * @return the filter chain identified by the specified {@code chainName} or {@code null} if there is no chain with
-     *         that name.
+     * that name.
      */
     NamedFilterList getChain(String chainName);
 
@@ -73,7 +73,7 @@ public interface FilterChainManager {
      * @param chainName the name of the internal configured filter chain that should 'sit in front' of the specified
      *                  original chain.
      * @return a {@code FilterChain} instance that will execute the named chain and then finally the
-     *         specified {@code original} FilterChain instance.
+     * specified {@code original} FilterChain instance.
      * @throws IllegalArgumentException if there is no configured chain with the given {@code chainName}.
      */
     FilterChain proxy(FilterChain original, String chainName);

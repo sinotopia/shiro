@@ -36,12 +36,14 @@ import java.lang.reflect.Method;
  */
 public class SpringAnnotationResolver implements AnnotationResolver {
 
+    @Override
     public Annotation getAnnotation(MethodInvocation mi, Class<? extends Annotation> clazz) {
         Method m = mi.getMethod();
 
         Annotation a = AnnotationUtils.findAnnotation(m, clazz);
-        if (a != null) return a;
-
+        if (a != null) {
+            return a;
+        }
         //The MethodInvocation's method object could be a method defined in an interface.
         //However, if the annotation existed in the interface's implementation (and not
         //the interface itself), it won't be on the above method object.  Instead, we need to
@@ -50,7 +52,9 @@ public class SpringAnnotationResolver implements AnnotationResolver {
         Class<?> targetClass = mi.getThis().getClass();
         m = ClassUtils.getMostSpecificMethod(m, targetClass);
         a = AnnotationUtils.findAnnotation(m, clazz);
-        if (a != null) return a;
+        if (a != null) {
+            return a;
+        }
         // See if the class has the same annotation
         return AnnotationUtils.findAnnotation(mi.getThis().getClass(), clazz);
     }
