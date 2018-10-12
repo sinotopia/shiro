@@ -130,6 +130,7 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
      * @param subject    the Subject for which the identity is being serialized.
      * @param serialized the serialized bytes to be persisted.
      */
+    @Override
     protected void rememberSerializedIdentity(Subject subject, byte[] serialized) {
 
         if (!WebUtils.isHttp(subject)) {
@@ -148,8 +149,8 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
 
         //base 64 encode it and store as a cookie:
         String base64 = Base64.encodeToString(serialized);
-
-        Cookie template = getCookie(); //the class attribute is really a template for the outgoing cookies
+        //the class attribute is really a template for the outgoing cookies
+        Cookie template = getCookie();
         Cookie cookie = new SimpleCookie(template);
         cookie.setValue(base64);
         cookie.saveTo(request, response);
@@ -180,6 +181,7 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
      *                       lookup.
      * @return a previously serialized identity byte array or {@code null} if the byte array could not be acquired.
      */
+    @Override
     protected byte[] getRememberedSerializedIdentity(SubjectContext subjectContext) {
 
         if (!WebUtils.isHttp(subjectContext)) {
@@ -251,6 +253,7 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
      *
      * @param subject the subject instance for which identity data should be forgotten from the underlying persistence
      */
+    @Override
     protected void forgetIdentity(Subject subject) {
         if (WebUtils.isHttp(subject)) {
             HttpServletRequest request = WebUtils.getHttpRequest(subject);
@@ -268,6 +271,7 @@ public class CookieRememberMeManager extends AbstractRememberMeManager {
      *
      * @param subjectContext the contextual data, usually provided by a {@link Subject.Builder} implementation
      */
+    @Override
     public void forgetIdentity(SubjectContext subjectContext) {
         if (WebUtils.isHttp(subjectContext)) {
             HttpServletRequest request = WebUtils.getHttpRequest(subjectContext);

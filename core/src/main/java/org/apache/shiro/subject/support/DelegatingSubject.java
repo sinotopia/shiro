@@ -78,6 +78,7 @@ public class DelegatingSubject implements Subject {
     protected boolean authenticated;
     protected String host;
     protected Session session;
+
     /**
      * @since 1.2
      */

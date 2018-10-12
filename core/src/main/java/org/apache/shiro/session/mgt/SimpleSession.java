@@ -41,17 +41,20 @@ import java.util.*;
  */
 public class SimpleSession implements ValidatingSession, Serializable {
 
-    protected static final long MILLIS_PER_SECOND = 1000;
-    protected static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND;
-    protected static final long MILLIS_PER_HOUR = 60 * MILLIS_PER_MINUTE;
+    //TODO - complete JavaDoc
+    private transient static final Logger log = LoggerFactory.getLogger(SimpleSession.class);
+
     // Serialization reminder:
     // You _MUST_ change this number if you introduce a change to this class
     // that is NOT serialization backwards compatible.  Serialization-compatible
     // changes do not require a change to this number.  If you need to generate
     // a new number in this case, use the JDK's 'serialver' program to generate it.
     private static final long serialVersionUID = -7125642695178165650L;
-    //TODO - complete JavaDoc
-    private transient static final Logger log = LoggerFactory.getLogger(SimpleSession.class);
+
+    protected static final long MILLIS_PER_SECOND = 1000;
+    protected static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND;
+    protected static final long MILLIS_PER_HOUR = 60 * MILLIS_PER_MINUTE;
+
     //serialization bitmask fields. DO NOT CHANGE THE ORDER THEY ARE DECLARED!
     static int bitIndexCounter = 0;
     private static final int ID_BIT_MASK = 1 << bitIndexCounter++;

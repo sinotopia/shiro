@@ -216,6 +216,7 @@ public class DefaultSubjectContext extends MapContext implements SubjectContext 
         put(AUTHENTICATED, authc);
     }
 
+    @Override
     public boolean resolveAuthenticated() {
         Boolean authc = getTypedValue(AUTHENTICATED, Boolean.class);
         if (authc == null) {

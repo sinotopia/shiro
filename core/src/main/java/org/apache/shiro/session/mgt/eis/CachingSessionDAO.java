@@ -79,6 +79,7 @@ public abstract class CachingSessionDAO extends AbstractSessionDAO implements Ca
      *
      * @param cacheManager the manager to use for constructing the session cache.
      */
+    @Override
     public void setCacheManager(CacheManager cacheManager) {
         this.cacheManager = cacheManager;
     }
@@ -90,6 +91,7 @@ public abstract class CachingSessionDAO extends AbstractSessionDAO implements Ca
      *
      * @return the CacheManager used by the implementation that creates the activeSessions Cache.
      */
+    @Override
     public CacheManager getCacheManager() {
         return cacheManager;
     }

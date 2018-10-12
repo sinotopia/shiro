@@ -41,6 +41,8 @@ import java.util.TimeZone;
  */
 public class SimpleCookie implements Cookie {
 
+    private static final transient Logger log = LoggerFactory.getLogger(SimpleCookie.class);
+
     /**
      * {@code -1}, indicating the cookie should expire when the browser closes.
      */
@@ -54,7 +56,8 @@ public class SimpleCookie implements Cookie {
     //These constants are protected on purpose so that the test case can use them
     protected static final String NAME_VALUE_DELIMITER = "=";
     protected static final String ATTRIBUTE_DELIMITER = "; ";
-    protected static final long DAY_MILLIS = 86400000; //1 day = 86,400,000 milliseconds
+    //1 day = 86,400,000 milliseconds
+    protected static final long DAY_MILLIS = 86400000;
     protected static final String GMT_TIME_ZONE_ID = "GMT";
     protected static final String COOKIE_DATE_FORMAT_STRING = "EEE, dd-MMM-yyyy HH:mm:ss z";
 
@@ -67,8 +70,6 @@ public class SimpleCookie implements Cookie {
     protected static final String COMMENT_ATTRIBUTE_NAME = "Comment";
     protected static final String SECURE_ATTRIBUTE_NAME = "Secure";
     protected static final String HTTP_ONLY_ATTRIBUTE_NAME = "HttpOnly";
-
-    private static final transient Logger log = LoggerFactory.getLogger(SimpleCookie.class);
 
     private String name;
     private String value;
@@ -83,7 +84,8 @@ public class SimpleCookie implements Cookie {
     public SimpleCookie() {
         this.maxAge = DEFAULT_MAX_AGE;
         this.version = DEFAULT_VERSION;
-        this.httpOnly = true; //most of the cookies ever used by Shiro should be as secure as possible.
+        //most of the cookies ever used by Shiro should be as secure as possible.
+        this.httpOnly = true;
     }
 
     public SimpleCookie(String name) {
@@ -246,7 +248,7 @@ public class SimpleCookie implements Cookie {
         }
     }
 
-    /*
+    /**
      * This implementation followed the grammar defined here for convenience:
      * <a href="http://github.com/abarth/http-state/blob/master/notes/2009-11-07-Yui-Naruse.txt">Cookie grammar</a>.
      *
@@ -335,14 +337,16 @@ public class SimpleCookie implements Cookie {
     private void appendSecure(StringBuilder sb, boolean secure) {
         if (secure) {
             sb.append(ATTRIBUTE_DELIMITER);
-            sb.append(SECURE_ATTRIBUTE_NAME); //No value for this attribute
+            //No value for this attribute
+            sb.append(SECURE_ATTRIBUTE_NAME);
         }
     }
 
     private void appendHttpOnly(StringBuilder sb, boolean httpOnly) {
         if (httpOnly) {
             sb.append(ATTRIBUTE_DELIMITER);
-            sb.append(HTTP_ONLY_ATTRIBUTE_NAME); //No value for this attribute
+            //No value for this attribute
+            sb.append(HTTP_ONLY_ATTRIBUTE_NAME);
         }
     }
 
@@ -381,13 +385,16 @@ public class SimpleCookie implements Cookie {
     public void removeFrom(HttpServletRequest request, HttpServletResponse response) {
         String name = getName();
         String value = DELETED_COOKIE_VALUE;
-        String comment = null; //don't need to add extra size to the response - comments are irrelevant for deletions
+        //don't need to add extra size to the response - comments are irrelevant for deletions
+        String comment = null;
         String domain = getDomain();
         String path = calculatePath(request);
-        int maxAge = 0; //always zero for deletion
+        //always zero for deletion
+        int maxAge = 0;
         int version = getVersion();
         boolean secure = isSecure();
-        boolean httpOnly = false; //no need to add the extra text, plus the value 'deleteMe' is not sensitive at all
+        //no need to add the extra text, plus the value 'deleteMe' is not sensitive at all
+        boolean httpOnly = false;
 
         addCookieHeader(response, name, value, comment, domain, path, maxAge, version, secure, httpOnly);
 

@@ -42,7 +42,7 @@ public interface RememberMeManager {
      *
      * @param subjectContext the contextual data, usually provided by a {@link Subject.Builder} implementation, that
      *                       is being used to construct a {@link Subject} instance.
-     * @return he remembered principals or {@code null} if none could be acquired.
+     * @return the remembered principals or {@code null} if none could be acquired.
      * @since 1.0
      */
     PrincipalCollection getRememberedPrincipals(SubjectContext subjectContext);

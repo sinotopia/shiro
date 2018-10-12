@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.authc.AuthenticationInfo</OriginalElement>
+  <nodes>
+    <node x="175.125" y="79.0">org.apache.shiro.authc.AuthenticationInfo</node>
+    <node x="38.51249999999999" y="237.0">org.apache.shiro.authc.SimpleAccount</node>
+    <node x="377.6" y="158.0">org.apache.shiro.authc.MergableAuthenticationInfo</node>
+    <node x="24.599999999999994" y="158.0">org.apache.shiro.authc.Account</node>
+    <node x="141.59999999999997" y="158.0">org.apache.shiro.authc.SaltedAuthenticationInfo</node>
+    <node x="294.1875" y="237.0">org.apache.shiro.authc.SimpleAuthenticationInfo</node>
+    <node x="0.0" y="0.0">java.io.Serializable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.authc.Account" target="java.io.Serializable">
+      <point x="-24.25" y="-14.5" />
+      <point x="48.84999999999998" y="54.0" />
+      <point x="66.0" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAuthenticationInfo" target="org.apache.shiro.authc.SaltedAuthenticationInfo">
+      <point x="-54.0" y="-14.5" />
+      <point x="348.1875" y="207.0" />
+      <point x="303.59999999999997" y="207.0" />
+      <point x="54.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.AuthenticationInfo" target="java.io.Serializable">
+      <point x="0.0" y="-14.5" />
+      <point x="262.125" y="54.0" />
+      <point x="110.0" y="54.0" />
+      <point x="44.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.Account" target="org.apache.shiro.authc.AuthenticationInfo">
+      <point x="24.25" y="-14.5" />
+      <point x="97.35" y="133.0" />
+      <point x="204.125" y="133.0" />
+      <point x="-58.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.MergableAuthenticationInfo" target="org.apache.shiro.authc.AuthenticationInfo">
+      <point x="0.0" y="-14.5" />
+      <point x="492.6" y="133.0" />
+      <point x="320.125" y="133.0" />
+      <point x="58.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SaltedAuthenticationInfo" target="org.apache.shiro.authc.AuthenticationInfo">
+      <point x="0.0" y="-14.5" />
+      <point x="249.59999999999997" y="133.0" />
+      <point x="262.125" y="133.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAccount" target="org.apache.shiro.authc.Account">
+      <point x="-17.375" y="-14.5" />
+      <point x="90.63749999999999" y="217.0" />
+      <point x="73.1" y="217.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAccount" target="org.apache.shiro.authc.MergableAuthenticationInfo">
+      <point x="52.125" y="-14.5" />
+      <point x="160.1375" y="217.0" />
+      <point x="435.1" y="217.0" />
+      <point x="-57.5" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAccount" target="java.io.Serializable">
+      <point x="-52.125" y="-14.5" />
+      <point x="55.88749999999999" y="217.0" />
+      <point x="14.099999999999994" y="217.0" />
+      <point x="14.099999999999994" y="54.0" />
+      <point x="22.0" y="54.0" />
+      <point x="-44.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAuthenticationInfo" target="org.apache.shiro.authc.MergableAuthenticationInfo">
+      <point x="54.0" y="-14.5" />
+      <point x="456.1875" y="217.0" />
+      <point x="550.1" y="217.0" />
+      <point x="57.5" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.SimpleAccount" target="org.apache.shiro.authc.SaltedAuthenticationInfo">
+      <point x="17.375" y="-14.5" />
+      <point x="125.38749999999999" y="207.0" />
+      <point x="195.59999999999997" y="207.0" />
+      <point x="-54.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="240.0" y="54.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

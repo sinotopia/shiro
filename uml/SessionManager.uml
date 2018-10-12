@@ -3,37 +3,39 @@
   <ID>JAVA</ID>
   <OriginalElement>org.apache.shiro.session.mgt.SessionManager</OriginalElement>
   <nodes>
-    <node x="227.25" y="474.0">org.apache.shiro.mgt.SessionsSecurityManager</node>
-    <node x="216.75" y="395.0">org.apache.shiro.mgt.AuthorizingSecurityManager</node>
-    <node x="417.0" y="79.0">org.apache.shiro.session.mgt.ValidatingSessionManager</node>
-    <node x="848.75" y="395.0">org.apache.shiro.web.session.mgt.DefaultWebSessionManager</node>
-    <node x="230.75" y="553.0">org.apache.shiro.mgt.DefaultSecurityManager</node>
-    <node x="206.25" y="316.0">org.apache.shiro.mgt.AuthenticatingSecurityManager</node>
-    <node x="0.0" y="158.0">org.apache.shiro.web.mgt.WebSecurityManager</node>
-    <node x="274.25" y="632.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager</node>
-    <node x="653.0" y="79.0">org.apache.shiro.session.mgt.NativeSessionManager</node>
-    <node x="580.82421875" y="237.0">org.apache.shiro.session.mgt.AbstractValidatingSessionManager</node>
-    <node x="1031.6585937500001" y="316.0">org.apache.shiro.web.session.mgt.WebSessionManager</node>
-    <node x="237.75" y="237.0">org.apache.shiro.mgt.RealmSecurityManager</node>
-    <node x="736.32421875" y="158.0">org.apache.shiro.session.mgt.AbstractNativeSessionManager</node>
-    <node x="136.69921875" y="79.0">org.apache.shiro.mgt.SecurityManager</node>
-    <node x="841.75" y="474.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSessionManager</node>
-    <node x="230.75" y="158.0">org.apache.shiro.mgt.CachingSecurityManager</node>
-    <node x="1084.75" y="395.0">org.apache.shiro.web.session.mgt.ServletContainerSessionManager</node>
-    <node x="24.25" y="711.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager</node>
-    <node x="619.32421875" y="316.0">org.apache.shiro.session.mgt.DefaultSessionManager</node>
-    <node x="861.0" y="79.0">org.apache.shiro.session.mgt.AbstractSessionManager</node>
-    <node x="523.07421875" y="395.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSessionManager</node>
-    <node x="674.0" y="0.0">org.apache.shiro.session.mgt.SessionManager</node>
-    <node x="31.25" y="632.0">org.apache.shiro.web.mgt.DefaultWebSecurityManager</node>
+    <node x="21.0" y="474.0">org.apache.shiro.mgt.SessionsSecurityManager</node>
+    <node x="10.5" y="395.0">org.apache.shiro.mgt.AuthorizingSecurityManager</node>
+    <node x="969.625" y="79.0">org.apache.shiro.session.mgt.ValidatingSessionManager</node>
+    <node x="728.59375" y="395.0">org.apache.shiro.web.session.mgt.DefaultWebSessionManager</node>
+    <node x="24.5" y="553.0">org.apache.shiro.mgt.DefaultSecurityManager</node>
+    <node x="0.0" y="316.0">org.apache.shiro.mgt.AuthenticatingSecurityManager</node>
+    <node x="246.5" y="158.0">org.apache.shiro.web.mgt.WebSecurityManager</node>
+    <node x="761.625" y="79.0">org.apache.shiro.session.mgt.NativeSessionManager</node>
+    <node x="754.59375" y="237.0">org.apache.shiro.session.mgt.AbstractValidatingSessionManager</node>
+    <node x="431.25" y="316.0">org.apache.shiro.web.session.mgt.WebSessionManager</node>
+    <node x="31.5" y="237.0">org.apache.shiro.mgt.RealmSecurityManager</node>
+    <node x="627.09375" y="158.0">org.apache.shiro.session.mgt.AbstractNativeSessionManager</node>
+    <node x="153.96875000000006" y="79.0">org.apache.shiro.mgt.SecurityManager</node>
+    <node x="24.5" y="158.0">org.apache.shiro.mgt.CachingSecurityManager</node>
+    <node x="344.0" y="395.0">org.apache.shiro.web.session.mgt.ServletContainerSessionManager</node>
+    <node x="793.09375" y="316.0">org.apache.shiro.session.mgt.DefaultSessionManager</node>
+    <node x="539.625" y="79.0">org.apache.shiro.session.mgt.AbstractSessionManager</node>
+    <node x="567.625" y="0.0">org.apache.shiro.session.mgt.SessionManager</node>
+    <node x="118.96875000000006" y="632.0">org.apache.shiro.web.mgt.DefaultWebSecurityManager</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="org.apache.shiro.session.mgt.NativeSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
+      <point x="0.0" y="-14.5" />
+      <point x="855.625" y="59.0" />
+      <point x="669.825" y="59.0" />
+      <point x="29.200000000000045" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.web.mgt.WebSecurityManager" target="org.apache.shiro.mgt.SecurityManager">
       <point x="0.0" y="-14.5" />
-      <point x="87.0" y="133.0" />
-      <point x="174.94921875" y="133.0" />
-      <point x="-38.25" y="14.5" />
+      <point x="333.5" y="133.0" />
+      <point x="268.71875000000006" y="133.0" />
+      <point x="38.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.AuthenticatingSecurityManager" target="org.apache.shiro.mgt.RealmSecurityManager">
       <point x="0.0" y="-14.5" />
@@ -41,65 +43,9 @@
     </edge>
     <edge source="org.apache.shiro.web.session.mgt.WebSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
       <point x="0.0" y="-14.5" />
-      <point x="1115.1585937500001" y="49.0" />
-      <point x="805.4" y="49.0" />
-      <point x="58.39999999999998" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.mgt.SessionsSecurityManager" target="org.apache.shiro.mgt.AuthorizingSecurityManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager" target="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.ValidatingSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
-      <point x="0.0" y="-14.5" />
-      <point x="525.0" y="59.0" />
-      <point x="717.8" y="59.0" />
+      <point x="514.75" y="59.0" />
+      <point x="611.425" y="59.0" />
       <point x="-29.200000000000045" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.mgt.DefaultSecurityManager" target="org.apache.shiro.mgt.SessionsSecurityManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.AbstractNativeSessionManager" target="org.apache.shiro.session.mgt.AbstractSessionManager">
-      <point x="61.0" y="-14.5" />
-      <point x="919.32421875" y="133.0" />
-      <point x="962.0" y="133.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.DefaultSessionManager" target="org.apache.shiro.session.mgt.AbstractValidatingSessionManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionManager" target="org.apache.shiro.session.mgt.DefaultSessionManager">
-      <point x="-54.0" y="-14.5" />
-      <point x="902.75" y="370.0" />
-      <point x="765.57421875" y="370.0" />
-      <point x="48.75" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.AbstractNativeSessionManager" target="org.apache.shiro.session.mgt.NativeSessionManager">
-      <point x="-61.0" y="-14.5" />
-      <point x="797.32421875" y="133.0" />
-      <point x="747.0" y="133.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionManager" target="org.apache.shiro.web.session.mgt.WebSessionManager">
-      <point x="54.0" y="-14.5" />
-      <point x="1010.75" y="370.0" />
-      <point x="1073.4085937500001" y="370.0" />
-      <point x="-41.75" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.guice.ShiroModuleTest.MyDefaultSessionManager" target="org.apache.shiro.session.mgt.DefaultSessionManager">
-      <point x="0.0" y="-14.5" />
-      <point x="627.57421875" y="370.0" />
-      <point x="668.07421875" y="370.0" />
-      <point x="-48.75" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.NativeSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.AuthorizingSecurityManager" target="org.apache.shiro.mgt.AuthenticatingSecurityManager">
       <point x="0.0" y="-14.5" />
@@ -107,64 +53,94 @@
     </edge>
     <edge source="org.apache.shiro.web.session.mgt.ServletContainerSessionManager" target="org.apache.shiro.web.session.mgt.WebSessionManager">
       <point x="0.0" y="-14.5" />
-      <point x="1213.75" y="370.0" />
-      <point x="1156.9085937500001" y="370.0" />
-      <point x="41.75" y="14.5" />
+      <point x="-41.75" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.session.mgt.AbstractSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
       <point x="0.0" y="-14.5" />
-      <point x="962.0" y="59.0" />
-      <point x="776.2" y="59.0" />
-      <point x="29.200000000000045" y="14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.SessionsSecurityManager" target="org.apache.shiro.mgt.AuthorizingSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" target="org.apache.shiro.session.mgt.ValidatingSessionManager">
-      <point x="-68.0" y="-14.5" />
-      <point x="648.82421875" y="212.0" />
-      <point x="525.0" y="212.0" />
+      <point x="68.0" y="-14.5" />
+      <point x="958.59375" y="212.0" />
+      <point x="1077.625" y="212.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.SecurityManager" target="org.apache.shiro.session.mgt.SessionManager">
       <point x="0.0" y="-14.5" />
-      <point x="213.19921875" y="49.0" />
-      <point x="688.6" y="49.0" />
+      <point x="230.46875000000006" y="49.0" />
+      <point x="582.225" y="49.0" />
       <point x="-58.39999999999998" y="14.5" />
     </edge>
+    <edge source="org.apache.shiro.session.mgt.ValidatingSessionManager" target="org.apache.shiro.session.mgt.SessionManager">
+      <point x="0.0" y="-14.5" />
+      <point x="1077.625" y="49.0" />
+      <point x="699.025" y="49.0" />
+      <point x="58.39999999999998" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.DefaultSecurityManager" target="org.apache.shiro.mgt.SessionsSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.session.mgt.AbstractNativeSessionManager" target="org.apache.shiro.session.mgt.AbstractSessionManager">
+      <point x="-61.0" y="-14.5" />
+      <point x="688.09375" y="133.0" />
+      <point x="640.625" y="133.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" target="org.apache.shiro.session.mgt.AbstractNativeSessionManager">
-      <point x="68.0" y="-14.5" />
-      <point x="784.82421875" y="212.0" />
-      <point x="858.32421875" y="212.0" />
+      <point x="-68.0" y="-14.5" />
+      <point x="822.59375" y="212.0" />
+      <point x="749.09375" y="212.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.RealmSecurityManager" target="org.apache.shiro.mgt.CachingSecurityManager">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
+    <edge source="org.apache.shiro.session.mgt.DefaultSessionManager" target="org.apache.shiro.session.mgt.AbstractValidatingSessionManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.web.mgt.DefaultWebSecurityManager" target="org.apache.shiro.web.mgt.WebSecurityManager">
-      <point x="-55.75" y="-14.5" />
+      <point x="55.75" y="-14.5" />
+      <point x="286.21875000000006" y="607.0" />
+      <point x="333.5" y="607.0" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSessionManager" target="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-      <point x="0.0" y="-14.5" />
+    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionManager" target="org.apache.shiro.session.mgt.DefaultSessionManager">
+      <point x="54.0" y="-14.5" />
       <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager" target="org.apache.shiro.mgt.DefaultSecurityManager">
-      <point x="0.0" y="-14.5" />
-      <point x="50.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.CachingSecurityManager" target="org.apache.shiro.mgt.SecurityManager">
       <point x="0.0" y="-14.5" />
-      <point x="331.75" y="133.0" />
-      <point x="251.44921875" y="133.0" />
-      <point x="38.25" y="14.5" />
+      <point x="125.5" y="133.0" />
+      <point x="192.21875000000006" y="133.0" />
+      <point x="-38.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.mgt.DefaultWebSecurityManager" target="org.apache.shiro.mgt.DefaultSecurityManager">
-      <point x="55.75" y="-14.5" />
-      <point x="198.5" y="607.0" />
-      <point x="281.25" y="607.0" />
-      <point x="-50.5" y="14.5" />
+      <point x="-55.75" y="-14.5" />
+      <point x="174.71875000000006" y="607.0" />
+      <point x="125.5" y="607.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.session.mgt.AbstractNativeSessionManager" target="org.apache.shiro.session.mgt.NativeSessionManager">
+      <point x="61.0" y="-14.5" />
+      <point x="810.09375" y="133.0" />
+      <point x="855.625" y="133.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionManager" target="org.apache.shiro.web.session.mgt.WebSessionManager">
+      <point x="-54.0" y="-14.5" />
+      <point x="782.59375" y="370.0" />
+      <point x="556.5" y="370.0" />
+      <point x="41.75" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="531.5" y="348.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="646.5" y="249.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
