@@ -104,8 +104,7 @@ public class SecureRemoteInvocationFactory extends DefaultRemoteInvocationFactor
                         host = session.getHost();
                     }
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 log.trace("No security manager set. Trying next to get session id from system property");
             }
         }

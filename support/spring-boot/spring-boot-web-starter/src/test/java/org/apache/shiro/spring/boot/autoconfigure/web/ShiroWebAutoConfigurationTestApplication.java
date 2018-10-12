@@ -45,10 +45,10 @@ public class ShiroWebAutoConfigurationTestApplication {
 
         TextConfigurationRealm realm = new TextConfigurationRealm();
         realm.setUserDefinitions("joe.coder=password,user\n" +
-                                 "jill.coder=password,admin");
+                "jill.coder=password,admin");
 
         realm.setRoleDefinitions("admin=read,write\n" +
-                                 "user=read");
+                "user=read");
         realm.setCachingEnabled(true);
         return realm;
     }
@@ -68,7 +68,6 @@ public class ShiroWebAutoConfigurationTestApplication {
         return new SubscribedListener();
     }
 
-
     public static class EventBusAwareObject implements EventBusAware {
 
         private EventBus eventBus;
@@ -86,6 +85,7 @@ public class ShiroWebAutoConfigurationTestApplication {
     public static class SubscribedListener {
 
         @Subscribe
-        public void onEvent(Object object) {}
+        public void onEvent(Object object) {
+        }
     }
 }

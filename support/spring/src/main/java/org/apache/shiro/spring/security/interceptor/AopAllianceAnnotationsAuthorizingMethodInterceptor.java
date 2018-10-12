@@ -53,6 +53,7 @@ public class AopAllianceAnnotationsAuthorizingMethodInterceptor
 
         setMethodInterceptors(interceptors);
     }
+
     /**
      * Creates a {@link MethodInvocation MethodInvocation} that wraps an
      * {@link org.aopalliance.intercept.MethodInvocation org.aopalliance.intercept.MethodInvocation} instance,
