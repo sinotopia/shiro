@@ -63,7 +63,6 @@ public class AbstractShiroConfiguration {
     @Value("#{ @environment['shiro.sessionManager.deleteInvalidSessions'] ?: true }")
     protected boolean sessionManagerDeleteInvalidSessions;
 
-
     protected SessionsSecurityManager securityManager(List<Realm> realms) {
         SessionsSecurityManager securityManager = createSecurityManager();
         securityManager.setAuthenticator(authenticator());
@@ -71,11 +70,9 @@ public class AbstractShiroConfiguration {
         securityManager.setRealms(realms);
         securityManager.setSessionManager(sessionManager());
         securityManager.setEventBus(eventBus);
-
         if (cacheManager != null) {
             securityManager.setCacheManager(cacheManager);
         }
-
         return securityManager;
     }
 
@@ -87,7 +84,11 @@ public class AbstractShiroConfiguration {
         return sessionManager;
     }
 
-
+    /**
+     * createSecurityManager
+     *
+     * @return
+     */
     protected SessionsSecurityManager createSecurityManager() {
         DefaultSecurityManager securityManager = new DefaultSecurityManager();
         securityManager.setSubjectDAO(subjectDAO());
@@ -97,7 +98,6 @@ public class AbstractShiroConfiguration {
         if (rememberMeManager != null) {
             securityManager.setRememberMeManager(rememberMeManager);
         }
-
         return securityManager;
     }
 
@@ -119,7 +119,6 @@ public class AbstractShiroConfiguration {
         return new DefaultSubjectFactory();
     }
 
-
     protected SessionFactory sessionFactory() {
         return new SimpleSessionFactory();
     }
@@ -128,13 +127,17 @@ public class AbstractShiroConfiguration {
         return new MemorySessionDAO();
     }
 
+    /**
+     * Authorizer
+     *
+     * @return
+     */
     protected Authorizer authorizer() {
         ModularRealmAuthorizer authorizer = new ModularRealmAuthorizer();
 
         if (permissionResolver != null) {
             authorizer.setPermissionResolver(permissionResolver);
         }
-
         if (rolePermissionResolver != null) {
             authorizer.setRolePermissionResolver(rolePermissionResolver);
         }
@@ -154,6 +157,6 @@ public class AbstractShiroConfiguration {
 
     protected Realm iniRealmFromLocation(String iniLocation) {
         Ini ini = Ini.fromResourcePath(iniLocation);
-        return new IniRealm( ini );
+        return new IniRealm(ini);
     }
 }

@@ -2,10 +2,9 @@
   "groups": [
     {
       "name": "shiro"
-    },
+    }
   ],
   "properties": [
-
     {
       "name": "shiro.web.enabled",
       "type": "java.lang.Boolean",

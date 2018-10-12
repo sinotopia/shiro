@@ -18,13 +18,10 @@
  */
 package org.apache.shiro.spring.web.config;
 
-import org.apache.shiro.config.Ini;
 import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.mgt.SessionStorageEvaluator;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.mgt.SubjectFactory;
-import org.apache.shiro.realm.Realm;
-import org.apache.shiro.realm.text.IniRealm;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.config.AbstractShiroConfiguration;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
@@ -51,9 +48,7 @@ public class AbstractShiroWebConfiguration extends AbstractShiroConfiguration {
     @Value("#{ @environment['shiro.userNativeSessionManager'] ?: false }")
     protected boolean useNativeSessionManager;
 
-
     // Session Cookie info
-
     @Value("#{ @environment['shiro.sessionManager.cookie.name'] ?: T(org.apache.shiro.web.servlet.ShiroHttpSession).DEFAULT_SESSION_ID_NAME }")
     protected String sessionIdCookieName;
 
@@ -69,9 +64,7 @@ public class AbstractShiroWebConfiguration extends AbstractShiroConfiguration {
     @Value("#{ @environment['shiro.sessionManager.cookie.secure'] ?: false }")
     protected boolean sessionIdCookieSecure;
 
-
     // RememberMe Cookie info
-
     @Value("#{ @environment['shiro.rememberMeManager.cookie.name'] ?: T(org.apache.shiro.web.mgt.CookieRememberMeManager).DEFAULT_REMEMBER_ME_COOKIE_NAME }")
     protected String rememberMeCookieName;
 
@@ -87,17 +80,14 @@ public class AbstractShiroWebConfiguration extends AbstractShiroConfiguration {
     @Value("#{ @environment['shiro.rememberMeManager.cookie.secure'] ?: false }")
     protected boolean rememberMeCookieSecure;
 
-
     protected SessionManager nativeSessionManager() {
         DefaultWebSessionManager webSessionManager = new DefaultWebSessionManager();
         webSessionManager.setSessionIdCookieEnabled(sessionIdCookieEnabled);
         webSessionManager.setSessionIdUrlRewritingEnabled(sessionIdUrlRewritingEnabled);
         webSessionManager.setSessionIdCookie(sessionCookieTemplate());
-
         webSessionManager.setSessionFactory(sessionFactory());
         webSessionManager.setSessionDAO(sessionDAO());
         webSessionManager.setDeleteInvalidSessions(sessionManagerDeleteInvalidSessions);
-
         return webSessionManager;
     }
 
@@ -126,7 +116,6 @@ public class AbstractShiroWebConfiguration extends AbstractShiroConfiguration {
         cookie.setPath(path);
         cookie.setDomain(domain);
         cookie.setSecure(secure);
-
         return cookie;
     }
 
@@ -155,7 +144,6 @@ public class AbstractShiroWebConfiguration extends AbstractShiroConfiguration {
     }
 
     protected SessionsSecurityManager createSecurityManager() {
-
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setSubjectDAO(subjectDAO());
         securityManager.setSubjectFactory(subjectFactory());

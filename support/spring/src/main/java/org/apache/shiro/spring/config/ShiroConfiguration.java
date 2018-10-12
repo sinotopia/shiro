@@ -40,7 +40,6 @@ import java.util.List;
 @Import({ShiroBeanConfiguration.class})
 public class ShiroConfiguration extends AbstractShiroConfiguration {
 
-
     @Bean
     @Override
     protected SessionsSecurityManager securityManager(List<Realm> realms) {
