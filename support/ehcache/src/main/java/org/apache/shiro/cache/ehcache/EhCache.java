@@ -187,13 +187,12 @@ public class EhCache<K, V> implements Cache<K, V> {
      * number is unknown or cannot be calculated.
      *
      * @return the size (in bytes) that this EhCache is using in memory (RAM), or <code>-1</code> if that
-     *         number is unknown or cannot be calculated.
+     * number is unknown or cannot be calculated.
      */
     public long getMemoryUsage() {
         try {
             return cache.calculateInMemorySize();
-        }
-        catch (Throwable t) {
+        } catch (Throwable t) {
             return -1;
         }
     }
@@ -203,13 +202,12 @@ public class EhCache<K, V> implements Cache<K, V> {
      * that number is unknown or cannot be calculated.
      *
      * @return the size (in bytes) that this EhCache's memory store is using (RAM), or <code>-1</code> if
-     *         that number is unknown or cannot be calculated.
+     * that number is unknown or cannot be calculated.
      */
     public long getMemoryStoreSize() {
         try {
             return cache.getMemoryStoreSize();
-        }
-        catch (Throwable t) {
+        } catch (Throwable t) {
             throw new CacheException(t);
         }
     }
@@ -219,7 +217,7 @@ public class EhCache<K, V> implements Cache<K, V> {
      * that number is unknown or cannot be calculated.
      *
      * @return the size (in bytes) that this EhCache's disk store is consuming or <code>-1</code> if
-     *         that number is unknown or cannot be calculated.
+     * that number is unknown or cannot be calculated.
      */
     public long getDiskStoreSize() {
         try {
