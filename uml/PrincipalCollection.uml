@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.subject.PrincipalCollection</OriginalElement>
+  <nodes>
+    <node x="230.5" y="237.0">org.apache.shiro.subject.SimplePrincipalMap</node>
+    <node x="0.0" y="158.0">org.apache.shiro.subject.MutablePrincipalCollection</node>
+    <node x="125.0" y="79.0">org.apache.shiro.subject.PrincipalCollection</node>
+    <node x="250.0" y="158.0">org.apache.shiro.subject.PrincipalMap</node>
+    <node x="3.5" y="237.0">org.apache.shiro.subject.SimplePrincipalCollection</node>
+    <node x="94.25" y="0.0">java.lang.Iterable</node>
+    <node x="213.25" y="0.0">java.io.Serializable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.subject.MutablePrincipalCollection" target="org.apache.shiro.subject.PrincipalCollection">
+      <point x="0.0" y="-14.5" />
+      <point x="107.0" y="133.0" />
+      <point x="167.25" y="133.0" />
+      <point x="-42.25" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.PrincipalCollection" target="java.io.Serializable">
+      <point x="42.25" y="-14.5" />
+      <point x="251.75" y="54.0" />
+      <point x="275.25" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.SimplePrincipalMap" target="org.apache.shiro.subject.PrincipalMap">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.PrincipalMap" target="org.apache.shiro.subject.PrincipalCollection">
+      <point x="0.0" y="-14.5" />
+      <point x="312.0" y="133.0" />
+      <point x="251.75" y="133.0" />
+      <point x="42.25" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.SimplePrincipalCollection" target="org.apache.shiro.subject.MutablePrincipalCollection">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.PrincipalCollection" target="java.lang.Iterable">
+      <point x="-42.25" y="-14.5" />
+      <point x="167.25" y="54.0" />
+      <point x="143.75" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="121.5" y="39.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

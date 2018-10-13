@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.authc.Authenticator</OriginalElement>
+  <nodes>
+    <node x="212.75" y="474.0">org.apache.shiro.mgt.SessionsSecurityManager</node>
+    <node x="203.25" y="395.0">org.apache.shiro.mgt.AuthorizingSecurityManager</node>
+    <node x="216.25" y="553.0">org.apache.shiro.mgt.DefaultSecurityManager</node>
+    <node x="193.75" y="316.0">org.apache.shiro.mgt.AuthenticatingSecurityManager</node>
+    <node x="0.0" y="158.0">org.apache.shiro.web.mgt.WebSecurityManager</node>
+    <node x="256.75" y="632.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager</node>
+    <node x="222.25" y="237.0">org.apache.shiro.mgt.RealmSecurityManager</node>
+    <node x="123.875" y="79.0">org.apache.shiro.mgt.SecurityManager</node>
+    <node x="216.25" y="158.0">org.apache.shiro.mgt.CachingSecurityManager</node>
+    <node x="424.25" y="158.0">org.apache.shiro.authc.pam.ModularRealmAuthenticator</node>
+    <node x="436.75" y="79.0">org.apache.shiro.authc.AbstractAuthenticator</node>
+    <node x="257.125" y="0.0">org.apache.shiro.authc.Authenticator</node>
+    <node x="23.25" y="711.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager</node>
+    <node x="29.75" y="632.0">org.apache.shiro.web.mgt.DefaultWebSecurityManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.mgt.SecurityManager" target="org.apache.shiro.authc.Authenticator">
+      <point x="0.0" y="-14.5" />
+      <point x="195.875" y="54.0" />
+      <point x="289.875" y="54.0" />
+      <point x="-32.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.mgt.WebSecurityManager" target="org.apache.shiro.mgt.SecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="81.5" y="133.0" />
+      <point x="159.875" y="133.0" />
+      <point x="-36.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.AuthenticatingSecurityManager" target="org.apache.shiro.mgt.RealmSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.pam.ModularRealmAuthenticator" target="org.apache.shiro.authc.AbstractAuthenticator">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.AuthorizingSecurityManager" target="org.apache.shiro.mgt.AuthenticatingSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager" target="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.SessionsSecurityManager" target="org.apache.shiro.mgt.AuthorizingSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.DefaultSecurityManager" target="org.apache.shiro.mgt.SessionsSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.RealmSecurityManager" target="org.apache.shiro.mgt.CachingSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.mgt.DefaultWebSecurityManager" target="org.apache.shiro.web.mgt.WebSecurityManager">
+      <point x="-51.75" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager" target="org.apache.shiro.mgt.DefaultSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="47.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.mgt.CachingSecurityManager" target="org.apache.shiro.mgt.SecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="310.25" y="133.0" />
+      <point x="231.875" y="133.0" />
+      <point x="36.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.mgt.DefaultWebSecurityManager" target="org.apache.shiro.mgt.DefaultSecurityManager">
+      <point x="51.75" y="-14.5" />
+      <point x="185.0" y="607.0" />
+      <point x="263.25" y="607.0" />
+      <point x="-47.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authc.AbstractAuthenticator" target="org.apache.shiro.authc.Authenticator">
+      <point x="0.0" y="-14.5" />
+      <point x="527.75" y="54.0" />
+      <point x="355.375" y="54.0" />
+      <point x="32.75" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="199.5" y="249.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

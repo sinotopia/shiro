@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.subject.SubjectContext</OriginalElement>
+  <nodes>
+    <node x="73.25" y="79.0">org.apache.shiro.subject.SubjectContext</node>
+    <node x="68.75" y="0.0">java.util.Map</node>
+    <node x="0.0" y="158.0">org.apache.shiro.subject.support.DefaultSubjectContext</node>
+    <node x="32.83333333333333" y="237.0">org.apache.shiro.web.subject.support.DefaultWebSubjectContext</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.web.subject.support.DefaultWebSubjectContext" target="org.apache.shiro.subject.support.DefaultSubjectContext">
+      <point x="-67.0" y="-14.5" />
+      <point x="66.33333333333333" y="212.0" />
+      <point x="45.5" y="212.0" />
+      <point x="-45.5" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.SubjectContext" target="java.util.Map">
+      <point x="0.0" y="-14.5" />
+      <point x="141.75" y="54.0" />
+      <point x="119.0" y="54.0" />
+      <point x="16.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.support.DefaultSubjectContext" target="java.util.Map">
+      <point x="-60.66666666666666" y="-14.5" />
+      <point x="30.333333333333343" y="133.0" />
+      <point x="62.75" y="133.0" />
+      <point x="62.75" y="54.0" />
+      <point x="85.5" y="54.0" />
+      <point x="-16.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.subject.support.DefaultSubjectContext" target="org.apache.shiro.subject.SubjectContext">
+      <point x="60.66666666666666" y="-14.5" />
+      <point x="151.66666666666666" y="133.0" />
+      <point x="141.75" y="133.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.subject.support.DefaultWebSubjectContext" target="org.apache.shiro.subject.SubjectContext">
+      <point x="67.0" y="-14.5" />
+      <point x="200.33333333333331" y="212.0" />
+      <point x="192.5" y="212.0" />
+      <point x="192.5" y="133.0" />
+      <point x="187.41666666666666" y="133.0" />
+      <point x="45.66666666666666" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="68.5" y="83.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.cache.CacheManager</OriginalElement>
+  <nodes>
+    <node x="459.75" y="79.0">org.apache.shiro.hazelcast.cache.HazelcastCacheManager</node>
+    <node x="309.5" y="0.0">org.apache.shiro.cache.CacheManager</node>
+    <node x="106.75" y="79.0">org.apache.shiro.cache.AbstractCacheManager</node>
+    <node x="0.0" y="158.0">org.apache.shiro.config.HashMapCacheManager</node>
+    <node x="189.0" y="158.0">org.apache.shiro.cache.MemoryConstrainedCacheManager</node>
+    <node x="302.75" y="79.0">org.apache.shiro.cache.ehcache.EhCacheManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.cache.MemoryConstrainedCacheManager" target="org.apache.shiro.cache.AbstractCacheManager">
+      <point x="0.0" y="-14.5" />
+      <point x="305.5" y="133.0" />
+      <point x="238.75" y="133.0" />
+      <point x="44.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.cache.AbstractCacheManager" target="org.apache.shiro.cache.CacheManager">
+      <point x="0.0" y="-14.5" />
+      <point x="194.75" y="54.0" />
+      <point x="330.1666666666667" y="54.0" />
+      <point x="-41.333333333333314" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.hazelcast.cache.HazelcastCacheManager" target="org.apache.shiro.cache.CacheManager">
+      <point x="0.0" y="-14.5" />
+      <point x="550.75" y="54.0" />
+      <point x="412.83333333333337" y="54.0" />
+      <point x="41.33333333333337" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.cache.ehcache.EhCacheManager" target="org.apache.shiro.cache.CacheManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.config.HashMapCacheManager" target="org.apache.shiro.cache.AbstractCacheManager">
+      <point x="0.0" y="-14.5" />
+      <point x="84.5" y="133.0" />
+      <point x="150.75" y="133.0" />
+      <point x="-44.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="170.0" y="14.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

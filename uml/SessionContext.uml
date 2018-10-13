@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.shiro.session.mgt.SessionContext</OriginalElement>
+  <nodes>
+    <node x="177.25" y="79.0">org.apache.shiro.session.mgt.SessionContext</node>
+    <node x="0.0" y="158.0">org.apache.shiro.session.mgt.DefaultSessionContext</node>
+    <node x="112.125" y="0.0">java.util.Map</node>
+    <node x="202.0" y="158.0">org.apache.shiro.web.session.mgt.WebSessionContext</node>
+    <node x="85.0" y="237.0">org.apache.shiro.web.session.mgt.DefaultWebSessionContext</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.shiro.session.mgt.SessionContext" target="java.util.Map">
+      <point x="0.0" y="-14.5" />
+      <point x="245.75" y="54.0" />
+      <point x="162.375" y="54.0" />
+      <point x="16.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.session.mgt.WebSessionContext" target="org.apache.shiro.session.mgt.SessionContext">
+      <point x="0.0" y="-14.5" />
+      <point x="34.25" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionContext" target="org.apache.shiro.web.session.mgt.WebSessionContext">
+      <point x="50.25" y="-14.5" />
+      <point x="235.75" y="212.0" />
+      <point x="280.0" y="212.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.session.mgt.DefaultSessionContext" target="java.util.Map">
+      <point x="-45.5" y="-14.5" />
+      <point x="45.5" y="54.0" />
+      <point x="128.875" y="54.0" />
+      <point x="-16.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.session.mgt.DefaultSessionContext" target="org.apache.shiro.session.mgt.SessionContext">
+      <point x="45.5" y="-14.5" />
+      <point x="136.5" y="133.0" />
+      <point x="211.5" y="133.0" />
+      <point x="-34.25" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionContext" target="org.apache.shiro.session.mgt.DefaultSessionContext">
+      <point x="-50.25" y="-14.5" />
+      <point x="135.25" y="212.0" />
+      <point x="91.0" y="212.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="68.5" y="39.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
