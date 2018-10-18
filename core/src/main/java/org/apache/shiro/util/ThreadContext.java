@@ -45,14 +45,14 @@ import java.util.Map;
  */
 public abstract class ThreadContext {
 
-    public static final String SECURITY_MANAGER_KEY = ThreadContext.class.getName() + "_SECURITY_MANAGER_KEY";
-
-    public static final String SUBJECT_KEY = ThreadContext.class.getName() + "_SUBJECT_KEY";
-
     /**
      * Private internal log instance.
      */
     private static final Logger log = LoggerFactory.getLogger(ThreadContext.class);
+
+    public static final String SECURITY_MANAGER_KEY = ThreadContext.class.getName() + "_SECURITY_MANAGER_KEY";
+
+    public static final String SUBJECT_KEY = ThreadContext.class.getName() + "_SUBJECT_KEY";
 
     private static final ThreadLocal<Map<Object, Object>> resources = new InheritableThreadLocalMap<Map<Object, Object>>();
 
@@ -223,7 +223,6 @@ public abstract class ThreadContext {
         return (SecurityManager) get(SECURITY_MANAGER_KEY);
     }
 
-
     /**
      * Convenience method that simplifies binding the application's SecurityManager instance to the ThreadContext.
      * <p/>
@@ -281,7 +280,6 @@ public abstract class ThreadContext {
     public static Subject getSubject() {
         return (Subject) get(SUBJECT_KEY);
     }
-
 
     /**
      * Convenience method that simplifies binding a Subject to the ThreadContext.

@@ -4,46 +4,46 @@
   <OriginalElement>org.apache.shiro.subject.Subject</OriginalElement>
   <nodes>
     <node x="0.0" y="232.0">org.apache.shiro.web.mgt.DefaultWebSessionStorageEvaluatorTest.RequestPairWebSubject</node>
-    <node x="354.0" y="0.0">org.apache.shiro.subject.Subject</node>
-    <node x="453.0" y="158.0">org.apache.shiro.web.subject.WebSubject.Builder</node>
-    <node x="344.0" y="79.0">org.apache.shiro.web.subject.WebSubject</node>
-    <node x="240.0" y="158.0">org.apache.shiro.web.subject.support.WebDelegatingSubject</node>
-    <node x="476.0" y="79.0">org.apache.shiro.subject.Subject.Builder</node>
-    <node x="0.0" y="158.0">org.apache.shiro.subject.support.DelegatingSubject.StoppingAwareProxiedSession</node>
-    <node x="71.0" y="79.0">org.apache.shiro.subject.support.DelegatingSubject</node>
+    <node x="122.0" y="0.0">org.apache.shiro.subject.Subject</node>
+    <node x="23.0" y="158.0">org.apache.shiro.web.subject.WebSubject.Builder</node>
+    <node x="112.0" y="79.0">org.apache.shiro.web.subject.WebSubject</node>
+    <node x="152.0" y="158.0">org.apache.shiro.web.subject.support.WebDelegatingSubject</node>
+    <node x="0.0" y="79.0">org.apache.shiro.subject.Subject.Builder</node>
+    <node x="348.0" y="158.0">org.apache.shiro.subject.support.DelegatingSubject.StoppingAwareProxiedSession</node>
+    <node x="341.0" y="79.0">org.apache.shiro.subject.support.DelegatingSubject</node>
   </nodes>
   <notes />
   <edges>
     <edge source="org.apache.shiro.subject.support.DelegatingSubject.StoppingAwareProxiedSession" target="org.apache.shiro.subject.support.DelegatingSubject">
       <point x="0.0" y="-14.5" />
-      <point x="-39.0" y="14.5" />
+      <point x="39.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.subject.Subject.Builder" target="org.apache.shiro.subject.Subject">
       <point x="0.0" y="-14.5" />
-      <point x="522.0" y="54.0" />
-      <point x="430.6666666666667" y="54.0" />
-      <point x="30.666666666666686" y="14.5" />
+      <point x="46.0" y="54.0" />
+      <point x="137.33333333333331" y="54.0" />
+      <point x="-30.666666666666686" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.subject.WebSubject.Builder" target="org.apache.shiro.web.subject.WebSubject">
-      <point x="-23.0" y="-14.5" />
-      <point x="476.0" y="133.0" />
-      <point x="428.0" y="133.0" />
-      <point x="28.0" y="14.5" />
+      <point x="23.0" y="-14.5" />
+      <point x="92.0" y="133.0" />
+      <point x="140.0" y="133.0" />
+      <point x="-28.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.subject.support.DelegatingSubject" target="org.apache.shiro.subject.Subject">
       <point x="0.0" y="-14.5" />
-      <point x="149.0" y="54.0" />
-      <point x="369.33333333333337" y="54.0" />
-      <point x="-30.666666666666657" y="14.5" />
+      <point x="419.0" y="54.0" />
+      <point x="198.66666666666669" y="54.0" />
+      <point x="30.666666666666686" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.subject.support.WebDelegatingSubject" target="org.apache.shiro.subject.support.DelegatingSubject">
-      <point x="-44.0" y="-14.5" />
+      <point x="44.0" y="-14.5" />
       <point x="284.0" y="133.0" />
-      <point x="188.0" y="133.0" />
-      <point x="39.0" y="14.5" />
+      <point x="380.0" y="133.0" />
+      <point x="-39.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.subject.WebSubject.Builder" target="org.apache.shiro.subject.Subject.Builder">
-      <point x="23.0" y="-14.5" />
+      <point x="-23.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.subject.WebSubject" target="org.apache.shiro.subject.Subject">
@@ -51,11 +51,11 @@
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.subject.support.WebDelegatingSubject" target="org.apache.shiro.web.subject.WebSubject">
-      <point x="44.0" y="-14.5" />
-      <point x="-28.0" y="14.5" />
+      <point x="-44.0" y="-14.5" />
+      <point x="28.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="155.5" y="14.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="156.0" y="43.0" />
   <SelectedNodes>
     <node>org.apache.shiro.web.subject.WebSubject</node>
   </SelectedNodes>

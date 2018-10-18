@@ -3,38 +3,38 @@
   <ID>JAVA</ID>
   <OriginalElement>org.apache.shiro.cache.CacheManagerAware</OriginalElement>
   <nodes>
-    <node x="1263.5" y="405.0">org.apache.shiro.realm.text.IniRealm</node>
-    <node x="676.0" y="326.0">org.apache.shiro.cas.CasRealm</node>
-    <node x="1304.0" y="158.0">org.apache.shiro.web.session.mgt.DefaultWebSessionManager</node>
+    <node x="548.1444805194806" y="326.0">org.apache.shiro.cas.CasRealm</node>
+    <node x="831.1444805194806" y="405.0">org.apache.shiro.realm.text.IniRealm</node>
+    <node x="1052.8944805194808" y="158.0">org.apache.shiro.web.session.mgt.DefaultWebSessionManager</node>
     <node x="233.5" y="563.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager</node>
-    <node x="998.5" y="0.0">org.apache.shiro.cache.CacheManagerAware</node>
+    <node x="852.0194805194807" y="0.0">org.apache.shiro.cache.CacheManagerAware</node>
     <node x="134.0" y="158.0">org.apache.shiro.mgt.RealmSecurityManager</node>
-    <node x="1289.75" y="326.0">org.apache.shiro.realm.text.TextConfigurationRealm</node>
-    <node x="349.0" y="326.0">org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm</node>
-    <node x="1080.5" y="405.0">org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm</node>
-    <node x="1422.5" y="79.0">org.apache.shiro.session.mgt.DefaultSessionManager</node>
-    <node x="795.0" y="237.0">org.apache.shiro.realm.AuthorizingRealm</node>
-    <node x="804.5" y="405.0">org.apache.shiro.realm.ldap.JndiLdapRealm</node>
-    <node x="1525.0" y="158.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSessionManager</node>
-    <node x="965.0" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm</node>
+    <node x="857.3944805194806" y="326.0">org.apache.shiro.realm.text.TextConfigurationRealm</node>
+    <node x="1512.1444805194806" y="326.0">org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm</node>
+    <node x="1435.1444805194806" y="405.0">org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm</node>
+    <node x="1171.3944805194808" y="79.0">org.apache.shiro.session.mgt.DefaultSessionManager</node>
+    <node x="876.3944805194806" y="237.0">org.apache.shiro.realm.AuthorizingRealm</node>
+    <node x="676.6444805194806" y="405.0">org.apache.shiro.realm.ldap.JndiLdapRealm</node>
+    <node x="1273.8944805194806" y="158.0">org.apache.shiro.guice.ShiroModuleTest.MyDefaultSessionManager</node>
+    <node x="509.1444805194806" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm</node>
     <node x="124.5" y="405.0">org.apache.shiro.mgt.SessionsSecurityManager</node>
     <node x="115.0" y="326.0">org.apache.shiro.mgt.AuthorizingSecurityManager</node>
-    <node x="1102.5" y="79.0">org.apache.shiro.session.mgt.eis.CachingSessionDAO</node>
+    <node x="1514.3944805194806" y="79.0">org.apache.shiro.session.mgt.eis.CachingSessionDAO</node>
     <node x="128.0" y="484.0">org.apache.shiro.mgt.DefaultSecurityManager</node>
-    <node x="1077.0" y="158.0">org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO</node>
-    <node x="1497.75" y="326.0">org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm</node>
+    <node x="1488.8944805194806" y="158.0">org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO</node>
+    <node x="352.1444805194806" y="326.0">org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm</node>
     <node x="105.5" y="237.0">org.apache.shiro.mgt.AuthenticatingSecurityManager</node>
-    <node x="500.0" y="326.0">org.apache.shiro.realm.ldap.AbstractLdapRealm</node>
-    <node x="910.5" y="79.0">org.apache.shiro.realm.CachingRealm</node>
-    <node x="795.0" y="326.0">org.apache.shiro.realm.ldap.DefaultLdapRealm</node>
-    <node x="1297.5" y="237.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSessionManager</node>
+    <node x="1124.1444805194806" y="326.0">org.apache.shiro.realm.ldap.AbstractLdapRealm</node>
+    <node x="659.6444805194806" y="79.0">org.apache.shiro.realm.CachingRealm</node>
+    <node x="667.1444805194806" y="326.0">org.apache.shiro.realm.ldap.DefaultLdapRealm</node>
+    <node x="1046.3944805194806" y="237.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSessionManager</node>
     <node x="128.0" y="79.0">org.apache.shiro.mgt.CachingSecurityManager</node>
-    <node x="490.0" y="405.0">org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm</node>
+    <node x="1114.1444805194806" y="405.0">org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm</node>
     <node x="0.0" y="642.0">org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager</node>
-    <node x="1382.5" y="405.0">org.apache.shiro.realm.text.PropertiesRealm</node>
-    <node x="955.5" y="405.0">org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle</node>
-    <node x="1032.5" y="326.0">org.apache.shiro.realm.jdbc.JdbcRealm</node>
-    <node x="888.0" y="158.0">org.apache.shiro.realm.AuthenticatingRealm</node>
+    <node x="950.1444805194806" y="405.0">org.apache.shiro.realm.text.PropertiesRealm</node>
+    <node x="1310.1444805194806" y="405.0">org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle</node>
+    <node x="1387.1444805194806" y="326.0">org.apache.shiro.realm.jdbc.JdbcRealm</node>
+    <node x="637.1444805194806" y="158.0">org.apache.shiro.realm.AuthenticatingRealm</node>
     <node x="6.5" y="563.0">org.apache.shiro.web.mgt.DefaultWebSecurityManager</node>
   </nodes>
   <notes />
@@ -45,15 +45,11 @@
     </edge>
     <edge source="org.apache.shiro.session.mgt.DefaultSessionManager" target="org.apache.shiro.cache.CacheManagerAware">
       <point x="0.0" y="-14.5" />
-      <point x="1513.5" y="49.0" />
-      <point x="1135.0" y="49.0" />
-      <point x="58.5" y="14.5" />
+      <point x="1262.3944805194808" y="59.0" />
+      <point x="949.5194805194807" y="59.0" />
+      <point x="19.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.ldap.JndiLdapRealm" target="org.apache.shiro.realm.ldap.DefaultLdapRealm">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO" target="org.apache.shiro.session.mgt.eis.CachingSessionDAO">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
@@ -61,11 +57,21 @@
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
+    <edge source="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO" target="org.apache.shiro.session.mgt.eis.CachingSessionDAO">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.realm.jdbc.JdbcRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1085.0" y="306.0" />
-      <point x="891.4285714285716" y="306.0" />
-      <point x="21.42857142857156" y="14.5" />
+      <point x="1439.6444805194806" y="296.0" />
+      <point x="994.2516233766235" y="296.0" />
+      <point x="42.85714285714289" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm" target="org.apache.shiro.realm.AuthorizingRealm">
+      <point x="0.0" y="-14.5" />
+      <point x="440.1444805194806" y="286.0" />
+      <point x="887.1087662337663" y="286.0" />
+      <point x="-64.28571428571422" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm" target="org.apache.shiro.realm.ldap.AbstractLdapRealm">
       <point x="0.0" y="-14.5" />
@@ -73,28 +79,22 @@
     </edge>
     <edge source="org.apache.shiro.realm.CachingRealm" target="org.apache.shiro.cache.CacheManagerAware">
       <point x="0.0" y="-14.5" />
-      <point x="972.5" y="59.0" />
-      <point x="1057.0" y="59.0" />
+      <point x="721.6444805194806" y="59.0" />
+      <point x="910.5194805194807" y="59.0" />
       <point x="-19.5" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm" target="org.apache.shiro.realm.AuthorizingRealm">
-      <point x="0.0" y="-14.5" />
-      <point x="1585.75" y="286.0" />
-      <point x="934.2857142857142" y="286.0" />
-      <point x="64.28571428571422" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.mgt.SessionsSecurityManager" target="org.apache.shiro.mgt.AuthorizingSecurityManager">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSecurityManager" target="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
+    <edge source="org.apache.shiro.mgt.SessionsSecurityManager" target="org.apache.shiro.mgt.AuthorizingSecurityManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle" target="org.apache.shiro.realm.jdbc.JdbcRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1008.0" y="380.0" />
-      <point x="1058.75" y="380.0" />
+      <point x="1362.6444805194806" y="380.0" />
+      <point x="1413.3944805194806" y="380.0" />
       <point x="-26.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.DefaultSecurityManager" target="org.apache.shiro.mgt.SessionsSecurityManager">
@@ -103,57 +103,55 @@
     </edge>
     <edge source="org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm" target="org.apache.shiro.realm.jdbc.JdbcRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1162.0" y="380.0" />
-      <point x="1111.25" y="380.0" />
+      <point x="1516.6444805194806" y="380.0" />
+      <point x="1465.8944805194806" y="380.0" />
       <point x="26.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.web.session.mgt.DefaultWebSessionManager" target="org.apache.shiro.session.mgt.DefaultSessionManager">
-      <point x="0.0" y="-14.5" />
-      <point x="1404.5" y="133.0" />
-      <point x="1468.0" y="133.0" />
+      <point x="1.1368683772161603E-13" y="-14.5" />
+      <point x="1153.3944805194808" y="133.0" />
+      <point x="1216.8944805194808" y="133.0" />
       <point x="-45.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.ldap.AbstractLdapRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="578.0" y="296.0" />
-      <point x="827.1428571428571" y="296.0" />
-      <point x="-42.85714285714289" y="14.5" />
+      <point x="1202.1444805194806" y="306.0" />
+      <point x="972.8230519480521" y="306.0" />
+      <point x="21.42857142857156" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="414.5" y="286.0" />
-      <point x="805.7142857142858" y="286.0" />
-      <point x="-64.28571428571422" y="14.5" />
+      <point x="1577.6444805194806" y="286.0" />
+      <point x="1015.6801948051948" y="286.0" />
+      <point x="64.28571428571422" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthorizingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="870.0" y="212.0" />
-      <point x="930.25" y="212.0" />
-      <point x="-42.25" y="14.5" />
+      <point x="951.3944805194806" y="212.0" />
+      <point x="763.8944805194806" y="212.0" />
+      <point x="42.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.cas.CasRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="725.5" y="306.0" />
-      <point x="848.5714285714287" y="306.0" />
-      <point x="-21.42857142857133" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
-      <point x="0.0" y="-14.5" />
-      <point x="1075.0" y="212.0" />
-      <point x="1014.75" y="212.0" />
-      <point x="42.25" y="14.5" />
+      <point x="597.6444805194806" y="296.0" />
+      <point x="908.5373376623377" y="296.0" />
+      <point x="-42.85714285714289" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.ShiroModuleTest.MyDefaultSessionManager" target="org.apache.shiro.session.mgt.DefaultSessionManager">
       <point x="0.0" y="-14.5" />
-      <point x="1622.5" y="133.0" />
-      <point x="1559.0" y="133.0" />
+      <point x="1371.3944805194806" y="133.0" />
+      <point x="1307.8944805194808" y="133.0" />
       <point x="45.5" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
+      <point x="0.0" y="-14.5" />
+      <point x="619.1444805194806" y="212.0" />
+      <point x="679.3944805194806" y="212.0" />
+      <point x="-42.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.text.TextConfigurationRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1383.75" y="296.0" />
-      <point x="912.8571428571429" y="296.0" />
-      <point x="42.85714285714289" y="14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.AuthorizingSecurityManager" target="org.apache.shiro.mgt.AuthenticatingSecurityManager">
       <point x="0.0" y="-14.5" />
@@ -161,7 +159,9 @@
     </edge>
     <edge source="org.apache.shiro.realm.ldap.DefaultLdapRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="742.1444805194806" y="306.0" />
+      <point x="929.9659090909092" y="306.0" />
+      <point x="-21.42857142857133" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.mgt.RealmSecurityManager" target="org.apache.shiro.mgt.CachingSecurityManager">
       <point x="0.0" y="-14.5" />
@@ -169,18 +169,18 @@
     </edge>
     <edge source="org.apache.shiro.session.mgt.eis.CachingSessionDAO" target="org.apache.shiro.cache.CacheManagerAware">
       <point x="0.0" y="-14.5" />
-      <point x="1180.5" y="59.0" />
-      <point x="1096.0" y="59.0" />
-      <point x="19.5" y="14.5" />
+      <point x="1592.3944805194806" y="49.0" />
+      <point x="988.5194805194807" y="49.0" />
+      <point x="58.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.text.IniRealm" target="org.apache.shiro.realm.text.TextConfigurationRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1313.0" y="380.0" />
-      <point x="1336.75" y="380.0" />
+      <point x="880.6444805194806" y="380.0" />
+      <point x="904.3944805194806" y="380.0" />
       <point x="-47.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.web.ShiroWebModuleTest.MyDefaultWebSessionManager" target="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-      <point x="0.0" y="-14.5" />
+      <point x="1.1368683772161603E-13" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.ShiroModuleTest.MyDefaultSecurityManager" target="org.apache.shiro.mgt.DefaultSecurityManager">
@@ -198,17 +198,17 @@
     <edge source="org.apache.shiro.mgt.CachingSecurityManager" target="org.apache.shiro.cache.CacheManagerAware">
       <point x="0.0" y="-14.5" />
       <point x="222.0" y="49.0" />
-      <point x="1018.0" y="49.0" />
+      <point x="871.5194805194807" y="49.0" />
       <point x="-58.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.text.PropertiesRealm" target="org.apache.shiro.realm.text.TextConfigurationRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1454.5" y="380.0" />
-      <point x="1430.75" y="380.0" />
+      <point x="1022.1444805194806" y="380.0" />
+      <point x="998.3944805194806" y="380.0" />
       <point x="47.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="1075.0" y="170.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="1075.0" y="156.0" />
   <SelectedNodes>
     <node>org.apache.shiro.mgt.SessionsSecurityManager</node>
   </SelectedNodes>

@@ -254,8 +254,7 @@ public abstract class AbstractAuthenticator implements Authenticator, LogoutAwar
      * important to Shiro.
      * @throws AuthenticationException if there is a problem logging in the user.
      */
-    protected abstract AuthenticationInfo doAuthenticate(AuthenticationToken token)
-            throws AuthenticationException;
+    protected abstract AuthenticationInfo doAuthenticate(AuthenticationToken token) throws AuthenticationException;
 
 
 }

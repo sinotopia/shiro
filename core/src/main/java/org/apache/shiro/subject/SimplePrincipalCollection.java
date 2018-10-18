@@ -47,7 +47,8 @@ public class SimplePrincipalCollection implements MutablePrincipalCollection {
 
     private Map<String, Set> realmPrincipals;
 
-    private transient String cachedToString; //cached toString() result, as this can be printed many times in logging
+    //cached toString() result, as this can be printed many times in logging
+    private transient String cachedToString;
 
     public SimplePrincipalCollection() {
     }
@@ -258,7 +259,6 @@ public class SimplePrincipalCollection implements MutablePrincipalCollection {
         }
         return this.cachedToString;
     }
-
 
     /**
      * Serialization write support.

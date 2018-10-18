@@ -42,6 +42,5 @@ public interface SessionKey {
      *
      * @return the id of the session to acquire.
      */
-
     Serializable getSessionId();
 }

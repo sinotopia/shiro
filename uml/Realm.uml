@@ -3,39 +3,39 @@
   <ID>JAVA</ID>
   <OriginalElement>org.apache.shiro.realm.Realm</OriginalElement>
   <nodes>
-    <node x="674.625" y="346.0">org.apache.shiro.realm.text.IniRealm</node>
-    <node x="370.5" y="346.0">org.apache.shiro.cas.CasRealm</node>
-    <node x="1376.375" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.TestAuthenticatingRealm</node>
+    <node x="600.875" y="346.0">org.apache.shiro.realm.text.IniRealm</node>
+    <node x="889.875" y="346.0">org.apache.shiro.cas.CasRealm</node>
+    <node x="1057.625" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.TestAuthenticatingRealm</node>
     <node x="0.0" y="504.0">org.apache.shiro.realm.activedirectory.ActiveDirectoryRealmTest.TestActiveDirectoryRealm</node>
-    <node x="211.5" y="346.0">org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm</node>
-    <node x="1311.625" y="79.0">org.apache.shiro.guice.ShiroModuleTest.MockRealm</node>
-    <node x="848.375" y="425.0">org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm</node>
-    <node x="1254.875" y="0.0">org.apache.shiro.realm.Realm</node>
-    <node x="710.375" y="237.0">org.apache.shiro.realm.AuthorizingRealm</node>
-    <node x="505.0" y="425.0">org.apache.shiro.realm.ldap.JndiLdapRealm</node>
-    <node x="1240.875" y="158.0">org.apache.shiro.realm.CachingRealmTest.TestCachingRealm</node>
-    <node x="890.375" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm</node>
-    <node x="1102.625" y="346.0">org.apache.shiro.samples.sprhib.security.SampleRealm</node>
-    <node x="1378.625" y="346.0">org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm</node>
-    <node x="24.5" y="346.0">org.apache.shiro.realm.ldap.AbstractLdapRealm</node>
-    <node x="1159.625" y="79.0">org.apache.shiro.realm.CachingRealm</node>
-    <node x="494.5" y="346.0">org.apache.shiro.realm.ldap.DefaultLdapRealm</node>
-    <node x="1147.375" y="237.0">org.apache.shiro.realm.TestAuthenticatingRealm</node>
-    <node x="14.0" y="425.0">org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm</node>
-    <node x="929.625" y="346.0">org.apache.shiro.realm.text.PropertiesRealm</node>
-    <node x="717.375" y="425.0">org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle</node>
-    <node x="798.625" y="346.0">org.apache.shiro.realm.jdbc.JdbcRealm</node>
-    <node x="1039.875" y="158.0">org.apache.shiro.realm.AuthenticatingRealm</node>
+    <node x="1204.875" y="346.0">org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm</node>
+    <node x="1213.125" y="79.0">org.apache.shiro.guice.ShiroModuleTest.MockRealm</node>
+    <node x="244.875" y="425.0">org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm</node>
+    <node x="1158.375" y="0.0">org.apache.shiro.realm.Realm</node>
+    <node x="647.625" y="237.0">org.apache.shiro.realm.AuthorizingRealm</node>
+    <node x="729.375" y="425.0">org.apache.shiro.realm.ldap.JndiLdapRealm</node>
+    <node x="1145.875" y="158.0">org.apache.shiro.realm.CachingRealmTest.TestCachingRealm</node>
+    <node x="817.625" y="237.0">org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm</node>
+    <node x="212.875" y="346.0">org.apache.shiro.samples.sprhib.security.SampleRealm</node>
+    <node x="1008.875" y="346.0">org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm</node>
+    <node x="22.5" y="346.0">org.apache.shiro.realm.ldap.AbstractLdapRealm</node>
+    <node x="1069.125" y="79.0">org.apache.shiro.realm.CachingRealm</node>
+    <node x="719.875" y="346.0">org.apache.shiro.realm.ldap.DefaultLdapRealm</node>
+    <node x="1272.625" y="237.0">org.apache.shiro.realm.TestAuthenticatingRealm</node>
+    <node x="12.5" y="425.0">org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm</node>
+    <node x="427.87499999999994" y="425.0">org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle</node>
+    <node x="1355.875" y="346.0">org.apache.shiro.realm.text.PropertiesRealm</node>
+    <node x="350.87499999999994" y="346.0">org.apache.shiro.realm.jdbc.JdbcRealm</node>
+    <node x="956.875" y="158.0">org.apache.shiro.realm.AuthenticatingRealm</node>
     <node x="0.0" y="578.0">org.apache.shiro.authc.pam.ModularRealmAuthenticatorTest.LogoutAwareRealm</node>
-    <node x="1247.625" y="346.0">org.apache.shiro.realm.text.TextConfigurationRealmTest.TestRealm</node>
+    <node x="475.87499999999994" y="346.0">org.apache.shiro.realm.text.TextConfigurationRealmTest.TestRealm</node>
   </nodes>
   <notes />
   <edges>
     <edge source="org.apache.shiro.realm.AuthenticatingRealm" target="org.apache.shiro.realm.CachingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1130.375" y="133.0" />
-      <point x="1192.625" y="133.0" />
-      <point x="-33.0" y="14.5" />
+      <point x="1041.375" y="133.0" />
+      <point x="1100.125" y="133.0" />
+      <point x="-31.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.ldap.JndiLdapRealm" target="org.apache.shiro.realm.ldap.DefaultLdapRealm">
       <point x="0.0" y="-14.5" />
@@ -43,21 +43,21 @@
     </edge>
     <edge source="org.apache.shiro.realm.jdbc.JdbcRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="854.125" y="326.0" />
-      <point x="798.375" y="326.0" />
-      <point x="8.0" y="14.5" />
+      <point x="403.37499999999994" y="306.0" />
+      <point x="685.125" y="306.0" />
+      <point x="-37.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.CachingRealmTest.TestCachingRealm" target="org.apache.shiro.realm.CachingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1320.875" y="133.0" />
-      <point x="1258.625" y="133.0" />
-      <point x="33.0" y="14.5" />
+      <point x="1220.875" y="133.0" />
+      <point x="1162.125" y="133.0" />
+      <point x="31.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.ModularRealmAuthorizerTest.MockAuthorizingRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1472.625" y="286.0" />
-      <point x="862.375" y="286.0" />
-      <point x="72.0" y="14.5" />
+      <point x="1096.875" y="306.0" />
+      <point x="760.125" y="306.0" />
+      <point x="37.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.activedirectory.ActiveDirectoryRealmTest.TestActiveDirectoryRealm" target="org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm">
       <point x="0.0" y="-14.5" />
@@ -69,103 +69,105 @@
     </edge>
     <edge source="org.apache.shiro.realm.text.IniRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="726.625" y="326.0" />
-      <point x="782.375" y="326.0" />
-      <point x="-8.0" y="14.5" />
+      <point x="650.375" y="326.0" />
+      <point x="715.125" y="326.0" />
+      <point x="-7.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle" target="org.apache.shiro.realm.jdbc.JdbcRealm">
       <point x="0.0" y="-14.5" />
-      <point x="772.875" y="400.0" />
-      <point x="826.375" y="400.0" />
-      <point x="-27.75" y="14.5" />
+      <point x="480.37499999999994" y="400.0" />
+      <point x="429.62499999999994" y="400.0" />
+      <point x="26.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.ldap.DefaultLdapRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="574.5" y="316.0" />
-      <point x="766.375" y="316.0" />
-      <point x="-24.0" y="14.5" />
+      <point x="794.875" y="326.0" />
+      <point x="730.125" y="326.0" />
+      <point x="7.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.samples.spring.realm.SaltAwareJdbcRealm" target="org.apache.shiro.realm.jdbc.JdbcRealm">
       <point x="0.0" y="-14.5" />
-      <point x="935.375" y="400.0" />
-      <point x="881.875" y="400.0" />
-      <point x="27.75" y="14.5" />
-    </edge>
-    <edge source="org.apache.shiro.realm.TestAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
-      <point x="0.0" y="-14.5" />
-      <point x="1251.875" y="217.0" />
-      <point x="1153.0" y="217.0" />
-      <point x="22.625" y="14.5" />
+      <point x="326.375" y="400.0" />
+      <point x="377.12499999999994" y="400.0" />
+      <point x="-26.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.ShiroModuleTest.MockRealm" target="org.apache.shiro.realm.Realm">
       <point x="0.0" y="-14.5" />
-      <point x="1367.125" y="54.0" />
-      <point x="1317.125" y="54.0" />
-      <point x="20.75" y="14.5" />
+      <point x="1265.625" y="54.0" />
+      <point x="1218.375" y="54.0" />
+      <point x="20.0" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.realm.TestAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
+      <point x="0.0" y="-14.5" />
+      <point x="1370.125" y="207.0" />
+      <point x="1104.75" y="207.0" />
+      <point x="63.375" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.text.TextConfigurationRealmTest.TestRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1303.125" y="296.0" />
-      <point x="846.375" y="296.0" />
-      <point x="56.0" y="14.5" />
+      <point x="528.375" y="316.0" />
+      <point x="700.125" y="316.0" />
+      <point x="-22.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.ldap.AbstractLdapRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="108.0" y="286.0" />
-      <point x="718.375" y="286.0" />
-      <point x="-72.0" y="14.5" />
+      <point x="100.5" y="286.0" />
+      <point x="655.125" y="286.0" />
+      <point x="-67.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.samples.sprhib.security.SampleRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1165.125" y="306.0" />
-      <point x="830.375" y="306.0" />
-      <point x="40.0" y="14.5" />
+      <point x="271.875" y="296.0" />
+      <point x="670.125" y="296.0" />
+      <point x="-52.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthenticatingRealmTest.TestAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1480.875" y="207.0" />
-      <point x="1198.25" y="207.0" />
-      <point x="67.875" y="14.5" />
+      <point x="1155.125" y="217.0" />
+      <point x="1062.5" y="217.0" />
+      <point x="21.125" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthorizingRealmTest.AllowAllRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="281.0" y="296.0" />
-      <point x="734.375" y="296.0" />
-      <point x="-56.0" y="14.5" />
+      <point x="1270.375" y="296.0" />
+      <point x="775.125" y="296.0" />
+      <point x="52.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthorizingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="790.375" y="207.0" />
-      <point x="1062.5" y="207.0" />
-      <point x="-67.875" y="14.5" />
+      <point x="722.625" y="207.0" />
+      <point x="978.0" y="207.0" />
+      <point x="-63.375" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.CachingRealm" target="org.apache.shiro.realm.Realm">
       <point x="0.0" y="-14.5" />
-      <point x="1225.625" y="54.0" />
-      <point x="1275.625" y="54.0" />
-      <point x="-20.75" y="14.5" />
+      <point x="1131.125" y="54.0" />
+      <point x="1178.375" y="54.0" />
+      <point x="-20.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.text.PropertiesRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1006.125" y="316.0" />
-      <point x="814.375" y="316.0" />
-      <point x="24.0" y="14.5" />
+      <point x="1427.875" y="286.0" />
+      <point x="790.125" y="286.0" />
+      <point x="67.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.cas.CasRealm" target="org.apache.shiro.realm.AuthorizingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="422.5" y="306.0" />
-      <point x="750.375" y="306.0" />
-      <point x="-40.0" y="14.5" />
+      <point x="939.375" y="316.0" />
+      <point x="745.125" y="316.0" />
+      <point x="22.5" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.realm.AuthenticatingRealmTest.NoLookupAuthenticatingRealm" target="org.apache.shiro.realm.AuthenticatingRealm">
       <point x="0.0" y="-14.5" />
-      <point x="1008.875" y="217.0" />
-      <point x="1107.75" y="217.0" />
-      <point x="-22.625" y="14.5" />
+      <point x="927.625" y="217.0" />
+      <point x="1020.25" y="217.0" />
+      <point x="-21.125" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="849.0" y="215.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.5571608040201005" x="1080.2209695603158" y="277.4751972942503" />
+  <SelectedNodes>
+    <node>org.apache.shiro.realm.Realm</node>
+  </SelectedNodes>
   <Categories>
     <Category>Inner Classes</Category>
   </Categories>

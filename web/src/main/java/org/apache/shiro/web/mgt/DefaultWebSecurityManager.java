@@ -52,6 +52,8 @@ import java.util.Collection;
  */
 public class DefaultWebSecurityManager extends DefaultSecurityManager implements WebSecurityManager {
 
+    private static final Logger log = LoggerFactory.getLogger(DefaultWebSecurityManager.class);
+
     //TODO - complete JavaDoc
 
     @Deprecated
@@ -59,8 +61,6 @@ public class DefaultWebSecurityManager extends DefaultSecurityManager implements
 
     @Deprecated
     public static final String NATIVE_SESSION_MODE = "native";
-
-    private static final Logger log = LoggerFactory.getLogger(DefaultWebSecurityManager.class);
 
     /**
      * @deprecated as of 1.2.  This should NOT be used for anything other than determining if the sessionMode has changed.

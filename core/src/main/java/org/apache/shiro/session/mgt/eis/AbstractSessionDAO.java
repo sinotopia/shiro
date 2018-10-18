@@ -112,6 +112,7 @@ public abstract class AbstractSessionDAO implements SessionDAO {
      *
      * @param session Session object to create in the EIS and associate with an ID.
      */
+    @Override
     public Serializable create(Session session) {
         Serializable sessionId = doCreate(session);
         verifySessionId(sessionId);

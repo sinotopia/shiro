@@ -340,7 +340,6 @@ public interface Subject {
      */
     boolean isAuthenticated();
 
-
     /**
      * Returns {@code true} if this {@code Subject} has an identity (it is not anonymous) and the identity
      * (aka {@link #getPrincipals() principals}) is remembered from a successful authentication during a previous

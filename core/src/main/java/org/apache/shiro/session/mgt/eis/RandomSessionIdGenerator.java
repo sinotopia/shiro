@@ -62,6 +62,7 @@ public class RandomSessionIdGenerator implements SessionIdGenerator {
      * @param session the {@link Session} instance to which the ID will be applied.
      * @return the String value of the configured {@link Random}'s {@link Random#nextLong()} invocation.
      */
+    @Override
     public Serializable generateId(Session session) {
         //ignore the argument - just call the Random:
         return Long.toString(getRandom().nextLong());

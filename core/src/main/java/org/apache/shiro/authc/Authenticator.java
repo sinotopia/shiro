@@ -62,6 +62,5 @@ public interface Authenticator {
      * @see ConcurrentAccessException
      * @see UnknownAccountException
      */
-    public AuthenticationInfo authenticate(AuthenticationToken authenticationToken)
-            throws AuthenticationException;
+    AuthenticationInfo authenticate(AuthenticationToken authenticationToken) throws AuthenticationException;
 }

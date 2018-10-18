@@ -40,7 +40,7 @@ import java.util.List;
  * (Shiro's default implementations do String-to-Permission conversion for these methods using
  * {@link org.apache.shiro.authz.permission.PermissionResolver PermissionResolver}s.)
  * <p>
- * <p>These overloaded *Permission methods <em>do</em> forego type-safety for the benefit of convenience and simplicity,
+ * <p>These overloaded *Permission methods <em>do</em> forget type-safety for the benefit of convenience and simplicity,
  * so you should choose which ones to use based on your preferences and needs.
  *
  * @since 0.1
@@ -86,7 +86,7 @@ public interface Authorizer {
      * @param permissions      the String representations of the Permissions that are being checked.
      * @return an array of booleans whose indices correspond to the index of the
      * permissions in the given list.  A true value at an index indicates the user is permitted for
-     * for the associated <tt>Permission</tt> string in the list.  A false value at an index
+     * the associated <tt>Permission</tt> string in the list.  A false value at an index
      * indicates otherwise.
      * @since 0.9
      */

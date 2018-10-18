@@ -96,7 +96,8 @@ public class SimpleAccount implements Account, MergableAuthenticationInfo, Salte
      * @since 1.1
      */
     public SimpleAccount(Object principal, Object hashedCredentials, ByteSource credentialsSalt, String realmName) {
-        this(principal instanceof PrincipalCollection ? (PrincipalCollection) principal : new SimplePrincipalCollection(principal, realmName),
+        this(principal instanceof PrincipalCollection ? (PrincipalCollection) principal :
+                        new SimplePrincipalCollection(principal, realmName),
                 hashedCredentials, credentialsSalt);
     }
 
