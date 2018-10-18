@@ -3,38 +3,47 @@
   <ID>JAVA</ID>
   <OriginalElement>org.apache.shiro.spring.config.AbstractShiroBeanConfiguration</OriginalElement>
   <nodes>
-    <node x="146.0" y="232.0">org.apache.shiro.spring.config.AbstractShiroAnnotationProcessorConfiguration</node>
-    <node x="0.0" y="311.0">org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration</node>
-    <node x="227.0" y="158.0">org.apache.shiro.spring.web.config.ShiroWebConfiguration</node>
-    <node x="558.1666666666666" y="79.0">org.apache.shiro.spring.config.ShiroConfiguration</node>
-    <node x="350.16666666666663" y="79.0">org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration</node>
+    <node x="240.0" y="464.0">org.apache.shiro.spring.web.config.ShiroWebFilterConfiguration</node>
+    <node x="133.0" y="232.0">org.apache.shiro.spring.config.AbstractShiroAnnotationProcessorConfiguration</node>
     <node x="334.25" y="0.0">org.apache.shiro.spring.config.AbstractShiroConfiguration</node>
-    <node x="85.0" y="385.0">org.apache.shiro.spring.config.AbstractShiroBeanConfiguration</node>
-    <node x="0.0" y="464.0">org.apache.shiro.spring.config.ShiroBeanConfiguration</node>
-    <node x="330.0" y="311.0">org.apache.shiro.spring.config.ShiroAnnotationProcessorConfiguration</node>
+    <node x="558.1666666666666" y="79.0">org.apache.shiro.spring.config.ShiroConfiguration</node>
+    <node x="98.0" y="538.0">org.apache.shiro.spring.config.AbstractShiroBeanConfiguration</node>
+    <node x="0.0" y="464.0">org.apache.shiro.spring.config.web.autoconfigure.ShiroWebFilterConfiguration</node>
+    <node x="94.5" y="385.0">org.apache.shiro.spring.web.config.AbstractShiroWebFilterConfiguration</node>
+    <node x="304.0" y="311.0">org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration</node>
+    <node x="227.0" y="158.0">org.apache.shiro.spring.web.config.ShiroWebConfiguration</node>
+    <node x="350.16666666666663" y="79.0">org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration</node>
+    <node x="234.0" y="617.0">org.apache.shiro.spring.config.ShiroBeanConfiguration</node>
+    <node x="0.0" y="311.0">org.apache.shiro.spring.config.ShiroAnnotationProcessorConfiguration</node>
     <node x="0.0" y="158.0">org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration</node>
     <node x="97.16666666666669" y="79.0">org.apache.shiro.spring.web.config.AbstractShiroWebConfiguration</node>
-    <node x="208.0" y="464.0">org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration</node>
+    <node x="0.0" y="617.0">org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration</node>
   </nodes>
   <notes />
   <edges>
     <edge source="org.apache.shiro.spring.config.ShiroAnnotationProcessorConfiguration" target="org.apache.shiro.spring.config.AbstractShiroAnnotationProcessorConfiguration">
       <point x="0.0" y="-14.5" />
-      <point x="472.0" y="286.0" />
-      <point x="397.25" y="286.0" />
-      <point x="83.75" y="14.5" />
+      <point x="142.0" y="286.0" />
+      <point x="216.75" y="286.0" />
+      <point x="-83.75" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration" target="org.apache.shiro.spring.config.AbstractShiroAnnotationProcessorConfiguration">
       <point x="0.0" y="-14.5" />
-      <point x="155.0" y="286.0" />
-      <point x="229.75" y="286.0" />
-      <point x="-83.75" y="14.5" />
+      <point x="459.0" y="286.0" />
+      <point x="384.25" y="286.0" />
+      <point x="83.75" y="14.5" />
+    </edge>
+    <edge source="org.apache.shiro.spring.web.config.ShiroWebFilterConfiguration" target="org.apache.shiro.spring.web.config.AbstractShiroWebFilterConfiguration">
+      <point x="0.0" y="-14.5" />
+      <point x="350.0" y="439.0" />
+      <point x="297.75" y="439.0" />
+      <point x="67.75" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration" target="org.apache.shiro.spring.config.AbstractShiroBeanConfiguration">
       <point x="0.0" y="-14.5" />
-      <point x="315.0" y="439.0" />
-      <point x="264.25" y="439.0" />
-      <point x="59.75" y="14.5" />
+      <point x="107.0" y="592.0" />
+      <point x="157.75" y="592.0" />
+      <point x="-59.75" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration" target="org.apache.shiro.spring.web.config.AbstractShiroWebConfiguration">
       <point x="0.0" y="-14.5" />
@@ -50,9 +59,9 @@
     </edge>
     <edge source="org.apache.shiro.spring.config.ShiroBeanConfiguration" target="org.apache.shiro.spring.config.AbstractShiroBeanConfiguration">
       <point x="0.0" y="-14.5" />
-      <point x="94.0" y="439.0" />
-      <point x="144.75" y="439.0" />
-      <point x="-59.75" y="14.5" />
+      <point x="328.0" y="592.0" />
+      <point x="277.25" y="592.0" />
+      <point x="59.75" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.spring.config.ShiroConfiguration" target="org.apache.shiro.spring.config.AbstractShiroConfiguration">
       <point x="0.0" y="-14.5" />
@@ -66,6 +75,12 @@
       <point x="369.9166666666667" y="54.0" />
       <point x="-71.33333333333331" y="14.5" />
     </edge>
+    <edge source="org.apache.shiro.spring.config.web.autoconfigure.ShiroWebFilterConfiguration" target="org.apache.shiro.spring.web.config.AbstractShiroWebFilterConfiguration">
+      <point x="0.0" y="-14.5" />
+      <point x="110.0" y="439.0" />
+      <point x="162.25" y="439.0" />
+      <point x="-67.75" y="14.5" />
+    </edge>
     <edge source="org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration" target="org.apache.shiro.spring.config.AbstractShiroConfiguration">
       <point x="0.0" y="-14.5" />
       <point x="444.16666666666663" y="54.0" />
@@ -73,7 +88,7 @@
       <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="318.0" y="146.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="335.5" y="268.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
