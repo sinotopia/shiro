@@ -91,7 +91,6 @@ public abstract class CachingSessionDAO extends AbstractSessionDAO implements Ca
      *
      * @return the CacheManager used by the implementation that creates the activeSessions Cache.
      */
-    @Override
     public CacheManager getCacheManager() {
         return cacheManager;
     }

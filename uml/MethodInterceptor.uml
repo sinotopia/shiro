@@ -4,32 +4,32 @@
   <OriginalElement>org.apache.shiro.aop.MethodInterceptor</OriginalElement>
   <nodes>
     <node x="390.0" y="316.0">org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor</node>
-    <node x="1694.5" y="237.0">org.apache.shiro.guice.aop.ShiroAopModuleTest.MyAnnotationMethodInterceptor</node>
+    <node x="1754.0" y="237.0">org.apache.shiro.guice.aop.ShiroAopModuleTest.MyAnnotationMethodInterceptor</node>
     <node x="0.0" y="316.0">org.apache.shiro.aspectj.AspectjAnnotationsAuthorizingMethodInterceptor</node>
-    <node x="1670.0" y="316.0">org.apache.shiro.authz.aop.PermissionAnnotationMethodInterceptor</node>
-    <node x="1385.0" y="316.0">org.apache.shiro.authz.aop.UserAnnotationMethodInterceptor</node>
-    <node x="808.0" y="316.0">org.apache.shiro.authz.aop.GuestAnnotationMethodInterceptor</node>
-    <node x="1360.5" y="237.0">org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor</node>
-    <node x="1100.0" y="316.0">org.apache.shiro.authz.aop.RoleAnnotationMethodInterceptor</node>
+    <node x="1733.0" y="316.0">org.apache.shiro.authz.aop.PermissionAnnotationMethodInterceptor</node>
+    <node x="1156.0" y="316.0">org.apache.shiro.authz.aop.UserAnnotationMethodInterceptor</node>
+    <node x="1441.0" y="316.0">org.apache.shiro.authz.aop.GuestAnnotationMethodInterceptor</node>
+    <node x="1420.0" y="237.0">org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor</node>
+    <node x="2060.0" y="316.0">org.apache.shiro.authz.aop.RoleAnnotationMethodInterceptor</node>
     <node x="265.0" y="158.0">org.apache.shiro.authz.aop.AuthorizingMethodInterceptor</node>
     <node x="226.5" y="237.0">org.apache.shiro.authz.aop.AnnotationsAuthorizingMethodInterceptor</node>
-    <node x="1550.25" y="158.0">org.apache.shiro.aop.AnnotationMethodInterceptor</node>
-    <node x="952.9892857142858" y="79.0">org.apache.shiro.aop.MethodInterceptorSupport</node>
-    <node x="977.4892857142858" y="0.0">org.apache.shiro.aop.MethodInterceptor</node>
-    <node x="1997.0" y="316.0">org.apache.shiro.authz.aop.AuthenticatedAnnotationMethodInterceptor</node>
+    <node x="1609.75" y="158.0">org.apache.shiro.aop.AnnotationMethodInterceptor</node>
+    <node x="986.1142857142858" y="79.0">org.apache.shiro.aop.MethodInterceptorSupport</node>
+    <node x="1010.6142857142858" y="0.0">org.apache.shiro.aop.MethodInterceptor</node>
+    <node x="808.0" y="316.0">org.apache.shiro.authz.aop.AuthenticatedAnnotationMethodInterceptor</node>
   </nodes>
   <notes />
   <edges>
     <edge source="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor" target="org.apache.shiro.aop.AnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="1517.5" y="212.0" />
-      <point x="1609.5" y="212.0" />
+      <point x="1577.0" y="212.0" />
+      <point x="1669.0" y="212.0" />
       <point x="-59.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.aop.PermissionAnnotationMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor">
-      <point x="0.0" y="-14.5" />
-      <point x="1823.5" y="296.0" />
-      <point x="1580.3" y="296.0" />
+      <point x="-1.1368683772161603E-13" y="-14.5" />
+      <point x="1886.5" y="296.0" />
+      <point x="1639.8" y="296.0" />
       <point x="62.799999999999955" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.aop.AnnotationsAuthorizingMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingMethodInterceptor">
@@ -39,26 +39,26 @@
     <edge source="org.apache.shiro.authz.aop.AuthorizingMethodInterceptor" target="org.apache.shiro.aop.MethodInterceptorSupport">
       <point x="0.0" y="-14.5" />
       <point x="387.0" y="133.0" />
-      <point x="1006.9892857142858" y="133.0" />
+      <point x="1040.1142857142859" y="133.0" />
       <point x="-54.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.aop.AnnotationMethodInterceptor" target="org.apache.shiro.aop.MethodInterceptorSupport">
       <point x="0.0" y="-14.5" />
-      <point x="1668.75" y="133.0" />
-      <point x="1114.9892857142859" y="133.0" />
+      <point x="1728.25" y="133.0" />
+      <point x="1148.1142857142859" y="133.0" />
       <point x="54.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.guice.aop.ShiroAopModuleTest.MyAnnotationMethodInterceptor" target="org.apache.shiro.aop.AnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="1820.0" y="212.0" />
-      <point x="1728.0" y="212.0" />
+      <point x="1879.5" y="212.0" />
+      <point x="1787.5" y="212.0" />
       <point x="59.25" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.aop.AuthenticatedAnnotationMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="2161.0" y="286.0" />
-      <point x="1643.1" y="286.0" />
-      <point x="125.59999999999991" y="14.5" />
+      <point x="972.0" y="286.0" />
+      <point x="1451.4" y="286.0" />
+      <point x="-125.59999999999991" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor" target="org.apache.shiro.authz.aop.AnnotationsAuthorizingMethodInterceptor">
       <point x="0.0" y="-14.5" />
@@ -74,27 +74,29 @@
     </edge>
     <edge source="org.apache.shiro.authz.aop.GuestAnnotationMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="944.0" y="286.0" />
-      <point x="1391.9" y="286.0" />
-      <point x="-125.59999999999991" y="14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.aop.RoleAnnotationMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="1232.5" y="296.0" />
-      <point x="1454.7" y="296.0" />
-      <point x="-62.799999999999955" y="14.5" />
+      <point x="2192.5" y="286.0" />
+      <point x="1702.6" y="286.0" />
+      <point x="125.59999999999991" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.authz.aop.UserAnnotationMethodInterceptor" target="org.apache.shiro.authz.aop.AuthorizingAnnotationMethodInterceptor">
       <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="1288.5" y="296.0" />
+      <point x="1514.2" y="296.0" />
+      <point x="-62.799999999999955" y="14.5" />
     </edge>
     <edge source="org.apache.shiro.aop.MethodInterceptorSupport" target="org.apache.shiro.aop.MethodInterceptor">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="1455.5" y="43.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="1.0" x="867.0" y="43.0" />
+  <SelectedNodes>
+    <node>org.apache.shiro.authz.aop.AuthenticatedAnnotationMethodInterceptor</node>
+  </SelectedNodes>
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

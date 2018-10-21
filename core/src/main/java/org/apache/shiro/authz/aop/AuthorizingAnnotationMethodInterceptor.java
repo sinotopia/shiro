@@ -62,6 +62,7 @@ public abstract class AuthorizingAnnotationMethodInterceptor extends AnnotationM
      * @throws org.apache.shiro.authz.AuthorizationException if the <code>MethodInvocation</code> is not allowed to proceed.
      * @throws Throwable                                     if any other error occurs.
      */
+    @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         assertAuthorized(methodInvocation);
         return methodInvocation.proceed();

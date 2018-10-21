@@ -49,8 +49,11 @@ public class RoleAnnotationHandler extends AuthorizingAnnotationHandler {
      * @throws org.apache.shiro.authz.AuthorizationException if the calling <code>Subject</code> does not have the role(s) necessary to
      *                                                       proceed.
      */
+    @Override
     public void assertAuthorized(Annotation a) throws AuthorizationException {
-        if (!(a instanceof RequiresRoles)) return;
+        if (!(a instanceof RequiresRoles)) {
+            return;
+        }
 
         RequiresRoles rrAnnotation = (RequiresRoles) a;
         String[] roles = rrAnnotation.value();
@@ -66,12 +69,15 @@ public class RoleAnnotationHandler extends AuthorizingAnnotationHandler {
         if (Logical.OR.equals(rrAnnotation.logical())) {
             // Avoid processing exceptions unnecessarily - "delay" throwing the exception by calling hasRole first
             boolean hasAtLeastOneRole = false;
-            for (String role : roles)
-                if (getSubject().hasRole(role))
+            for (String role : roles) {
+                if (getSubject().hasRole(role)) {
                     hasAtLeastOneRole = true;
+                }
+            }
             // Cause the exception if none of the role match, note that the exception message will be a bit misleading
-            if (!hasAtLeastOneRole)
+            if (!hasAtLeastOneRole) {
                 getSubject().checkRole(roles[0]);
+            }
         }
     }
 

@@ -38,7 +38,7 @@ public class GuestAnnotationHandler extends AuthorizingAnnotationHandler {
 
     /**
      * Default no-argument constructor that ensures this interceptor looks for
-     *
+     * <p>
      * {@link org.apache.shiro.authz.annotation.RequiresGuest RequiresGuest} annotations in a method
      * declaration.
      */
@@ -53,9 +53,9 @@ public class GuestAnnotationHandler extends AuthorizingAnnotationHandler {
      * <code>AuthorizingException</code> will be thrown indicating that execution is not allowed to continue.
      *
      * @param a the annotation to check for one or more roles
-     * @throws org.apache.shiro.authz.AuthorizationException
-     *          if the calling <code>Subject</code> is not a &quot;guest&quot;.
+     * @throws org.apache.shiro.authz.AuthorizationException if the calling <code>Subject</code> is not a &quot;guest&quot;.
      */
+    @Override
     public void assertAuthorized(Annotation a) throws AuthorizationException {
         if (a instanceof RequiresGuest && getSubject().getPrincipal() != null) {
             throw new UnauthenticatedException("Attempting to perform a guest-only operation.  The current Subject is " +
