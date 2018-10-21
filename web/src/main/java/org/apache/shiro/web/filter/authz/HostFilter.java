@@ -100,7 +100,8 @@ public class HostFilter extends AuthorizationFilter {
         return true;
     }
 
+    @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
-        throw new UnsupportedOperationException("Not yet fully implemented!!!" );
+        throw new UnsupportedOperationException("Not yet fully implemented!!!");
     }
 }

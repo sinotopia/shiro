@@ -46,6 +46,7 @@ public class PassThruAuthenticationFilter extends AuthenticationFilter {
 
     //TODO - complete JavaDoc
 
+    @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isLoginRequest(request, response)) {
             return true;

@@ -121,7 +121,8 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
 
     private Map<String, Filter> filters;
 
-    private Map<String, String> filterChainDefinitionMap; //urlPathExpression_to_comma-delimited-filter-chain-definition
+    //urlPathExpression_to_comma-delimited-filter-chain-definition
+    private Map<String, String> filterChainDefinitionMap;
 
     private String loginUrl;
     private String successUrl;
@@ -500,6 +501,7 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
      * instance to the internal {@link #setFilters(java.util.Map) filters map} that will be referenced
      * later during filter chain construction.
      */
+    @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof Filter) {
             log.debug("Found filter chain candidate filter '{}'", beanName);
@@ -516,6 +518,7 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
      * Does nothing - only exists to satisfy the BeanPostProcessor interface and immediately returns the
      * {@code bean} argument.
      */
+    @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         return bean;
     }

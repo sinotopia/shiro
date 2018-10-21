@@ -331,6 +331,7 @@ public class DefaultWebSessionManager extends DefaultSessionManager implements W
      * @return {@code false} always
      * @since 1.2
      */
+    @Override
     public boolean isServletContainerSessions() {
         return false;
     }

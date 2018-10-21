@@ -83,6 +83,7 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
      *
      * @param url URL to be encoded
      */
+    @Override
     public String encodeRedirectURL(String url) {
         if (isEncodeable(toAbsolute(url))) {
             return toEncoded(url, request.getSession().getId());
@@ -91,11 +92,9 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
         }
     }
 
-
     public String encodeRedirectUrl(String s) {
         return encodeRedirectURL(s);
     }
-
 
     /**
      * Encode the session identifier associated with this response
@@ -103,6 +102,7 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
      *
      * @param url URL to be encoded
      */
+    @Override
     public String encodeURL(String url) {
         String absolute = toAbsolute(url);
         if (isEncodeable(absolute)) {
@@ -137,23 +137,28 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
     protected boolean isEncodeable(final String location) {
 
         // First check if URL rewriting is disabled globally
-        if (Boolean.FALSE.equals(request.getAttribute(ShiroHttpServletRequest.SESSION_ID_URL_REWRITING_ENABLED)))
+        if (Boolean.FALSE.equals(request.getAttribute(ShiroHttpServletRequest.SESSION_ID_URL_REWRITING_ENABLED))) {
             return (false);
+        }
 
-        if (location == null)
+        if (location == null) {
             return (false);
+        }
 
         // Is this an intra-document reference?
-        if (location.startsWith("#"))
+        if (location.startsWith("#")) {
             return (false);
+        }
 
         // Are we in a valid session that is not using cookies?
         final HttpServletRequest hreq = request;
         final HttpSession session = hreq.getSession(false);
-        if (session == null)
+        if (session == null) {
             return (false);
-        if (hreq.isRequestedSessionIdFromCookie())
+        }
+        if (hreq.isRequestedSessionIdFromCookie()) {
             return (false);
+        }
 
         return doIsEncodeable(hreq, session, location);
     }
@@ -168,32 +173,38 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
         }
 
         // Does this URL match down to (and including) the context path?
-        if (!hreq.getScheme().equalsIgnoreCase(url.getProtocol()))
+        if (!hreq.getScheme().equalsIgnoreCase(url.getProtocol())) {
             return (false);
-        if (!hreq.getServerName().equalsIgnoreCase(url.getHost()))
+        }
+        if (!hreq.getServerName().equalsIgnoreCase(url.getHost())) {
             return (false);
+        }
         int serverPort = hreq.getServerPort();
         if (serverPort == -1) {
-            if ("https".equals(hreq.getScheme()))
+            if ("https".equals(hreq.getScheme())) {
                 serverPort = 443;
-            else
+            } else {
                 serverPort = 80;
+            }
         }
         int urlPort = url.getPort();
         if (urlPort == -1) {
-            if ("https".equals(url.getProtocol()))
+            if ("https".equals(url.getProtocol())) {
                 urlPort = 443;
-            else
+            } else {
                 urlPort = 80;
+            }
         }
-        if (serverPort != urlPort)
+        if (serverPort != urlPort) {
             return (false);
+        }
 
         String contextPath = getRequest().getContextPath();
         if (contextPath != null) {
             String file = url.getFile();
-            if ((file == null) || !file.startsWith(contextPath))
+            if ((file == null) || !file.startsWith(contextPath)) {
                 return (false);
+            }
             String tok = ";" + DEFAULT_SESSION_ID_PARAMETER_NAME + "=" + session.getId();
             if (file.indexOf(tok, contextPath.length()) >= 0)
                 return (false);
@@ -217,8 +228,9 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
      */
     private String toAbsolute(String location) {
 
-        if (location == null)
+        if (location == null) {
             return (location);
+        }
 
         boolean leadingSlash = location.startsWith("/");
 
@@ -299,8 +311,9 @@ public class ShiroHttpServletResponse extends HttpServletResponseWrapper {
      */
     protected String toEncoded(String url, String sessionId) {
 
-        if ((url == null) || (sessionId == null))
+        if ((url == null) || (sessionId == null)) {
             return (url);
+        }
 
         String path = url;
         String query = "";

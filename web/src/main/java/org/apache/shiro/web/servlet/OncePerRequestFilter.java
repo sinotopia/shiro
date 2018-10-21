@@ -47,21 +47,24 @@ import java.io.IOException;
 public abstract class OncePerRequestFilter extends NameableFilter {
 
     /**
+     * Private internal log instance.
+     */
+    private static final Logger log = LoggerFactory.getLogger(OncePerRequestFilter.class);
+
+    /**
      * Suffix that gets appended to the filter name for the "already filtered" request attribute.
      *
      * @see #getAlreadyFilteredAttributeName
      */
     public static final String ALREADY_FILTERED_SUFFIX = ".FILTERED";
-    /**
-     * Private internal log instance.
-     */
-    private static final Logger log = LoggerFactory.getLogger(OncePerRequestFilter.class);
+
     /**
      * Determines generally if this filter should execute or let requests fall through to the next chain element.
      *
      * @see #isEnabled()
      */
-    private boolean enabled = true; //most filters wish to execute when configured, so default to true
+    //most filters wish to execute when configured, so default to true
+    private boolean enabled = true;
 
     /**
      * Returns {@code true} if this filter should <em>generally</em><b>*</b> execute for any request,
@@ -102,6 +105,7 @@ public abstract class OncePerRequestFilter extends NameableFilter {
      * @see #shouldNotFilter
      * @see #doFilterInternal
      */
+    @Override
     public final void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String alreadyFilteredAttributeName = getAlreadyFilteredAttributeName();
@@ -110,7 +114,7 @@ public abstract class OncePerRequestFilter extends NameableFilter {
             filterChain.doFilter(request, response);
         } else //noinspection deprecation
             if (/* added in 1.2: */ !isEnabled(request, response) ||
-                /* retain backwards compatibility: */ shouldNotFilter(request)) {
+                    /* retain backwards compatibility: */ shouldNotFilter(request)) {
                 log.debug("Filter '{}' is not enabled for the current request.  Proceeding without invoking this filter.",
                         getName());
                 filterChain.doFilter(request, response);
@@ -192,7 +196,6 @@ public abstract class OncePerRequestFilter extends NameableFilter {
     protected boolean shouldNotFilter(ServletRequest request) throws ServletException {
         return false;
     }
-
 
     /**
      * Same contract as for

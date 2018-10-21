@@ -59,14 +59,13 @@ import javax.servlet.http.HttpServletRequest;
 public class FormAuthenticationFilter extends AuthenticatingFilter {
 
     //TODO - complete JavaDoc
+    private static final Logger log = LoggerFactory.getLogger(FormAuthenticationFilter.class);
 
     public static final String DEFAULT_ERROR_KEY_ATTRIBUTE_NAME = "shiroLoginFailure";
 
     public static final String DEFAULT_USERNAME_PARAM = "username";
     public static final String DEFAULT_PASSWORD_PARAM = "password";
     public static final String DEFAULT_REMEMBER_ME_PARAM = "rememberMe";
-
-    private static final Logger log = LoggerFactory.getLogger(FormAuthenticationFilter.class);
 
     private String usernameParam = DEFAULT_USERNAME_PARAM;
     private String passwordParam = DEFAULT_PASSWORD_PARAM;
@@ -145,12 +144,15 @@ public class FormAuthenticationFilter extends AuthenticatingFilter {
         this.failureKeyAttribute = failureKeyAttribute;
     }
 
+    @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isLoginRequest(request, response)) {
+            // 如果是登陆请求并且提交了登陆请求参数
             if (isLoginSubmission(request, response)) {
                 if (log.isTraceEnabled()) {
                     log.trace("Login submission detected.  Attempting to execute login.");
                 }
+                //执行登陆
                 return executeLogin(request, response);
             } else {
                 if (log.isTraceEnabled()) {
@@ -164,7 +166,7 @@ public class FormAuthenticationFilter extends AuthenticatingFilter {
                 log.trace("Attempting to access a path which requires authentication.  Forwarding to the " +
                         "Authentication url [" + getLoginUrl() + "]");
             }
-
+            //保存请求并返回到登陆页面
             saveRequestAndRedirectToLogin(request, response);
             return false;
         }
@@ -183,16 +185,19 @@ public class FormAuthenticationFilter extends AuthenticatingFilter {
         return (request instanceof HttpServletRequest) && WebUtils.toHttp(request).getMethod().equalsIgnoreCase(POST_METHOD);
     }
 
+    @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String username = getUsername(request);
         String password = getPassword(request);
         return createToken(username, password, request, response);
     }
 
+    @Override
     protected boolean isRememberMe(ServletRequest request) {
         return WebUtils.isTrue(request, getRememberMeParam());
     }
 
+    @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject,
                                      ServletRequest request, ServletResponse response) throws Exception {
         issueSuccessRedirect(request, response);
@@ -200,10 +205,11 @@ public class FormAuthenticationFilter extends AuthenticatingFilter {
         return false;
     }
 
+    @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e,
                                      ServletRequest request, ServletResponse response) {
         if (log.isDebugEnabled()) {
-            log.debug( "Authentication exception", e );
+            log.debug("Authentication exception", e);
         }
         setFailureAttribute(request, e);
         //login failed, let request continue back to the login page:

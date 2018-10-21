@@ -43,7 +43,7 @@ import static org.apache.shiro.web.filter.mgt.DefaultFilter.logout;
  * @since 1.2
  */
 public class LogoutFilter extends AdviceFilter {
-    
+
     private static final Logger log = LoggerFactory.getLogger(LogoutFilter.class);
 
     /**
@@ -85,7 +85,7 @@ public class LogoutFilter extends AdviceFilter {
 
             // check if the current request's method is a POST, if not redirect
             if (!WebUtils.toHttp(request).getMethod().toUpperCase(Locale.ENGLISH).equals("POST")) {
-               return onLogoutRequestNotAPost(request, response);
+                return onLogoutRequestNotAPost(request, response);
             }
         }
 
@@ -117,8 +117,8 @@ public class LogoutFilter extends AdviceFilter {
      * Issues an HTTP redirect to the specified URL after subject logout.  This implementation simply calls
      * {@code WebUtils.}{@link WebUtils#issueRedirect(javax.servlet.ServletRequest, javax.servlet.ServletResponse, String) issueRedirect(request,response,redirectUrl)}.
      *
-     * @param request  the incoming Servlet request
-     * @param response the outgoing Servlet response
+     * @param request     the incoming Servlet request
+     * @param response    the outgoing Servlet response
      * @param redirectUrl the URL to where the browser will be redirected immediately after Subject logout.
      * @throws Exception if there is any error.
      */
@@ -139,9 +139,9 @@ public class LogoutFilter extends AdviceFilter {
      * If a session would be created, it will be immediately stopped after logout, not providing any value and
      * unnecessarily taxing session infrastructure/resources.
      *
-     * @param request the incoming Servlet request
+     * @param request  the incoming Servlet request
      * @param response the outgoing ServletResponse
-     * @param subject the not-yet-logged-out currently executing Subject
+     * @param subject  the not-yet-logged-out currently executing Subject
      * @return the redirect URL to send the user after logout.
      */
     protected String getRedirectUrl(ServletRequest request, ServletResponse response, Subject subject) {
@@ -174,8 +174,8 @@ public class LogoutFilter extends AdviceFilter {
      * This method is called when <code>postOnlyLogout</code> is <code>true</code>, and the request was NOT a <code>POST</code>.
      * For example if this filter is bound to '/logout' and the caller makes a GET request, this method would be invoked.
      * <p>
-     *     The default implementation sets the response code to a 405, and sets the 'Allow' header to 'POST', and
-     *     always returns false.
+     * The default implementation sets the response code to a 405, and sets the 'Allow' header to 'POST', and
+     * always returns false.
      * </p>
      *
      * @return The return value indicates if the processing should continue in this filter chain.
@@ -203,6 +203,7 @@ public class LogoutFilter extends AdviceFilter {
      * Due to browser pre-fetching, using a GET requests for logout my cause a user to be logged accidentally, for example:
      * out while typing in an address bar.  If <code>postOnlyLogout</code> is <code>true</code>. Only POST requests will cause
      * a logout to occur.
+     *
      * @param postOnlyLogout enable or disable POST only logout.
      */
     public void setPostOnlyLogout(boolean postOnlyLogout) {

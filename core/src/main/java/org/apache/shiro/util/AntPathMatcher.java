@@ -68,7 +68,6 @@ public class AntPathMatcher implements PatternMatcher {
 
     private String pathSeparator = DEFAULT_PATH_SEPARATOR;
 
-
     /**
      * Set the path separator to use for pattern parsing.
      * Default is "/", as in Ant.
@@ -77,11 +76,11 @@ public class AntPathMatcher implements PatternMatcher {
         this.pathSeparator = (pathSeparator != null ? pathSeparator : DEFAULT_PATH_SEPARATOR);
     }
 
-
     public boolean isPattern(String path) {
         return (path.indexOf('*') != -1 || path.indexOf('?') != -1);
     }
 
+    @Override
     public boolean matches(String pattern, String source) {
         return match(pattern, source);
     }
@@ -94,7 +93,6 @@ public class AntPathMatcher implements PatternMatcher {
         return doMatch(pattern, path, false);
     }
 
-
     /**
      * Actually match the given <code>path</code> against the given <code>pattern</code>.
      *
@@ -103,7 +101,7 @@ public class AntPathMatcher implements PatternMatcher {
      * @param fullMatch whether a full pattern match is required
      *                  (else a pattern match as far as the given base path goes is sufficient)
      * @return <code>true</code> if the supplied <code>path</code> matched,
-     *         <code>false</code> if it didn't
+     * <code>false</code> if it didn't
      */
     protected boolean doMatch(String pattern, String path, boolean fullMatch) {
         if (path.startsWith(this.pathSeparator) != pattern.startsWith(this.pathSeparator)) {
@@ -240,7 +238,7 @@ public class AntPathMatcher implements PatternMatcher {
      * @param str     string which must be matched against the pattern.
      *                Must not be <code>null</code>.
      * @return <code>true</code> if the string matches against the
-     *         pattern, or <code>false</code> otherwise.
+     * pattern, or <code>false</code> otherwise.
      */
     private boolean matchStrings(String pattern, String str) {
         char[] patArr = pattern.toCharArray();

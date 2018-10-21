@@ -356,6 +356,11 @@ public class DefaultFilterChainManager implements FilterChainManager {
         }
     }
 
+    /**
+     * 添加内置过滤器
+     *
+     * @param init
+     */
     protected void addDefaultFilters(boolean init) {
         for (DefaultFilter defaultFilter : DefaultFilter.values()) {
             addFilter(defaultFilter.name(), defaultFilter.newInstance(), init, false);

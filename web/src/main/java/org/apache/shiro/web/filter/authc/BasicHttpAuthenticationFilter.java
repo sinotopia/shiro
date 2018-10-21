@@ -160,7 +160,7 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
      * the HTTP Basic challenge response.  The default value is <code>BASIC</code>.
      *
      * @return the HTTP <code>WWW-Authenticate</code> header scheme that this filter will use when sending the HTTP
-     *         Basic challenge response.
+     * Basic challenge response.
      * @see #sendChallenge
      */
     public String getAuthcScheme() {
@@ -178,7 +178,7 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
     public void setAuthcScheme(String authcScheme) {
         this.authcScheme = authcScheme;
     }
-    
+
     /**
      * The Basic authentication filter can be configured with a list of HTTP methods to which it should apply. This
      * method ensures that authentication is <em>only</em> required for those HTTP methods specified. For example,
@@ -188,19 +188,21 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
      *    /basic/** = authcBasic[POST,PUT,DELETE]
      * </pre>
      * then a GET request would not required authentication but a POST would.
-     * @param request The current HTTP servlet request.
-     * @param response The current HTTP servlet response.
+     *
+     * @param request     The current HTTP servlet request.
+     * @param response    The current HTTP servlet response.
      * @param mappedValue The array of configured HTTP methods as strings. This is empty if no methods are configured.
      */
+    @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         HttpServletRequest httpRequest = WebUtils.toHttp(request);
         String httpMethod = httpRequest.getMethod();
-        
+
         // Check whether the current request's method requires authentication.
         // If no methods have been configured, then all of them require auth,
         // otherwise only the declared ones need authentication.
 
-        Set<String> methods = httpMethodsFromOptions((String[])mappedValue);
+        Set<String> methods = httpMethodsFromOptions((String[]) mappedValue);
         boolean authcRequired = methods.size() == 0;
         for (String m : methods) {
             if (httpMethod.toUpperCase(Locale.ENGLISH).equals(m)) { // list of methods is in upper case
@@ -208,11 +210,10 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
                 break;
             }
         }
-        
+
         if (authcRequired) {
             return super.isAccessAllowed(request, response, mappedValue);
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -239,6 +240,7 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
      * @param response outgoing ServletResponse
      * @return true if the request should be processed; false if the request should not continue to be processed
      */
+    @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         boolean loggedIn = false; //false by default or we wouldn't be in this method
         if (isLoginAttempt(request, response)) {
@@ -304,7 +306,7 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
      * @param authzHeader the 'Authorization' header value (guaranteed to be non-null if the
      *                    {@link #isLoginAttempt(javax.servlet.ServletRequest, javax.servlet.ServletResponse)} method is not overriden).
      * @return <code>true</code> if the authzHeader value matches that configured as defined by
-     *         the {@link #getAuthzScheme() authzScheme}.
+     * the {@link #getAuthzScheme() authzScheme}.
      */
     protected boolean isLoginAttempt(String authzHeader) {
         //SHIRO-415: use English Locale:
@@ -350,6 +352,7 @@ public class BasicHttpAuthenticationFilter extends AuthenticatingFilter {
      * @param response outgoing ServletResponse
      * @return the AuthenticationToken used to execute the login attempt
      */
+    @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String authorizationHeader = getAuthzHeader(request);
         if (authorizationHeader == null || authorizationHeader.length() == 0) {

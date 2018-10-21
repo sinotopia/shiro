@@ -66,7 +66,6 @@ public abstract class AuthenticationFilter extends AccessControlFilter {
         this.successUrl = successUrl;
     }
 
-
     /**
      * Determines whether the current subject is authenticated.
      * <p/>
@@ -76,6 +75,7 @@ public abstract class AuthenticationFilter extends AccessControlFilter {
      *
      * @return true if the subject is authenticated; false if the subject is unauthenticated
      */
+    @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         Subject subject = getSubject(request, response);
         return subject.isAuthenticated();

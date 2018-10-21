@@ -129,6 +129,7 @@ public class ServletContainerSessionManager implements WebSessionManager {
      * @return {@code true} always
      * @since 1.2
      */
+    @Override
     public boolean isServletContainerSessions() {
         return true;
     }
