@@ -131,7 +131,8 @@ public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
 
     public ShiroFilterFactoryBean() {
         this.filters = new LinkedHashMap<String, Filter>();
-        this.filterChainDefinitionMap = new LinkedHashMap<String, String>(); //order matters!
+        //order matters!
+        this.filterChainDefinitionMap = new LinkedHashMap<String, String>();
     }
 
     /**
